@@ -6,7 +6,10 @@ document.addEventListener("DOMContentLoaded", function () {
   // Adjust body margin for fixed header
   function adjustHeaderMargin() {
     if (header) {
-      document.body.style.marginTop = header.offsetHeight + "px";
+      // Use CSS-defined heights that match media queries
+      const isMobile = window.innerWidth <= 640;
+      const headerHeight = isMobile ? 90 : 150;
+      document.body.style.marginTop = headerHeight + "px";
     }
   }
 
