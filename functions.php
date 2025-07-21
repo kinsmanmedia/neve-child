@@ -16,7 +16,7 @@ if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 }
 
 /**
- * Enqueue parent and child theme styles
+ * Enqueue parent and child theme styles and scripts
  */
 function neve_child_enqueue_styles() {
     // Enqueue parent theme stylesheet
@@ -26,6 +26,21 @@ function neve_child_enqueue_styles() {
     wp_enqueue_style('neve-child-style',
         get_stylesheet_directory_uri() . '/style.css',
         array('neve-parent-style'),
+        wp_get_theme()->get('Version')
+    );
+    
+    // Enqueue MAC header JavaScript
+    wp_enqueue_script('neve-child-mac-header',
+        get_stylesheet_directory_uri() . '/components/mac-header/mac-header.js',
+        array(),
+        wp_get_theme()->get('Version'),
+        true
+    );
+    
+    // Enqueue MAC header styles
+    wp_enqueue_style('neve-child-mac-header-style',
+        get_stylesheet_directory_uri() . '/components/mac-header/style.css',
+        array('neve-child-style'),
         wp_get_theme()->get('Version')
     );
 }
@@ -59,10 +74,11 @@ function neve_child_custom_excerpt_length($length) {
 add_filter('excerpt_length', 'neve_child_custom_excerpt_length');
 
 /**
- * Example: Register custom menu location
+ * Register custom menu locations
  */
 function neve_child_register_menus() {
     register_nav_menus(array(
+        'header-menu' => __('Header Menu', 'neve-child'),
         'child-footer-menu' => __('Child Footer Menu', 'neve-child'),
     ));
 }
@@ -79,11 +95,11 @@ add_action('after_setup_theme', 'neve_child_custom_image_sizes');
 
 /**
  * ========================================
- * MODULAR BLOCKS SYSTEM
+ * MODULAR COMPONENTS SYSTEM
  * ========================================
- * Automatically loads and registers all custom blocks
- * from the blocks directory. No configuration needed.
+ * Automatically loads and registers all custom components
+ * from the components directory. No configuration needed.
  */
 
-// Load the automatic block loader
+// Load the automatic component loader
 require_once get_stylesheet_directory() . '/inc/blocks-loader.php';

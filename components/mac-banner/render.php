@@ -1,13 +1,13 @@
 <?php
 /**
- * Banner block render template
+ * MAC Banner component render template
  */
 
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-function neve_child_render_banner_block($attributes, $content) {
+function neve_child_render_mac_banner_block($attributes, $content) {
     $title = isset($attributes['title']) ? $attributes['title'] : '';
     $subtitle = isset($attributes['subtitle']) ? $attributes['subtitle'] : '';
     $background_image = isset($attributes['backgroundImage']) ? $attributes['backgroundImage'] : '';
@@ -22,9 +22,9 @@ function neve_child_render_banner_block($attributes, $content) {
 
     // Build CSS classes
     $classes = [
-        'neve-banner-block',
-        'neve-banner-' . $alignment,
-        'neve-banner-' . $height
+        'mac-banner-component',
+        'mac-banner-' . $alignment,
+        'mac-banner-' . $height
     ];
 
     // Build inline styles

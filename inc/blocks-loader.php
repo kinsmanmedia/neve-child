@@ -1,77 +1,77 @@
 <?php
 /**
- * Automatic Block Loader
- * Dynamically discovers and registers blocks from the blocks directory
+ * Automatic Component Loader
+ * Dynamically discovers and registers components from the components directory
  */
 
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-class Neve_Child_Blocks_Loader {
+class Neve_Child_Components_Loader {
     
-    private $blocks_dir;
-    private $blocks_url;
+    private $components_dir;
+    private $components_url;
     
     public function __construct() {
-        $this->blocks_dir = get_stylesheet_directory() . '/blocks/';
-        $this->blocks_url = get_stylesheet_directory_uri() . '/blocks/';
+        $this->components_dir = get_stylesheet_directory() . '/components/';
+        $this->components_url = get_stylesheet_directory_uri() . '/components/';
         
-        add_action('init', array($this, 'register_blocks'));
-        add_action('wp_enqueue_scripts', array($this, 'enqueue_block_assets'));
+        add_action('init', array($this, 'register_components'));
+        add_action('wp_enqueue_scripts', array($this, 'enqueue_component_assets'));
     }
     
     /**
-     * Automatically discover and register all blocks
+     * Automatically discover and register all components
      */
-    public function register_blocks() {
-        if (!file_exists($this->blocks_dir)) {
+    public function register_components() {
+        if (!file_exists($this->components_dir)) {
             return;
         }
         
-        $block_folders = glob($this->blocks_dir . '*', GLOB_ONLYDIR);
+        $component_folders = glob($this->components_dir . '*', GLOB_ONLYDIR);
         
-        foreach ($block_folders as $block_folder) {
-            $block_name = basename($block_folder);
-            $this->register_single_block($block_name, $block_folder);
+        foreach ($component_folders as $component_folder) {
+            $component_name = basename($component_folder);
+            $this->register_single_component($component_name, $component_folder);
         }
     }
     
     /**
-     * Register a single block
+     * Register a single component
      */
-    private function register_single_block($block_name, $block_folder) {
-        $block_json = $block_folder . '/block.json';
-        $render_file = $block_folder . '/render.php';
-        $js_file = $block_folder . '/' . $block_name . '-block.js';
-        $style_file = $block_folder . '/style.css';
+    private function register_single_component($component_name, $component_folder) {
+        $component_json = $component_folder . '/block.json';
+        $render_file = $component_folder . '/render.php';
+        $js_file = $component_folder . '/' . $component_name . '-block.js';
+        $style_file = $component_folder . '/style.css';
         
         // Check if block.json exists
-        if (!file_exists($block_json)) {
+        if (!file_exists($component_json)) {
             return;
         }
         
-        // Load block configuration
-        $block_config = json_decode(file_get_contents($block_json), true);
-        if (!$block_config) {
+        // Load component configuration
+        $component_config = json_decode(file_get_contents($component_json), true);
+        if (!$component_config) {
             return;
         }
         
-        // Register block styles
+        // Register component styles
         if (file_exists($style_file)) {
             wp_register_style(
-                'neve-child-' . $block_name . '-block',
-                $this->blocks_url . $block_name . '/style.css',
+                'neve-child-' . $component_name . '-component',
+                $this->components_url . $component_name . '/style.css',
                 array(),
                 filemtime($style_file)
             );
         }
         
-        // Register block editor script
+        // Register component editor script
         if (file_exists($js_file)) {
             wp_register_script(
-                'neve-child-' . $block_name . '-block-editor',
-                $this->blocks_url . $block_name . '/' . $block_name . '-block.js',
+                'neve-child-' . $component_name . '-component-editor',
+                $this->components_url . $component_name . '/' . $component_name . '-block.js',
                 array('wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-i18n'),
                 filemtime($js_file)
             );
@@ -81,95 +81,83 @@ class Neve_Child_Blocks_Loader {
         $render_callback = null;
         if (file_exists($render_file)) {
             require_once $render_file;
-            $render_function = 'neve_child_render_' . str_replace('-', '_', $block_name) . '_block';
+            $render_function = 'neve_child_render_' . str_replace('-', '_', $component_name) . '_block';
             if (function_exists($render_function)) {
                 $render_callback = $render_function;
             }
         }
         
-        // Prepare block registration args
-        $block_args = array();
+        // Prepare component registration args
+        $component_args = array();
         
         // Add editor script if exists
         if (file_exists($js_file)) {
-            $block_args['editor_script'] = 'neve-child-' . $block_name . '-block-editor';
+            $component_args['editor_script'] = 'neve-child-' . $component_name . '-component-editor';
         }
         
         // Add style if exists
         if (file_exists($style_file)) {
-            $block_args['style'] = 'neve-child-' . $block_name . '-block';
+            $component_args['style'] = 'neve-child-' . $component_name . '-component';
         }
         
         // Add render callback
         if ($render_callback) {
-            $block_args['render_callback'] = $render_callback;
+            $component_args['render_callback'] = $render_callback;
         }
         
         // Add attributes from block.json
-        if (isset($block_config['attributes'])) {
-            $block_args['attributes'] = $block_config['attributes'];
+        if (isset($component_config['attributes'])) {
+            $component_args['attributes'] = $component_config['attributes'];
         }
         
-        // Register the block
-        register_block_type($block_config['name'], $block_args);
+        // Register the component
+        register_block_type($component_config['name'], $component_args);
     }
     
     /**
-     * Get all registered blocks
+     * Get all registered components
      */
-    public function get_registered_blocks() {
-        $blocks = array();
+    public function get_registered_components() {
+        $components = array();
         
-        if (!file_exists($this->blocks_dir)) {
-            return $blocks;
+        if (!file_exists($this->components_dir)) {
+            return $components;
         }
         
-        $block_folders = glob($this->blocks_dir . '*', GLOB_ONLYDIR);
+        $component_folders = glob($this->components_dir . '*', GLOB_ONLYDIR);
         
-        foreach ($block_folders as $block_folder) {
-            $block_name = basename($block_folder);
-            $block_json = $block_folder . '/block.json';
+        foreach ($component_folders as $component_folder) {
+            $component_name = basename($component_folder);
+            $component_json = $component_folder . '/block.json';
             
-            if (file_exists($block_json)) {
-                $block_config = json_decode(file_get_contents($block_json), true);
-                if ($block_config) {
-                    $blocks[$block_name] = $block_config;
+            if (file_exists($component_json)) {
+                $component_config = json_decode(file_get_contents($component_json), true);
+                if ($component_config) {
+                    $components[$component_name] = $component_config;
                 }
             }
         }
         
-        return $blocks;
+        return $components;
     }
     
     /**
-     * Enqueue additional block assets (like header-height.js for banner block)
+     * Enqueue additional component assets (like header-height.js for mac-banner component)
      */
-    public function enqueue_block_assets() {
-        // Check if banner block exists and enqueue its header height script
-        $banner_js = $this->blocks_dir . 'banner/header-height.js';
-        if (file_exists($banner_js)) {
+    public function enqueue_component_assets() {
+        // Check if mac-banner component exists and enqueue its header height script
+        $mac_banner_js = $this->components_dir . 'mac-banner/header-height.js';
+        if (file_exists($mac_banner_js)) {
             wp_enqueue_script(
-                'neve-child-banner-header-height',
-                $this->blocks_url . 'banner/header-height.js',
+                'neve-child-mac-banner-header-height',
+                $this->components_url . 'mac-banner/header-height.js',
                 array(),
-                filemtime($banner_js),
-                true
-            );
-        }
-        
-        // Check if carousel block exists and enqueue its carousel script
-        $carousel_js = $this->blocks_dir . 'carousel/carousel.js';
-        if (file_exists($carousel_js)) {
-            wp_enqueue_script(
-                'neve-child-carousel-functionality',
-                $this->blocks_url . 'carousel/carousel.js',
-                array(),
-                filemtime($carousel_js),
+                filemtime($mac_banner_js),
                 true
             );
         }
     }
 }
 
-// Initialize the block loader
-new Neve_Child_Blocks_Loader();
+// Initialize the component loader
+new Neve_Child_Components_Loader();

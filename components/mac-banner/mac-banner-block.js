@@ -1,8 +1,8 @@
 /**
- * Custom Banner Block for Neve Child Theme
+ * MAC Banner Component for Neve Child Theme
  * 
- * This block allows non-technical users to easily create customizable banners
- * with background images, colors, text, and call-to-action buttons.
+ * This component allows non-technical users to easily create customizable banners
+ * for the Mississauga Arts Council with background images, colors, text, and call-to-action buttons.
  */
 
 (function (blocks, i18n, element, editor, components) {
@@ -23,11 +23,11 @@
     var ToolbarGroup = components.ToolbarGroup;
     var ToolbarButton = components.ToolbarButton;
 
-    registerBlockType('neve-child/banner', {
-        title: i18n.__('Custom Banner', 'neve-child'),
+    registerBlockType('neve-child/mac-banner', {
+        title: i18n.__('MAC Banner', 'neve-child'),
         icon: 'format-image',
         category: 'common',
-        description: i18n.__('Create a customizable banner with background, text, and button', 'neve-child'),
+        description: i18n.__('Create a customizable banner for Mississauga Arts Council with background, text, and button', 'neve-child'),
         keywords: [
             i18n.__('banner', 'neve-child'),
             i18n.__('hero', 'neve-child'),

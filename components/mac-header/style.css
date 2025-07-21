@@ -1,0 +1,395 @@
+/* MAC Header Component Styles */
+
+/* Sticky Header */
+.custom-header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 9999;
+  background: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Ensure parent wrapper doesn't interfere */
+.wrapper {
+  position: relative;
+}
+
+/* Additional sticky support for older browsers */
+@supports not (position: sticky) {
+  .custom-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  
+  body {
+    padding-top: 80px; /* Adjust based on actual header height */
+  }
+}
+
+.custom-header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.site-branding {
+  display: flex;
+  align-items: center;
+}
+
+.site-title {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.site-title a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.site-description {
+  margin: 5px 0 0 0;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.header-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 30px;
+}
+
+.header-menu li {
+  margin: 0;
+}
+
+.header-menu a {
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.header-menu a:hover {
+  color: #007cba;
+}
+
+.main-navigation {
+  padding: 15px 0;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  align-items: center;
+  gap: 8px;
+}
+
+.hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.hamburger-icon span {
+  width: 20px;
+  height: 2px;
+  background-color: currentColor;
+  transition: all 0.3s ease;
+}
+
+.primary-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 40px;
+}
+
+.primary-menu li {
+  margin: 0;
+  position: relative;
+}
+
+.primary-menu a {
+  text-decoration: none;
+  font-weight: 500;
+  padding: 10px 0;
+  display: block;
+  transition: color 0.3s ease;
+}
+
+.primary-menu a:hover {
+  color: #007cba;
+}
+
+/* Dropdown Menu Styles */
+.primary-menu li.menu-item-has-children > a::after {
+  content: '▼';
+  font-size: 0.8em;
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+.primary-menu li.menu-item-has-children:hover > a::after {
+  transform: rotate(180deg);
+}
+
+.primary-menu .sub-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  min-width: 220px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+}
+
+.primary-menu li:hover > .sub-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.primary-menu .sub-menu li {
+  margin: 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.primary-menu .sub-menu li:last-child {
+  border-bottom: none;
+}
+
+.primary-menu .sub-menu a {
+  padding: 12px 20px;
+  font-weight: 400;
+  color: #333;
+  white-space: nowrap;
+}
+
+.primary-menu .sub-menu a:hover {
+  background: #f8f8f8;
+  color: #007cba;
+}
+
+/* Third level dropdown */
+.primary-menu .sub-menu li.menu-item-has-children > a::after {
+  content: '▶';
+  font-size: 0.8em;
+  margin-left: auto;
+  margin-right: 0;
+  float: right;
+}
+
+.primary-menu .sub-menu .sub-menu {
+  top: 0;
+  left: 100%;
+  margin-left: 1px;
+}
+
+/* Header menu dropdowns */
+.header-menu li {
+  position: relative;
+}
+
+.header-menu li.menu-item-has-children > a::after {
+  content: '▼';
+  font-size: 0.8em;
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+.header-menu li.menu-item-has-children:hover > a::after {
+  transform: rotate(180deg);
+}
+
+.header-menu .sub-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  min-width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+}
+
+.header-menu li:hover > .sub-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.header-menu .sub-menu li {
+  margin: 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.header-menu .sub-menu li:last-child {
+  border-bottom: none;
+}
+
+.header-menu .sub-menu a {
+  padding: 10px 15px;
+  font-weight: 400;
+  color: #333;
+  white-space: nowrap;
+  display: block;
+}
+
+.header-menu .sub-menu a:hover {
+  background: #f8f8f8;
+  color: #007cba;
+}
+
+/* JavaScript enhanced dropdown styles */
+.dropdown-open .sub-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Hamburger animation */
+.hamburger-icon.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-icon.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-icon.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+/* Force sticky behavior with JavaScript fallback */
+.header-sticky-fallback {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 9999 !important;
+}
+
+.header-sticky-padding {
+  padding-top: 120px; /* Adjust based on header height */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .header-top {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  
+  @supports not (position: sticky) {
+    body {
+      padding-top: 120px; /* Mobile header height */
+    }
+  }
+  
+  .header-sticky-padding {
+    padding-top: 140px; /* Mobile adjustment */
+  }
+
+  .header-menu {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .primary-menu {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    background: #f9f9f9;
+    padding: 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+
+  .primary-menu.active {
+    display: flex;
+  }
+
+  .primary-menu li {
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .primary-menu li:last-child {
+    border-bottom: none;
+  }
+
+  .primary-menu a {
+    padding: 15px 0;
+  }
+
+  /* Mobile dropdown adjustments */
+  .primary-menu .sub-menu,
+  .header-menu .sub-menu {
+    position: static;
+    box-shadow: none;
+    background: #f0f0f0;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+  }
+
+  .primary-menu .sub-menu a,
+  .header-menu .sub-menu a {
+    padding-left: 30px;
+  }
+
+  .primary-menu li.menu-item-has-children > a::after,
+  .header-menu li.menu-item-has-children > a::after {
+    display: none;
+  }
+}
