@@ -138,36 +138,14 @@
 
             var bannerStyle = {
                 color: attributes.textColor,
-                minHeight: attributes.bannerHeight === 'small' ? '300px' :
-                    attributes.bannerHeight === 'medium' ? '500px' : '700px',
                 backgroundImage: attributes.backgroundImage ? 'url(' + attributes.backgroundImage + ')' : 'none',
-                backgroundColor: attributes.backgroundImage ? 'transparent' : attributes.backgroundColor,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                position: 'relative',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: attributes.textAlignment === 'left' ? 'flex-start' :
-                    attributes.textAlignment === 'right' ? 'flex-end' : 'center',
-                textAlign: attributes.textAlignment,
-                padding: '2rem'
+                backgroundColor: attributes.backgroundImage ? 'transparent' : attributes.backgroundColor
             };
 
             var overlayStyle = {
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                backgroundColor: 'rgba(0, 0, 0, ' + attributes.overlayOpacity + ')',
-                pointerEvents: 'none'
+                backgroundColor: 'rgba(0, 0, 0, ' + attributes.overlayOpacity + ')'
             };
 
-            var contentStyle = {
-                position: 'relative',
-                zIndex: 1,
-                maxWidth: '800px'
-            };
 
             return [
                 el(InspectorControls, {},
@@ -274,8 +252,8 @@
                     className: 'custom-banner ' + heightClass + ' ' + alignmentClass,
                     style: bannerStyle
                 },
-                    attributes.backgroundImage && el('div', { style: overlayStyle }),
-                    el('div', { style: contentStyle },
+                    attributes.backgroundImage && el('div', { className: 'banner-overlay', style: overlayStyle }),
+                    el('div', { className: 'banner-content' },
                         el(RichText, {
                             tagName: 'h2',
                             className: 'banner-title',
@@ -283,10 +261,7 @@
                             onChange: onChangeTitle,
                             placeholder: i18n.__('Enter banner title...', 'neve-child'),
                             style: {
-                                color: attributes.textColor,
-                                fontSize: '3rem',
-                                fontWeight: 'bold',
-                                marginBottom: '1rem'
+                                color: attributes.textColor
                             }
                         }),
                         el(RichText, {
@@ -296,22 +271,15 @@
                             onChange: onChangeSubtitle,
                             placeholder: i18n.__('Enter banner subtitle...', 'neve-child'),
                             style: {
-                                color: attributes.textColor,
-                                fontSize: '1.2rem',
-                                marginBottom: '2rem'
+                                color: attributes.textColor
                             }
                         }),
                         attributes.showButton && el('a', {
                             href: attributes.buttonUrl,
                             className: 'banner-button btn',
                             style: {
-                                display: 'inline-block',
-                                padding: '12px 24px',
                                 backgroundColor: '#ffffff',
-                                color: '#333333',
-                                textDecoration: 'none',
-                                borderRadius: '4px',
-                                fontWeight: 'bold'
+                                color: '#333333'
                             }
                         }, attributes.buttonText)
                     )

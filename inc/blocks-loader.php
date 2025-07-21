@@ -43,7 +43,7 @@ class Neve_Child_Components_Loader {
     private function register_single_component($component_name, $component_folder) {
         $component_json = $component_folder . '/block.json';
         $render_file = $component_folder . '/render.php';
-        $js_file = $component_folder . '/' . $component_name . '-block.js';
+        $js_file = $component_folder . '/' . $component_name . '.js';
         $style_file = $component_folder . '/style.css';
         
         // Check if block.json exists
@@ -71,7 +71,7 @@ class Neve_Child_Components_Loader {
         if (file_exists($js_file)) {
             wp_register_script(
                 'neve-child-' . $component_name . '-component-editor',
-                $this->components_url . $component_name . '/' . $component_name . '-block.js',
+                $this->components_url . $component_name . '/' . $component_name . '.js',
                 array('wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-i18n'),
                 filemtime($js_file)
             );

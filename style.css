@@ -11,6 +11,9 @@ Screenshot: ./assets/images/cover.png
 #wpadminbar {
   display: none !important;
 }
+html {
+  margin-top: 0px !important;
+}
 
 h1,
 h2,

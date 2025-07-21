@@ -31,18 +31,9 @@ $header_classes = apply_filters('nv_header_classes', 'header custom-header');
     <div class="custom-header-container">
         <div class="header-top">
             <div class="site-branding">
-                <?php if (has_custom_logo()) : ?>
-                    <?php the_custom_logo(); ?>
-                <?php else : ?>
-                    <h1 class="site-title">
-                        <a href="<?php echo esc_url(home_url('/')); ?>" rel="home">
-                            <?php bloginfo('name'); ?>
-                        </a>
-                    </h1>
-                    <?php if (get_bloginfo('description', 'display')) : ?>
-                        <p class="site-description"><?php echo get_bloginfo('description', 'display'); ?></p>
-                    <?php endif; ?>
-                <?php endif; ?>
+                <a href="<?php echo esc_url(home_url('/')); ?>" rel="home" class="custom-logo-link">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.png" alt="<?php bloginfo('name'); ?>" class="custom-logo">
+                </a>
             </div>
 
             <div class="header-actions">
@@ -58,19 +49,21 @@ $header_classes = apply_filters('nv_header_classes', 'header custom-header');
                         ?>
                     </nav>
                 <?php endif; ?>
-            </div>
-        </div>
-
-        <?php if (has_nav_menu('primary')) : ?>
-            <nav class="main-navigation" role="navigation">
-                <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+                
+                <!-- Mobile hamburger menu button -->
+                <button class="menu-toggle" aria-controls="primary-menu" aria-label="<?php esc_html_e('Menu', 'neve'); ?>" aria-expanded="false">
                     <span class="hamburger-icon">
                         <span></span>
                         <span></span>
                         <span></span>
                     </span>
-                    <span class="menu-text"><?php esc_html_e('Menu', 'neve'); ?></span>
                 </button>
+
+            </div>
+        </div>
+
+        <?php if (has_nav_menu('primary')) : ?>
+            <nav class="main-navigation" role="navigation">
                 <?php
                 wp_nav_menu(array(
                     'theme_location' => 'primary',

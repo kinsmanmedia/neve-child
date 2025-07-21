@@ -1,17 +1,135 @@
-/* Banner Block Styles */
-.neve-banner-block {
+/* MAC Banner Component Styles */
+
+/* Base banner styles */
+.custom-banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Height variations */
+.banner-height-small {
+  min-height: 300px;
+}
+
+.banner-height-medium {
+  min-height: 500px;
+}
+
+.banner-height-large {
+  min-height: 700px;
+}
+
+/* Text alignment */
+.banner-text-left {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.banner-text-center {
+  justify-content: center;
+  text-align: center;
+}
+
+.banner-text-right {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+/* Banner content wrapper */
+.banner-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+}
+
+/* Banner title */
+.banner-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+/* Banner subtitle */
+.banner-subtitle {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  line-height: 1.4;
+}
+
+/* Banner button */
+.banner-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #ffffff;
+  color: #333333;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.banner-button:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Banner overlay */
+.banner-overlay {
   position: absolute;
   top: 0;
   left: 0;
-  border: 3px solid red;
-  width: 100vw;
-  height: calc(100vh - var(--header-height, 80px));
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
 }
 
-/* Dynamic header height calculation */
-:root {
-  --header-height: 80px; /* Default fallback */
+/* Responsive design */
+@media (max-width: 768px) {
+  .custom-banner {
+    padding: 1.5rem;
+  }
+  
+  .banner-height-small {
+    min-height: 250px;
+  }
+  
+  .banner-height-medium {
+    min-height: 400px;
+  }
+  
+  .banner-height-large {
+    min-height: 500px;
+  }
+  
+  .banner-title {
+    font-size: 2.5rem;
+  }
+  
+  .banner-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .banner-content {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .custom-banner {
+    padding: 1rem;
+  }
+  
+  .banner-title {
+    font-size: 2rem;
+  }
+  
+  .banner-subtitle {
+    font-size: 1rem;
+  }
 }
