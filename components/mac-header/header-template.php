@@ -51,13 +51,13 @@ $header_classes = apply_filters('nv_header_classes', 'header custom-header');
                 <?php endif; ?>
                 
                 <!-- Mobile hamburger menu button -->
-                <button class="menu-toggle" aria-controls="primary-menu" aria-label="<?php esc_html_e('Menu', 'neve'); ?>" aria-expanded="false">
+                <div class="menu-toggle" aria-controls="primary-menu" aria-label="<?php esc_html_e('Menu', 'neve'); ?>" aria-expanded="false">
                     <span class="hamburger-icon">
                         <span></span>
                         <span></span>
                         <span></span>
                     </span>
-                </button>
+                </div>
 
             </div>
         </div>
