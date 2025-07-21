@@ -1,0 +1,60 @@
+{
+  "name": "neve-child/banner",
+  "title": "Banner Block",
+  "description": "A customizable banner block with background image/color, text, and button options.",
+  "category": "design",
+  "icon": "format-image",
+  "supports": {
+    "align": ["wide", "full"],
+    "html": false
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Welcome to Our Website"
+    },
+    "subtitle": {
+      "type": "string",
+      "default": ""
+    },
+    "backgroundImage": {
+      "type": "string",
+      "default": ""
+    },
+    "backgroundColor": {
+      "type": "string",
+      "default": ""
+    },
+    "titleColor": {
+      "type": "string",
+      "default": ""
+    },
+    "subtitleColor": {
+      "type": "string",
+      "default": ""
+    },
+    "alignment": {
+      "type": "string",
+      "default": "left"
+    },
+    "height": {
+      "type": "string",
+      "default": "medium"
+    },
+    "buttonText": {
+      "type": "string",
+      "default": ""
+    },
+    "buttonUrl": {
+      "type": "string",
+      "default": ""
+    },
+    "overlayOpacity": {
+      "type": "number",
+      "default": 50
+    }
+  },
+  "editorScript": "neve-child-banner-block-editor",
+  "editorStyle": "neve-child-banner-block-editor",
+  "style": "neve-child-banner-block"
+}

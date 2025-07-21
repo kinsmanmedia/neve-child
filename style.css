@@ -1,0 +1,78 @@
+/*
+Theme Name: Neve Child
+Template: neve
+Description: Child theme of Neve for custom Mississauga Arts Council CSS 
+Version: 1.0
+Screenshot: ./assets/images/cover.png
+*/
+
+@import url("../neve/style.css");
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Sophia Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif !important;
+}
+
+/* body,
+html {
+  font-family: "Sophia Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif !important;
+}
+
+p,
+span:not([class*="icon"]):not([class*="dashicon"]):not([class*="fa-"]):not(
+    [class*="svg"]
+  ),
+div:not([class*="icon"]):not([class*="dashicon"]):not([class*="fa-"]):not(
+    [class*="svg"]
+  ),
+a:not([class*="icon"]):not([class*="dashicon"]):not([class*="fa-"]):not(
+    [class*="svg"]
+  ),
+li:not([class*="icon"]):not([class*="dashicon"]):not([class*="fa-"]):not(
+    [class*="svg"]
+  ),
+td,
+th {
+  font-family: "Sophia Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif !important;
+}
+
+input,
+textarea,
+select,
+button:not([class*="icon"]):not([class*="dashicon"]):not([class*="fa-"]) {
+  font-family: "Sophia Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif !important;
+}
+
+.editor-styles-wrapper,
+.editor-styles-wrapper
+  *:not([class*="icon"]):not([class*="dashicon"]):not([class*="fa-"]):not(
+    [class*="svg"]
+  ) {
+  font-family: "Sophia Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, sans-serif !important;
+}
+
+[class*="icon"],
+[class*="dashicon"],
+[class*="fa-"],
+[class*="svg"],
+.wp-block-social-links,
+.wp-block-social-link,
+.wp-social-link,
+svg,
+i[class*="fa"],
+i[class*="icon"] {
+  font-family: inherit !important;
+} */
+
+.container {
+  padding: 0px !important;
+}

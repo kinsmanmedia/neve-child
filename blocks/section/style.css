@@ -1,0 +1,26 @@
+/* Section Block Styles */
+.mac-section {
+  /* Minimal styles - content can be anything */
+  border: 3px solid red;
+  margin: 0 auto;
+  padding: 3rem;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center; /* horizontal alignment */
+  align-items: center; /* vertical alignment */
+}
+.mac-section-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  border: 3px solid red;
+  flex-grow: 1;
+}
+
+@media only screen and (max-width: 600px) {
+  .mac-section {
+    padding: 1.5rem;
+  }
+  .mac-section-inner {
+  }
+}
