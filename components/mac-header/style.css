@@ -2,24 +2,25 @@
 .custom-header {
   position: fixed !important;
   top: 0;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100% !important;
+  max-width: 2400px;
   z-index: 999 !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   height: 150px; /* Fixed height - no more jumping */
 }
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 760px) {
   .custom-header {
     height: 90px;
   }
-  
+
   .header-top {
     height: 90px;
   }
 }
 
 .header-top {
-  border: solid red;
   height: 90px;
   display: flex;
   padding: 15px;
@@ -72,7 +73,6 @@
 /* Desktop Navigation */
 .main-navigation {
   height: 60px;
-  border: solid red;
   display: flex;
   align-items: center;
   padding: 0px 15px;
@@ -111,11 +111,13 @@
 .primary-menu .sub-menu {
   position: fixed;
   top: 150px; /* Below header */
-  left: 0;
-  right: 0;
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
-  margin: 0 auto;
-  background: #fffaeb;
+  max-width: 2400px;
+  background: rgba(255, 250, 235, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease;
@@ -140,17 +142,6 @@
   visibility: visible;
 }
 
-.primary-menu .sub-menu li {
-  border-bottom: 1px solid #f0f0f0;
-  margin: 0;
-  padding-bottom: 15px;
-}
-
-.primary-menu .sub-menu li:last-child {
-  border-bottom: none;
-  padding-bottom: 0px;
-}
-
 .sub-menu {
   display: flex;
   flex-direction: column;
@@ -169,7 +160,7 @@
 /* MOBILE STARTS */
 /* MOBILE STARTS */
 
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 760px) {
   .menu-toggle {
     display: block;
   }
@@ -186,16 +177,19 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: #fffaeb;
     z-index: 1000;
     display: none;
-    padding: 5px;
+    padding: 0px 30px;
     overflow-y: auto;
     height: calc(100vh - 90px);
+    background: rgba(255, 250, 235, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
   }
 
   .main-navigation.active {
     display: block;
+    opacity: 1;
   }
 
   /* Mobile menu styling */
@@ -207,11 +201,6 @@
   .primary-menu a {
     padding: 20px 0;
     font-size: 1.1rem;
-    border-bottom: 1px solid #e0e0e0;
-  }
-
-  .primary-menu li:last-child a {
-    border-bottom: none;
   }
 
   /* Mobile submenus */
@@ -219,7 +208,9 @@
     position: static;
     width: 100%;
     max-width: none;
-    background: #943b3b;
+    background: rgba(255, 250, 235, 0.8);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
     box-shadow: none;
     border: none;
     padding: 0;

@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function adjustHeaderMargin() {
     if (header) {
       // Use CSS-defined heights that match media queries
-      const isMobile = window.innerWidth <= 640;
+      const isMobile = window.innerWidth <= 760;
       const headerHeight = isMobile ? 90 : 150;
       document.body.style.marginTop = headerHeight + "px";
     }
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .querySelectorAll(".menu-item-has-children a")
     .forEach(function (link) {
       link.addEventListener("click", function (e) {
-        if (window.innerWidth <= 768) {
+        if (window.innerWidth <= 760) {
           e.preventDefault();
           this.parentElement.classList.toggle("dropdown-open");
         }
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Close mobile menu on desktop
   window.addEventListener("resize", function () {
-    if (window.innerWidth > 768 && mainNavigation) {
+    if (window.innerWidth > 760 && mainNavigation) {
       mainNavigation.classList.remove("active");
     }
   });
