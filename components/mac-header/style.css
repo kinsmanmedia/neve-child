@@ -119,6 +119,114 @@
   display: block;
 }
 
+/* Desktop menu overrides to prevent mobile styles from interfering */
+@media only screen and (min-width: 761px) {
+  .main-navigation {
+    position: static !important;
+    height: 60px !important;
+    display: flex !important;
+    align-items: center !important;
+    padding: 0px 15px !important;
+    transform: none !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  
+  .primary-menu,
+  #primary-menu {
+    flex-direction: row !important;
+    gap: 30px !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .primary-menu li {
+    width: auto !important;
+    display: inline-block !important;
+    position: relative !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .primary-menu a {
+    width: auto !important;
+    display: block !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: content-box !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+  }
+  
+  /* Reset mobile arrows on desktop */
+  .primary-menu > li.menu-item-has-children > a::after {
+    display: none !important;
+  }
+  
+  /* Fix desktop dropdown submenus */
+  .primary-menu .sub-menu {
+    position: fixed !important;
+    top: 150px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 100% !important;
+    max-width: 2400px !important;
+    background: rgba(255, 250, 235, 0.8) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: all 0.3s ease !important;
+    z-index: 1000 !important;
+    list-style: none !important;
+    padding: 15px !important;
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    grid-auto-rows: min-content !important;
+    gap: 20px !important;
+    align-content: start !important;
+    height: calc(50vh - 150px) !important;
+    max-height: none !important;
+    overflow: visible !important;
+    flex-direction: row !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+  
+  .primary-menu .sub-menu li {
+    width: auto !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .primary-menu .sub-menu a {
+    font-weight: 400 !important;
+    color: #333 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: auto !important;
+    display: block !important;
+    font-size: inherit !important;
+    line-height: inherit !important;
+    box-sizing: content-box !important;
+  }
+  
+  /* Desktop submenu hover states */
+  .primary-menu li:hover > .sub-menu {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+}
+
 .primary-menu a:hover {
   color: #007cba;
 }
