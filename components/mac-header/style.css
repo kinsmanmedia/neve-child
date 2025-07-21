@@ -98,6 +98,7 @@
   display: flex;
   align-items: center;
   padding: 0px 15px;
+  
 }
 
 .primary-menu {
@@ -231,17 +232,29 @@
     justify-content: flex-start;
     margin: 0;
     padding: 0;
+    width: 100%;
   }
 
   #primary-menu {
     align-self: flex-start;
     margin-top: 0 !important;
     padding-top: 0 !important;
+    width: 100%;
+  }
+
+  .primary-menu li {
+    width: 100% !important;
+    display: block !important;
   }
 
   .primary-menu a {
     padding: 15px 0;
     font-size: 1.1rem;
+    width: 100% !important;
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
   }
 
   .primary-menu li:first-child a {
@@ -284,27 +297,29 @@
   }
 
   .primary-menu .sub-menu a {
-    padding: 15px !important;
+    padding: 15px 0 15px 20px !important;
     margin: 0 !important;
     font-size: 1rem;
     display: block !important;
-    width: 100%;
+    width: 100% !important;
     line-height: 1.2;
+    box-sizing: border-box;
   }
 
   .primary-menu .sub-menu li {
     padding: 0 !important;
     margin: 0 !important;
     display: block !important;
-    width: 100%;
+    width: 100% !important;
   }
 
-  /* Ensure menu items with children are properly marked */
-  .primary-menu li.menu-item-has-children > a::after {
+  /* Ensure menu items with children are properly marked - only top level */
+  .primary-menu > li.menu-item-has-children > a::after {
     content: "";
     width: 24px;
     height: 24px;
-    margin-left: 12px;
+    margin-left: auto;
+    margin-right: 0;
     display: inline-block;
     transition: transform 0.3s ease;
     transform-origin: center;
@@ -312,11 +327,16 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    vertical-align: top;
+    flex-shrink: 0;
   }
 
-  /* Rotate triangle when dropdown is open */
-  .primary-menu li.menu-item-has-children.dropdown-open > a::after {
+  /* Remove arrows from submenu items */
+  .primary-menu .sub-menu li a::after {
+    display: none !important;
+  }
+
+  /* Rotate triangle when dropdown is open - only top level */
+  .primary-menu > li.menu-item-has-children.dropdown-open > a::after {
     transform: rotate(180deg);
   }
 
