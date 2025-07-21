@@ -29,7 +29,14 @@ document.addEventListener("DOMContentLoaded", function () {
       link.addEventListener("click", function (e) {
         if (window.innerWidth <= 760) {
           e.preventDefault();
-          this.parentElement.classList.toggle("dropdown-open");
+          const parentLi = this.parentElement;
+          parentLi.classList.toggle("dropdown-open");
+          
+          // Debug logging
+          console.log("Clicked menu item:", this.textContent);
+          console.log("Parent element:", parentLi);
+          console.log("Has dropdown-open class:", parentLi.classList.contains("dropdown-open"));
+          console.log("Submenu found:", parentLi.querySelector(".sub-menu"));
         }
       });
     });

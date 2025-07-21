@@ -71,6 +71,9 @@ $header_classes = apply_filters('nv_header_classes', 'header custom-header');
                     'menu_class'     => 'primary-menu',
                     'container'      => false,
                     'depth'          => 3,
+                    'add_li_class'   => 'menu-item',
+                    'link_before'    => '',
+                    'link_after'     => '',
                 ));
                 ?>
             </nav>
