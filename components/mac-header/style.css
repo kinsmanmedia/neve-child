@@ -115,7 +115,7 @@
   transform: translateX(-50%);
   width: 100%;
   max-width: 2400px;
-  background: rgba(255, 250, 235, 0.7);
+  background: rgba(255, 250, 235, 0.8);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   opacity: 0;
@@ -182,7 +182,7 @@
     padding: 0px 30px;
     overflow-y: auto;
     height: calc(100vh - 90px);
-    background: rgba(255, 250, 235, 0.7);
+    background: rgba(255, 250, 235, 0.8);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
   }
