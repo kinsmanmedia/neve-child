@@ -28,3 +28,32 @@ h6 {
 body {
   max-width: 1800px;
 }
+
+/* 
+red
+#CC6349 
+
+yellow
+#F7AC59 
+
+green
+#58BE5C 
+
+blue
+#328CC2 
+*/
+
+.btn {
+  border-radius: 300px !important;
+  padding: 15px 45px !important;
+  color: black;
+  transition: all 0.5s ease;
+  opacity: 1;
+}
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn-red {
+  background-color: #cc6349 !important;
+}

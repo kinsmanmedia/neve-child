@@ -37,6 +37,11 @@ $header_classes = apply_filters('nv_header_classes', 'header custom-header');
             </div>
 
             <div class="header-actions">
+                <!-- Desktop CTA Button -->
+                <div class="header-cta-button desktop-only">
+                    <a href="/mac-membership" class="btn btn-red">JOIN NOW</a>
+                </div>
+                
                 <?php if (has_nav_menu('header-menu')) : ?>
                     <nav class="header-navigation" role="navigation">
                         <?php
@@ -76,6 +81,11 @@ $header_classes = apply_filters('nv_header_classes', 'header custom-header');
                     'link_after'     => '',
                 ));
                 ?>
+                
+                <!-- Mobile CTA Button -->
+                <div class="mobile-cta-button mobile-only">
+                    <a href="/mac-membership" class="btn btn-red">JOIN NOW</a>
+                </div>
             </nav>
         <?php endif; ?>
     </div>

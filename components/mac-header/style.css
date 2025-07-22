@@ -66,7 +66,49 @@
   float: right;
   display: flex;
   align-items: center;
-  /* justify-content: center; */
+  gap: 20px;
+}
+
+/* Desktop CTA Button */
+.header-cta-button {
+  display: block;
+}
+
+/* .cta-button {
+  background-color: #cc6349;
+  color: white !important;
+  padding: 12px 24px;
+  border-radius: 25px;
+  text-decoration: none !important;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  border: 2px solid #cc6349;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.cta-button:hover {
+  background-color: transparent;
+  color: #cc6349 !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(204, 99, 73, 0.3);
+} */
+
+/* Hide desktop CTA button on mobile */
+@media only screen and (max-width: 760px) {
+  .header-cta-button.desktop-only {
+    display: none;
+  }
+}
+
+/* Hide mobile CTA button on desktop */
+@media only screen and (min-width: 761px) {
+  .mobile-cta-button.mobile-only {
+    display: none;
+  }
 }
 
 /* ============================================================================
@@ -317,6 +359,8 @@
     transform: translateX(-100%);
     transition: transform 0.3s ease-in-out, visibility 0s linear 0.3s;
     visibility: hidden;
+    display: flex;
+    flex-direction: column;
   }
   .main-navigation.active {
     transform: translateX(0);
@@ -353,6 +397,16 @@
   }
   .primary-menu li:first-child a {
     padding-top: 10px;
+  }
+
+  /* Mobile CTA Button Styling */
+  .mobile-cta-button {
+    width: 100%;
+    display: flex;
+    padding-top: 15px;
+  }
+  .mobile-cta-button .btn {
+    width: 100%;
   }
 
   /* ============================================================================
