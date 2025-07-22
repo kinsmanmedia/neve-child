@@ -1,4 +1,21 @@
-/* MAC Header Component - Simple Fixed Height Design */
+/* ============================================================================
+  MAC HEADER COMPONENT CSS
+  ============================================================================
+  TABLE OF CONTENTS:
+  01. Header Wrapper Styles
+  02. Header Inner Layout (.header-top)
+  03. Branding / Logo
+  04. Header Actions (e.g., buttons, toggles)
+  05. Hamburger Icon Styles
+  06. Desktop Navigation
+  07. Desktop Dropdown / Submenu
+  08. Mobile Navigation (≤ 760px)
+  09. Mobile Dropdown / Submenu Behavior
+============================================================================ */
+
+/* ============================================================================
+  01. Header Wrapper Styles
+============================================================================ */
 .custom-header {
   position: fixed !important;
   top: 0;
@@ -20,12 +37,18 @@
   }
 }
 
+/* ============================================================================
+  02. Header Inner Layout (.header-top)
+============================================================================ */
 .header-top {
   height: 90px;
   display: flex;
   padding: 15px;
 }
 
+/* ============================================================================
+  03. Branding / Logo
+============================================================================ */
 .site-branding {
   flex-grow: 1;
 }
@@ -35,6 +58,10 @@
   aspect-ratio: 540/205;
   max-width: 540px;
 }
+
+/* ============================================================================
+  04. Header Actions (Right-Aligned Items)
+============================================================================ */
 .header-actions {
   float: right;
   display: flex;
@@ -42,6 +69,9 @@
   /* justify-content: center; */
 }
 
+/* ============================================================================
+  05. Hamburger Icon Styles
+============================================================================ */
 .menu-toggle {
   display: none;
   cursor: pointer;
@@ -52,8 +82,6 @@
   align-items: center;
   justify-content: center;
 }
-
-/* Hamburger icon styling */
 .hamburger-icon {
   display: flex;
   flex-direction: column;
@@ -61,7 +89,6 @@
   height: 18px;
   justify-content: space-between;
 }
-
 .hamburger-icon span {
   display: block;
   width: 100%;
@@ -71,35 +98,30 @@
   transition: all 0.3s ease;
   transform-origin: center;
 }
-
 /* Hamburger to X animation */
 .hamburger-icon.active span:nth-child(1) {
   transform: rotate(45deg) translate(4px, 4px);
 }
-
 .hamburger-icon.active span:nth-child(2) {
   opacity: 0;
   transform: scale(0);
 }
-
 .hamburger-icon.active span:nth-child(3) {
   transform: rotate(-45deg) translate(7px, -6px);
 }
 
-/* SUB MENU DESKTOP */ /* SUB MENU DESKTOP */ /* SUB MENU DESKTOP */ /* SUB MENU DESKTOP */ /* SUB MENU DESKTOP */ /* SUB MENU DESKTOP */
-/* SUB MENU DESKTOP */ /* SUB MENU DESKTOP */ /* SUB MENU DESKTOP */ /* SUB MENU DESKTOP */ /* SUB MENU DESKTOP */ /* SUB MENU DESKTOP */
-/* SUB MENU DESKTOP */ /* SUB MENU DESKTOP */ /* SUB MENU DESKTOP */ /* SUB MENU DESKTOP */ /* SUB MENU DESKTOP */ /* SUB MENU DESKTOP */
+/* ============================================================================
+  06. Desktop Navigation
+============================================================================ */
 .menu-text {
   display: none;
 }
-/* Desktop Navigation */
 .main-navigation {
   height: 60px;
   display: flex;
   align-items: center;
   padding: 0px 15px;
 }
-
 .primary-menu {
   display: flex;
   list-style: none;
@@ -107,19 +129,26 @@
   padding: 0;
   gap: 30px;
 }
-
 .primary-menu li {
   position: relative;
 }
-
 .primary-menu a {
   text-decoration: none;
   font-weight: 500;
   color: #333;
   display: block;
 }
+.primary-menu a:hover {
+  color: #007cba;
+}
+.primary-menu li.menu-item-has-children > a::after {
+  font-size: 0.8em;
+  margin-left: 8px;
+}
 
-/* Desktop menu overrides to prevent mobile styles from interfering */
+/* ============================================================================
+  07. Desktop Dropdown / Submenu
+============================================================================ */
 @media only screen and (min-width: 761px) {
   .main-navigation {
     position: static !important;
@@ -134,7 +163,6 @@
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
   }
-  
   .primary-menu,
   #primary-menu {
     flex-direction: row !important;
@@ -145,7 +173,6 @@
     margin: 0 !important;
     padding: 0 !important;
   }
-  
   .primary-menu li {
     width: auto !important;
     display: inline-block !important;
@@ -153,7 +180,6 @@
     margin: 0 !important;
     padding: 0 !important;
   }
-  
   .primary-menu a {
     width: auto !important;
     display: block !important;
@@ -165,13 +191,9 @@
     font-size: inherit !important;
     line-height: inherit !important;
   }
-  
-  /* Reset mobile arrows on desktop */
   .primary-menu > li.menu-item-has-children > a::after {
     display: none !important;
   }
-  
-  /* Fix desktop dropdown submenus */
   .primary-menu .sub-menu {
     position: fixed !important;
     top: 150px !important;
@@ -200,14 +222,12 @@
     margin: 0 !important;
     box-sizing: border-box !important;
   }
-  
   .primary-menu .sub-menu li {
     width: auto !important;
     display: block !important;
     margin: 0 !important;
     padding: 0 !important;
   }
-  
   .primary-menu .sub-menu a {
     font-weight: 400 !important;
     color: #333 !important;
@@ -219,28 +239,14 @@
     line-height: inherit !important;
     box-sizing: content-box !important;
   }
-  
-  /* Desktop submenu hover states */
   .primary-menu li:hover > .sub-menu {
     opacity: 1 !important;
     visibility: visible !important;
   }
 }
-
-.primary-menu a:hover {
-  color: #007cba;
-}
-
-/* Dropdown arrows */
-.primary-menu li.menu-item-has-children > a::after {
-  font-size: 0.8em;
-  margin-left: 8px;
-}
-
-/* Desktop submenus - hover to show */
 .primary-menu .sub-menu {
   position: fixed;
-  top: 150px; /* Below header */
+  top: 150px;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
@@ -259,20 +265,14 @@
   align-items: flex-start;
   height: calc(50vh - 150px);
 }
-
-/* Show on hover (desktop) */
 .primary-menu li:hover > .sub-menu {
   opacity: 1;
   visibility: visible;
 }
-
-/* Show when clicked (mobile) */
 .primary-menu li.dropdown-open > .sub-menu {
   opacity: 1;
   visibility: visible;
 }
-
-/* Desktop grid layout for submenus */
 @media only screen and (min-width: 761px) {
   .sub-menu {
     display: grid !important;
@@ -287,26 +287,20 @@
   font-weight: 400;
   color: #333;
 }
-
 .primary-menu .sub-menu a:hover {
   color: #007cba;
 }
 
-/* MOBILE STARTS */
-/* MOBILE STARTS */
-/* MOBILE STARTS */
-
+/* ============================================================================
+  08. Mobile Navigation (≤ 760px)
+============================================================================ */
 @media only screen and (max-width: 760px) {
   .menu-toggle {
     display: block;
   }
-
-  /* Hide dividers on mobile */
   .primary-menu li:not(:last-child)::after {
     display: none;
   }
-
-  /* Hide desktop navigation row on mobile */
   .main-navigation {
     position: fixed;
     top: 90px;
@@ -324,14 +318,11 @@
     transition: transform 0.3s ease-in-out, visibility 0s linear 0.3s;
     visibility: hidden;
   }
-
   .main-navigation.active {
     transform: translateX(0);
     transition: transform 0.3s ease-in-out, visibility 0s linear 0s;
     visibility: visible;
   }
-
-  /* Mobile menu styling */
   .primary-menu {
     flex-direction: column;
     gap: 0;
@@ -341,19 +332,16 @@
     padding: 0;
     width: 100%;
   }
-
   #primary-menu {
     align-self: flex-start;
     margin-top: 0 !important;
     padding-top: 0 !important;
     width: 100%;
   }
-
   .primary-menu li {
     width: 100% !important;
     display: block !important;
   }
-
   .primary-menu a {
     padding: 15px 0;
     font-size: 1.1rem;
@@ -363,12 +351,13 @@
     align-items: center;
     box-sizing: border-box;
   }
-
   .primary-menu li:first-child a {
     padding-top: 10px;
   }
 
-  /* Mobile submenus */
+  /* ============================================================================
+  09. Mobile Dropdown / Submenu Behavior
+============================================================================ */
   .primary-menu .sub-menu,
   .primary-menu ul.sub-menu {
     position: static !important;
@@ -394,7 +383,6 @@
     left: 0px !important;
     top: auto !important;
   }
-
   .primary-menu li.dropdown-open .sub-menu {
     max-height: none !important;
     opacity: 1 !important;
@@ -402,7 +390,6 @@
     transform: translateX(0px) translateY(0px) scale(1) !important;
     transition: opacity 0.3s ease, transform 0.3s ease, max-height 0.3s ease;
   }
-
   .primary-menu .sub-menu a {
     padding: 15px 0 15px 20px !important;
     margin: 0 !important;
@@ -412,15 +399,12 @@
     line-height: 1.2;
     box-sizing: border-box;
   }
-
   .primary-menu .sub-menu li {
     padding: 0 !important;
     margin: 0 !important;
     display: block !important;
     width: 100% !important;
   }
-
-  /* Ensure menu items with children are properly marked - only top level */
   .primary-menu > li.menu-item-has-children > a::after {
     content: "";
     width: 24px;
@@ -436,17 +420,12 @@
     background-position: center;
     flex-shrink: 0;
   }
-
-  /* Remove arrows from submenu items */
   .primary-menu .sub-menu li a::after {
     display: none !important;
   }
-
-  /* Rotate triangle when dropdown is open - only top level */
   .primary-menu > li.menu-item-has-children.dropdown-open > a::after {
     transform: rotate(180deg);
   }
-
   .primary-menu li.menu-item-has-children.dropdown-open > ul,
   .primary-menu li.menu-item-has-children.dropdown-open > .sub-menu,
   .primary-menu li.menu-item-has-children.dropdown-open ul.sub-menu {
@@ -464,8 +443,6 @@
     position: static !important;
     width: 100% !important;
   }
-
-  /* Force override any inline styles on mobile */
   @media only screen and (max-width: 760px) {
     .primary-menu ul[style*="transform"] {
       transform: translateX(0px) !important;
