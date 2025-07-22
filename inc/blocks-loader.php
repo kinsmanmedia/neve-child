@@ -57,12 +57,12 @@ class Neve_Child_Components_Loader {
             return;
         }
         
-        // Register component styles
+        // Register component styles (with variables as dependency)
         if (file_exists($style_file)) {
             wp_register_style(
                 'neve-child-' . $component_name . '-component',
                 $this->components_url . $component_name . '/style.css',
-                array(),
+                array('neve-child-variables'),
                 filemtime($style_file)
             );
         }

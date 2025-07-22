@@ -22,10 +22,17 @@ function neve_child_enqueue_styles() {
     // Enqueue parent theme stylesheet
     wp_enqueue_style('neve-parent-style', get_template_directory_uri() . '/style.css');
     
-    // Enqueue child theme stylesheet with parent as dependency
+    // Enqueue CSS variables first (before everything else)
+    wp_enqueue_style('neve-child-variables',
+        get_stylesheet_directory_uri() . '/assets/css/variables.css',
+        array('neve-parent-style'),
+        wp_get_theme()->get('Version')
+    );
+    
+    // Enqueue child theme stylesheet with variables as dependency
     wp_enqueue_style('neve-child-style',
         get_stylesheet_directory_uri() . '/style.css',
-        array('neve-parent-style'),
+        array('neve-child-variables'),
         wp_get_theme()->get('Version')
     );
     
@@ -37,10 +44,10 @@ function neve_child_enqueue_styles() {
         true
     );
     
-    // Enqueue MAC header styles
+    // Enqueue MAC header styles (with variables as dependency)
     wp_enqueue_style('neve-child-mac-header-style',
         get_stylesheet_directory_uri() . '/components/mac-header/style.css',
-        array('neve-child-style'),
+        array('neve-child-variables'),
         wp_get_theme()->get('Version')
     );
 }

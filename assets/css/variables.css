@@ -1,0 +1,89 @@
+/* ============================================================================
+  MAC THEME CSS VARIABLES
+  ============================================================================
+  Global CSS custom properties for consistent styling across all components
+  
+  Usage: var(--mac-color-primary)
+============================================================================ */
+
+:root {
+  /* ============================================================================
+    BRAND COLORS
+  ============================================================================ */
+  --mac-color-primary: #CC6349;
+  --mac-color-primary-dark: #a04e3a;
+  --mac-color-primary-light: #d4806a;
+  
+  /* Secondary colors */
+  --mac-color-secondary: #007cba;
+  --mac-color-secondary-dark: #005a85;
+  --mac-color-secondary-light: #339dd1;
+  
+  /* Neutral colors */
+  --mac-color-white: #ffffff;
+  --mac-color-black: #000000;
+  --mac-color-gray-dark: #333333;
+  --mac-color-gray-medium: #666666;
+  --mac-color-gray-light: #cccccc;
+  --mac-color-gray-lighter: #f5f5f5;
+  
+  /* Background colors */
+  --mac-bg-cream: #fffaeb;
+  --mac-bg-cream-alpha: rgba(255, 250, 235, 0.8);
+  
+  /* ============================================================================
+    BUTTON VARIANTS
+  ============================================================================ */
+  --mac-btn-primary-bg: var(--mac-color-primary);
+  --mac-btn-primary-color: var(--mac-color-white);
+  --mac-btn-primary-border: var(--mac-color-primary);
+  --mac-btn-primary-hover-bg: transparent;
+  --mac-btn-primary-hover-color: var(--mac-color-primary);
+  --mac-btn-primary-hover-border: var(--mac-color-primary);
+  
+  /* ============================================================================
+    SHADOWS & OVERLAYS
+  ============================================================================ */
+  --mac-shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --mac-shadow-medium: 0 4px 12px rgba(204, 99, 73, 0.3);
+  --mac-shadow-heavy: 0 8px 25px rgba(204, 99, 73, 0.4);
+  
+  --mac-overlay-dark: rgba(0, 0, 0, 0.4);
+  --mac-overlay-light: rgba(0, 0, 0, 0.1);
+  
+  /* ============================================================================
+    TYPOGRAPHY
+  ============================================================================ */
+  --mac-text-shadow-light: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  --mac-text-shadow-heavy: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  
+  /* ============================================================================
+    BREAKPOINTS
+  ============================================================================ */
+  --mac-breakpoint-mobile: 760px;
+  --mac-breakpoint-tablet: 768px;
+  --mac-breakpoint-desktop: 1200px;
+  --mac-breakpoint-wide: 2400px;
+  
+  /* ============================================================================
+    SPACING & LAYOUT
+  ============================================================================ */
+  --mac-header-height-desktop: 150px;
+  --mac-header-height-mobile: 90px;
+  --mac-container-max-width: var(--mac-breakpoint-wide);
+  
+  /* ============================================================================
+    TRANSITIONS
+  ============================================================================ */
+  --mac-transition-fast: 0.3s ease;
+  --mac-transition-medium: 0.3s ease-in-out;
+  --mac-transition-slow: 0.5s ease;
+  
+  /* ============================================================================
+    BORDER RADIUS
+  ============================================================================ */
+  --mac-border-radius-small: 5px;
+  --mac-border-radius-medium: 15px;
+  --mac-border-radius-large: 25px;
+  --mac-border-radius-pill: 50px;
+}
