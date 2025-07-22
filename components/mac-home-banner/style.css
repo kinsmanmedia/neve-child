@@ -86,77 +86,15 @@
 .banner-text {
   max-width: 800px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 }
-
-/* ============================================================================
-  04. Typography
-============================================================================ */
-.banner-title {
-  font-size: 3.5rem;
-  font-weight: 700;
-  margin-bottom: 20px;
-  line-height: 1.2;
+/* .banner-title {
 }
-
-.banner-subtitle {
-  font-size: 1.3rem;
-  font-weight: 300;
-  margin-bottom: 40px;
-  line-height: 1.6;
-  opacity: 0.95;
-}
-
-/* ============================================================================
-  05. CTA Button
-============================================================================ */
-.banner-actions {
-  margin-top: 30px;
-}
-
-/* .banner-cta {
-  background-color: var(--mac-btn-primary-bg);
-  color: var(--mac-btn-primary-color) !important;
-  padding: 18px 36px;
-  border-radius: var(--mac-border-radius-large);
-  text-decoration: none !important;
-  font-weight: 600;
-  font-size: 16px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  display: inline-block;
-  border: 2px solid var(--mac-btn-primary-border);
-  transition: var(--mac-transition-fast);
-  box-shadow: var(--mac-shadow-medium);
-}
-
-.banner-cta:hover {
-  background-color: var(--mac-btn-primary-hover-bg);
-  color: var(--mac-btn-primary-hover-color) !important;
-  background-color: var(--mac-color-white);
-  transform: translateY(-3px);
-  box-shadow: var(--mac-shadow-heavy);
+.banner-sub-title {
 } */
-
-/* ============================================================================
-  06. Responsive Design
-============================================================================ */
-@media only screen and (max-width: 1200px) {
-  .banner-title {
-    font-size: 3rem;
-  }
-
-  .banner-subtitle {
-    font-size: 1.2rem;
-  }
-}
-
-/* Accessibility improvements */
-@media (prefers-reduced-motion: reduce) {
-  .banner-cta {
-    transition: none;
-  }
-
-  .banner-cta:hover {
-    transform: none;
-  }
+.banner-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
