@@ -25,7 +25,7 @@
   max-width: 2400px;
   z-index: 999 !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  height: 150px; /* Fixed height - no more jumping */
+  height: 150px;
 }
 @media only screen and (max-width: 760px) {
   .custom-header {
@@ -73,29 +73,6 @@
 .header-cta-button {
   display: block;
 }
-
-/* .cta-button {
-  background-color: #cc6349;
-  color: white !important;
-  padding: 12px 24px;
-  border-radius: 25px;
-  text-decoration: none !important;
-  font-weight: 600;
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
-  border: 2px solid #cc6349;
-  display: inline-block;
-  white-space: nowrap;
-}
-
-.cta-button:hover {
-  background-color: transparent;
-  color: #cc6349 !important;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(204, 99, 73, 0.3);
-} */
 
 /* Hide desktop CTA button on mobile */
 @media only screen and (max-width: 760px) {

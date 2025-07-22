@@ -1,0 +1,34 @@
+/* ============================================================================
+  MAC HOME BANNER COMPONENT CSS
+  ============================================================================
+  TABLE OF CONTENTS:
+  01. Banner Container Styles
+  02. Background Media (Video/Image)
+  03. Content Layout
+  04. Typography
+  05. CTA Button
+  06. Responsive Design
+============================================================================ */
+
+/* ============================================================================
+  01. Banner Container Styles
+============================================================================ */
+.mac-home-banner {
+  border: solid red;
+  height: calc(100vh - 150px);
+  display: flex;
+  justify-content: center; /* horizontal centering */
+  align-items: center; /* vertical centering */
+}
+
+@media only screen and (max-width: 761px) {
+  .mac-home-banner {
+    border: solid red;
+    height: calc(100vh - 90px);
+  }
+}
+
+.banner-content {
+  display: flex;
+  border: solid red;
+}
