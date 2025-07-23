@@ -31,6 +31,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const centerX = vw / 2;
     const centerY = vh / 2;
 
+    console.log(vw);
+    console.log(vh);
+
     console.log(centerX);
     console.log(centerY);
 
