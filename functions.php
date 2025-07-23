@@ -44,6 +44,14 @@ function neve_child_enqueue_styles() {
         true
     );
     
+    // Enqueue MAC home banner JavaScript
+    wp_enqueue_script('neve-child-mac-home-banner',
+        get_stylesheet_directory_uri() . '/components/mac-home-banner/mac-home-banner.js',
+        array(),
+        wp_get_theme()->get('Version'),
+        true
+    );
+    
     // Enqueue MAC header styles (with variables as dependency)
     wp_enqueue_style('neve-child-mac-header-style',
         get_stylesheet_directory_uri() . '/components/mac-header/style.css',

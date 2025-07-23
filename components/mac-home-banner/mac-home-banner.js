@@ -1,248 +1,195 @@
 /**
  * MAC Home Banner Component for Neve Child Theme
- * 
+ *
  * This component creates a hero banner specifically for the home page
  * with customizable title, subtitle, CTA button, and background media support.
+ * Includes scrolling background animation similar to text.html.
  */
 
-(function (blocks, i18n, element, editor, components) {
-    var el = element.createElement;
-    var registerBlockType = blocks.registerBlockType;
-    var RichText = editor.RichText;
-    var MediaUpload = editor.MediaUpload;
-    var InspectorControls = editor.InspectorControls;
-    var PanelBody = components.PanelBody;
-    var PanelRow = components.PanelRow;
-    var Button = components.Button;
-    var TextControl = components.TextControl;
+// Scrolling background circles functionality
+document.addEventListener("DOMContentLoaded", function () {
+  const scrollCircles = [
+    document.getElementById("scroll-circle-1"),
+    document.getElementById("scroll-circle-2"),
+    document.getElementById("scroll-circle-3"),
+    document.getElementById("scroll-circle-4"),
+  ];
 
-    registerBlockType('neve-child/mac-home-banner', {
-        title: i18n.__('MAC Home Banner', 'neve-child'),
-        icon: 'cover-image',
-        category: 'design',
-        description: i18n.__('Hero banner component for the Mississauga Arts Council homepage', 'neve-child'),
-        keywords: [
-            i18n.__('banner', 'neve-child'),
-            i18n.__('hero', 'neve-child'),
-            i18n.__('home', 'neve-child'),
-        ],
+  if (!scrollCircles[0]) {
+    console.log("No scroll circles found - exiting");
+    return;
+  }
 
-        attributes: {
-            banner_title: {
-                type: 'string',
-                default: 'Welcome to Mississauga Arts Council'
-            },
-            banner_subtitle: {
-                type: 'string',
-                default: 'Empowering creativity and fostering artistic expression in our community'
-            },
-            banner_button_text: {
-                type: 'string',
-                default: 'JOIN NOW'
-            },
-            banner_button_link: {
-                type: 'string',
-                default: '/mac-membership'
-            },
-            banner_background_image: {
-                type: 'object',
-                default: null
-            },
-            banner_video_url: {
-                type: 'string',
-                default: ''
-            }
-        },
+  function updateScrollCircles() {
+    const scrolled = window.pageYOffset;
+    const scrollLength = window.innerHeight * 2; // 200vh
+    const scrollProgress = Math.min(scrolled / scrollLength, 1);
 
-        edit: function (props) {
-            var attributes = props.attributes;
-            var setAttributes = props.setAttributes;
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
 
-            function onChangeBannerTitle(newTitle) {
-                setAttributes({ banner_title: newTitle });
-            }
+    const centerX = vw / 2;
+    const centerY = vh / 2;
 
-            function onChangeBannerSubtitle(newSubtitle) {
-                setAttributes({ banner_subtitle: newSubtitle });
-            }
+    console.log(centerX);
+    console.log(centerY);
 
-            function onChangeBannerButtonText(newText) {
-                setAttributes({ banner_button_text: newText });
-            }
+    // Define offset distances from center (adjust these values to control how close they get)
+    const offsetDistance = Math.min(vw, vh) * -0.15; // 15% of the smaller viewport dimension
 
-            function onChangeBannerButtonLink(newLink) {
-                setAttributes({ banner_button_link: newLink });
-            }
+    const circle1 = scrollCircles[0];
+    const circle2 = scrollCircles[1];
+    const circle3 = scrollCircles[2];
+    const circle4 = scrollCircles[3];
 
-            function onSelectBackgroundImage(media) {
-                setAttributes({ 
-                    banner_background_image: {
-                        url: media.url,
-                        alt: media.alt || ''
-                    }
-                });
-            }
+    if (scrollProgress <= 0.4) {
+      // Phase 1: Enter from corners toward center (but not to exact center)
+      const progress = scrollProgress / 0.4;
+      const easeProgress = 1 - Math.pow(1 - progress, 3); // Ease-out cubic
 
-            function onRemoveBackgroundImage() {
-                setAttributes({ banner_background_image: null });
-            }
+      // Top-left to near-center (offset up-left from center)
+      const targetX1 = -offsetDistance;
+      const targetY1 = -offsetDistance;
+      const startX1 = -centerX - vw / 2;
+      const startY1 = -centerY - vh / 2;
+      const x1 = startX1 + (targetX1 - startX1) * easeProgress;
+      const y1 = startY1 + (targetY1 - startY1) * easeProgress;
+      circle1.style.transform = `translate(calc(50vw + ${x1}px), calc(50vh + ${y1}px)) rotate(${
+        scrolled * 0.1
+      }deg)`;
 
-            function onChangeBannerVideoUrl(newUrl) {
-                setAttributes({ banner_video_url: newUrl });
-            }
+      // Top-right to near-center (offset up-right from center)
+      const targetX2 = offsetDistance;
+      const targetY2 = -offsetDistance;
+      const startX2 = centerX + vw / 2;
+      const startY2 = -centerY - vh / 2;
+      const x2 = startX2 + (targetX2 - startX2) * easeProgress;
+      const y2 = startY2 + (targetY2 - startY2) * easeProgress;
+      circle2.style.transform = `translate(calc(50vw + ${x2}px), calc(50vh + ${y2}px)) rotate(${
+        -scrolled * 0.1
+      }deg)`;
 
-            var bannerStyle = {
-                minHeight: '400px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                textAlign: 'center',
-                color: 'white',
-                position: 'relative',
-                backgroundImage: attributes.banner_background_image ? 'url(' + attributes.banner_background_image.url + ')' : 'none',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundColor: attributes.banner_background_image ? 'transparent' : '#cc6349'
-            };
+      // Bottom-left to near-center (offset down-left from center)
+      const targetX3 = -offsetDistance;
+      const targetY3 = offsetDistance;
+      const startX3 = -centerX - vw / 2;
+      const startY3 = centerY + vh / 2;
+      const x3 = startX3 + (targetX3 - startX3) * easeProgress;
+      const y3 = startY3 + (targetY3 - startY3) * easeProgress;
+      circle3.style.transform = `translate(calc(50vw + ${x3}px), calc(50vh + ${y3}px)) rotate(${
+        scrolled * 0.15
+      }deg)`;
 
-            return [
-                el(InspectorControls, {},
-                    el(PanelBody, { title: i18n.__('Content Settings', 'neve-child') },
-                        el(PanelRow, {},
-                            el(TextControl, {
-                                label: i18n.__('Banner Title', 'neve-child'),
-                                value: attributes.banner_title,
-                                onChange: onChangeBannerTitle
-                            })
-                        ),
-                        el(PanelRow, {},
-                            el(TextControl, {
-                                label: i18n.__('Banner Subtitle', 'neve-child'),
-                                value: attributes.banner_subtitle,
-                                onChange: onChangeBannerSubtitle
-                            })
-                        ),
-                        el(PanelRow, {},
-                            el(TextControl, {
-                                label: i18n.__('Button Text', 'neve-child'),
-                                value: attributes.banner_button_text,
-                                onChange: onChangeBannerButtonText
-                            })
-                        ),
-                        el(PanelRow, {},
-                            el(TextControl, {
-                                label: i18n.__('Button Link', 'neve-child'),
-                                value: attributes.banner_button_link,
-                                onChange: onChangeBannerButtonLink
-                            })
-                        )
-                    ),
-                    el(PanelBody, { title: i18n.__('Background Media', 'neve-child') },
-                        el(PanelRow, {},
-                            el(TextControl, {
-                                label: i18n.__('Video URL (MP4)', 'neve-child'),
-                                value: attributes.banner_video_url,
-                                onChange: onChangeBannerVideoUrl,
-                                help: i18n.__('Video will take priority over background image', 'neve-child')
-                            })
-                        ),
-                        el(PanelRow, {},
-                            el(MediaUpload, {
-                                onSelect: onSelectBackgroundImage,
-                                type: 'image',
-                                value: attributes.banner_background_image ? attributes.banner_background_image.url : '',
-                                render: function (obj) {
-                                    return el(Button, {
-                                        className: attributes.banner_background_image ? 'image-button' : 'button button-large',
-                                        onClick: obj.open
-                                    },
-                                        !attributes.banner_background_image ? i18n.__('Upload Background Image', 'neve-child') :
-                                            el('img', { 
-                                                src: attributes.banner_background_image.url, 
-                                                style: { width: '100%', height: 'auto', maxHeight: '100px' } 
-                                            })
-                                    );
-                                }
-                            })
-                        ),
-                        attributes.banner_background_image && el(PanelRow, {},
-                            el(Button, {
-                                className: 'button',
-                                onClick: onRemoveBackgroundImage
-                            }, i18n.__('Remove Background Image', 'neve-child'))
-                        )
-                    )
-                ),
-                el('div', {
-                    className: 'mac-home-banner-preview',
-                    style: bannerStyle
-                },
-                    (attributes.banner_background_image || attributes.banner_video_url) && el('div', { 
-                        className: 'banner-overlay', 
-                        style: { 
-                            position: 'absolute', 
-                            top: 0, 
-                            left: 0, 
-                            right: 0, 
-                            bottom: 0, 
-                            backgroundColor: 'rgba(0, 0, 0, 0.4)' 
-                        } 
-                    }),
-                    el('div', { 
-                        className: 'banner-content',
-                        style: { 
-                            position: 'relative', 
-                            zIndex: 1, 
-                            maxWidth: '800px',
-                            padding: '20px'
-                        }
-                    },
-                        el('h1', {
-                            className: 'banner-title',
-                            style: {
-                                fontSize: '2.5rem',
-                                fontWeight: '700',
-                                marginBottom: '20px',
-                                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)'
-                            }
-                        }, attributes.banner_title),
-                        el('p', {
-                            className: 'banner-subtitle',
-                            style: {
-                                fontSize: '1.2rem',
-                                marginBottom: '30px',
-                                textShadow: '1px 1px 2px rgba(0, 0, 0, 0.3)'
-                            }
-                        }, attributes.banner_subtitle),
-                        el('a', {
-                            href: '#',
-                            className: 'banner-cta btn btn-red',
-                            style: {
-                                backgroundColor: '#cc6349',
-                                color: 'white',
-                                padding: '15px 30px',
-                                borderRadius: '25px',
-                                textDecoration: 'none',
-                                fontWeight: '600',
-                                textTransform: 'uppercase',
-                                display: 'inline-block',
-                                border: '2px solid #cc6349'
-                            }
-                        }, attributes.banner_button_text)
-                    )
-                )
-            ];
-        },
+      // Bottom-right to near-center (offset down-right from center)
+      const targetX4 = offsetDistance;
+      const targetY4 = offsetDistance;
+      const startX4 = centerX + vw / 2;
+      const startY4 = centerY + vh / 2;
+      const x4 = startX4 + (targetX4 - startX4) * easeProgress;
+      const y4 = startY4 + (targetY4 - startY4) * easeProgress;
+      circle4.style.transform = `translate(calc(50vw + ${x4}px), calc(50vh + ${y4}px)) rotate(${
+        -scrolled * 0.15
+      }deg)`;
+    } else if (scrollProgress >= 0.6) {
+      // Phase 3: Exit from near-center to opposite corners
+      const progress = (scrollProgress - 0.6) / 0.4;
+      const easeProgress = Math.pow(progress, 3); // Ease-in cubic
 
-        save: function (props) {
-            // Return null since we're using a render callback
-            return null;
-        }
+      // From up-left of center → bottom-right corner
+      const startX1 = -offsetDistance;
+      const startY1 = -offsetDistance;
+      const targetX1 = centerX + vw / 2;
+      const targetY1 = centerY + vh / 2;
+      const x1 = startX1 + (targetX1 - startX1) * easeProgress;
+      const y1 = startY1 + (targetY1 - startY1) * easeProgress;
+      circle1.style.transform = `translate(calc(50vw + ${x1}px), calc(50vh + ${y1}px)) rotate(${
+        scrolled * 0.1
+      }deg)`;
+
+      // From up-right of center → bottom-left corner
+      const startX2 = offsetDistance;
+      const startY2 = -offsetDistance;
+      const targetX2 = -centerX - vw / 2;
+      const targetY2 = centerY + vh / 2;
+      const x2 = startX2 + (targetX2 - startX2) * easeProgress;
+      const y2 = startY2 + (targetY2 - startY2) * easeProgress;
+      circle2.style.transform = `translate(calc(50vw + ${x2}px), calc(50vh + ${y2}px)) rotate(${
+        -scrolled * 0.1
+      }deg)`;
+
+      // From down-left of center → top-right corner
+      const startX3 = -offsetDistance;
+      const startY3 = offsetDistance;
+      const targetX3 = centerX + vw / 2;
+      const targetY3 = -centerY - vh / 2;
+      const x3 = startX3 + (targetX3 - startX3) * easeProgress;
+      const y3 = startY3 + (targetY3 - startY3) * easeProgress;
+      circle3.style.transform = `translate(calc(50vw + ${x3}px), calc(50vh + ${y3}px)) rotate(${
+        scrolled * 0.15
+      }deg)`;
+
+      // From down-right of center → top-left corner
+      const startX4 = offsetDistance;
+      const startY4 = offsetDistance;
+      const targetX4 = -centerX - vw / 2;
+      const targetY4 = -centerY - vh / 2;
+      const x4 = startX4 + (targetX4 - startX4) * easeProgress;
+      const y4 = startY4 + (targetY4 - startY4) * easeProgress;
+      circle4.style.transform = `translate(calc(50vw + ${x4}px), calc(50vh + ${y4}px)) rotate(${
+        -scrolled * 0.15
+      }deg)`;
+    } else {
+      // Phase 2: Idle floating near center (in quadrant formation)
+      const floatOffset = Math.sin(Date.now() * 0.001) * 10;
+
+      circle1.style.transform = `translate(calc(50vw + ${
+        -offsetDistance + floatOffset
+      }px), calc(50vh + ${-offsetDistance}px)) rotate(${scrolled * 0.1}deg)`;
+
+      circle2.style.transform = `translate(calc(50vw + ${
+        offsetDistance - floatOffset
+      }px), calc(50vh + ${-offsetDistance}px)) rotate(${-scrolled * 0.1}deg)`;
+
+      circle3.style.transform = `translate(calc(50vw + ${
+        -offsetDistance + floatOffset
+      }px), calc(50vh + ${offsetDistance}px)) rotate(${scrolled * 0.15}deg)`;
+
+      circle4.style.transform = `translate(calc(50vw + ${
+        offsetDistance - floatOffset
+      }px), calc(50vh + ${offsetDistance}px)) rotate(${-scrolled * 0.15}deg)`;
+    }
+
+    // Opacity fade in/out
+    let opacity;
+    if (scrollProgress <= 0.1) {
+      opacity = scrollProgress * 8;
+    } else if (scrollProgress >= 0.9) {
+      opacity = (1 - scrollProgress) * 8;
+    } else {
+      opacity = 0.8;
+    }
+
+    scrollCircles.forEach((circle) => {
+      if (circle) {
+        circle.style.opacity = Math.max(0, Math.min(0.8, opacity));
+      }
     });
-})(
-    window.wp.blocks,
-    window.wp.i18n,
-    window.wp.element,
-    window.wp.editor,
-    window.wp.components
-);
+  }
+
+  // Throttle scroll updates
+  let ticking = false;
+  function requestTick() {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        updateScrollCircles();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }
+
+  window.addEventListener("scroll", requestTick, { passive: true });
+  window.addEventListener("resize", updateScrollCircles);
+
+  updateScrollCircles();
+});

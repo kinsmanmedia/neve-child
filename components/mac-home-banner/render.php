@@ -28,6 +28,14 @@ function neve_child_render_mac_home_banner_block($attributes, $content) {
 ?>
 
 <section class="mac-home-banner">
+    <!-- Scrolling Background Elements -->
+    <div class="scrolling-bg-container">
+        <div class="scroll-circle" id="scroll-circle-1"></div>
+        <div class="scroll-circle" id="scroll-circle-2"></div>
+        <div class="scroll-circle" id="scroll-circle-3"></div>
+        <div class="scroll-circle" id="scroll-circle-4"></div>
+    </div>
+
     <?php if ($banner_video_url) : ?>
         <!-- Video Background -->
         <div class="banner-video-background">
