@@ -25,13 +25,48 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: solid red;
 }
-.banner-container {
+/* .banner-container {
   border: solid red;
-}
+} */
 .banner-actions {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+/* Floating SVG Background Animation */
+.floating-svg-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.floating-svg {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  opacity: 0;
+  transition: opacity 1s ease-out;
+  will-change: transform, opacity;
+}
+
+.floating-svg img {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.1));
+  object-fit: contain;
+}
+
+/* Mobile responsive adjustments */
+/* @media only screen and (max-width: 760px) {
+  .floating-svg {
+    width: 80px;
+    height: 80px;
+  }
+} */

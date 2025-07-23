@@ -32,8 +32,15 @@ function neve_child_render_mac_home_banner_block($attributes, $content) {
         <div class="banner-content">
             <div class="banner-container">
                 <div class="banner-text">
-                    <h1 class="banner-title"><?php echo esc_html($banner_title); ?></h1>
-                    <p class="banner-subtitle"><?php echo esc_html($banner_subtitle); ?></p>
+
+                    <div class="site-branding">
+                        <a href="<?php echo esc_url(home_url('/')); ?>" rel="home" class="custom-logo-link">
+                            <img src="<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.png" alt="<?php bloginfo('name'); ?>" class="custom-logo">
+                        </a>
+                    </div>
+                    
+                    <!-- <h1 class="banner-title"><?php echo esc_html($banner_title); ?></h1>
+                    <p class="banner-subtitle"><?php echo esc_html($banner_subtitle); ?></p> -->
                     <div class="banner-actions">
                         <a href="<?php echo esc_url($banner_button_link); ?>" class="btn btn-red banner-cta">
                             <?php echo esc_html($banner_button_text); ?>
