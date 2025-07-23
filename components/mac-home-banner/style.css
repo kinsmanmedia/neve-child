@@ -1,176 +1,37 @@
-/* ============================================================================
-  MAC HOME BANNER COMPONENT CSS
-  ============================================================================
-  TABLE OF CONTENTS:
-  01. Banner Container Styles
-  02. Background Media (Video/Image)
-  03. Content Layout
-  04. Typography
-  05. CTA Button
-  06. Responsive Design
-============================================================================ */
-
-@import url("../../assets/css/variables.css");
-
-/* ============================================================================
-  01. Banner Container Styles
-============================================================================ */
+/* main sizing */
 .mac-home-banner {
-  position: relative;
-  min-height: 300vh;
-  height: calc(100vh - var(--mac-header-height-desktop));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  background: var(--mac-bg-cream);
-  border: solid red;
+  background-color: var(--mac-bg-cream);
+  height: calc(200vh - var(--mac-header-height-desktop));
 }
-
+.mac-home-banner-top {
+  height: calc(100vh - var(--mac-header-height-desktop));
+}
+.mac-home-banner-bottom {
+  height: 100vh;
+}
 @media only screen and (max-width: 760px) {
   .mac-home-banner {
-    min-height: 300vh;
+    height: calc(200vh - var(--mac-header-height-mobile));
+  }
+  .mac-home-banner-top {
     height: calc(100vh - var(--mac-header-height-mobile));
   }
 }
 
-.banner-container {
-  max-width: 1200px;
+/* defaul;t text top */
+.banner-content {
+  height: 100%;
   width: 100%;
-  padding: 0 20px;
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: solid red;
 }
-
-/* ============================================================================
-  02. Background Media (Video/Image)
-============================================================================ */
-.banner-video-background,
-.banner-image-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -2;
+.banner-container {
+  border: solid red;
 }
-
-.banner-video-background video,
-.banner-image-background img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
-.video-overlay,
-.image-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: var(--mac-overlay-dark);
-  z-index: -1;
-}
-
-/* ============================================================================
-  03. Content Layout
-============================================================================ */
-.banner-content {
-  position: relative;
-  z-index: 1;
-  text-align: center;
-}
-
-.banner-text {
-  max-width: 800px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-}
-/* .banner-title {
-}
-.banner-sub-title {
-} */
 .banner-actions {
   display: flex;
-  align-items: center;
   justify-content: center;
-}
-
-/* ============================================================================
-  Scrolling Background Elements
-============================================================================ */
-.scrolling-bg-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-
-.scroll-circle {
-  position: fixed;
-  width: 120px;
-  height: 120px;
-  background: radial-gradient(
-    circle at 30% 30%,
-    var(--mac-red, #cc6349),
-    var(--mac-red-dark, #b85c42)
-  );
-  border-radius: 50%;
-  box-shadow: 0 0 40px rgba(204, 99, 73, 0.3);
-  opacity: 0;
-  transition: all 0.1s ease-out;
-  will-change: transform, opacity;
-  z-index: 1;
-}
-
-.scroll-circle::before {
-  content: "";
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  width: 30px;
-  height: 30px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  filter: blur(8px);
-}
-
-.scroll-circle::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 60px;
-  height: 60px;
-  background: rgba(204, 99, 73, 0.1);
-  border-radius: 50%;
-  /* transform: translate(-50%, -50%); */
-  border: 1px solid rgba(204, 99, 73, 0.2);
-}
-
-/* Mobile responsive adjustments */
-@media only screen and (max-width: 760px) {
-  .scroll-circle {
-    width: 80px;
-    height: 80px;
-  }
-
-  .scroll-circle::before {
-    top: 10px;
-    left: 10px;
-    width: 20px;
-    height: 20px;
-  }
-
-  .scroll-circle::after {
-    width: 40px;
-    height: 40px;
-  }
+  align-items: center;
 }
