@@ -156,16 +156,16 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  background: var(--mac-primary);
-  color: var(--mac-primary);
-  border: 2px solid var(--mac-primary);
+  background: white;
+  color: var(--mac-color-yellow);
+  border: 2px solid var(--mac-color-yellow);
   cursor: pointer;
   transition: all 0.3s ease;
 }
 .carousel-btn:hover {
-  background: var(--mac-primary);
-  color: black;
-  transform: translateY(-2px);
+  color: white;
+  background: var(--mac-color-yellow);
+  border: 2px solid var(--mac-color-yellow);
 }
 .carousel-btn:disabled {
   opacity: 0.4;
@@ -173,7 +173,7 @@
 }
 .carousel-btn:disabled:hover {
   transform: none;
-  color: var(--mac-primary);
+  color: white;
 }
 
 /* Dots */
@@ -234,7 +234,67 @@
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+/* Large screens - 4 cards */
+@media (min-width: 1400px) {
+  .article-card {
+    flex: 0 0 calc(25% - 22.5px);
+  }
+}
+
+/* Desktop - 3 cards (default) */
+@media (min-width: 1025px) and (max-width: 1399px) {
+  .article-card {
+    flex: 0 0 calc(33.333% - 20px);
+  }
+}
+
+/* Tablet landscape - 2 cards */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .article-card {
+    flex: 0 0 calc(50% - 15px);
+  }
+  .articles-track {
+    gap: 20px;
+  }
+}
+
+/* Tablet portrait - 2 cards */
+@media (min-width: 601px) and (max-width: 768px) {
+  .mac-whats-new {
+    padding: 40px 0;
+  }
+  .section-title {
+    font-size: 2.2rem;
+  }
+  .article-card {
+    flex: 0 0 calc(50% - 15px);
+    min-height: 420px;
+  }
+  .articles-track {
+    gap: 20px;
+  }
+  .carousel-btn {
+    width: 40px;
+    height: 40px;
+  }
+  .carousel-navigation {
+    gap: 18px;
+  }
+  .carousel-dots {
+    margin: 0 12px;
+    gap: 5px;
+  }
+  .article-content {
+    padding: 1.5rem;
+  }
+  .article-title {
+    font-size: 1.2rem;
+    min-height: 3rem;
+  }
+}
+
+/* Mobile landscape - 1 card */
+@media (min-width: 481px) and (max-width: 600px) {
   .mac-whats-new {
     padding: 40px 0;
   }
@@ -257,11 +317,11 @@
   }
   .carousel-dots {
     margin: 0 10px;
-    gap: 3px;
+    gap: 4px;
     flex-wrap: wrap;
   }
   .article-content {
-    padding: 15px;
+    padding: 1.25rem;
   }
   .article-title {
     font-size: 1.1rem;
@@ -269,12 +329,23 @@
   }
 }
 
+/* Mobile portrait - 1 card */
 @media (max-width: 480px) {
+  .mac-whats-new {
+    padding: 30px 0;
+  }
   .section-title {
     font-size: 1.8rem;
   }
   .section-subtitle {
     font-size: 1rem;
+  }
+  .article-card {
+    flex: 0 0 100%;
+    min-height: 380px;
+  }
+  .articles-track {
+    gap: 0;
   }
   .carousel-btn {
     width: 32px;
@@ -296,10 +367,11 @@
     max-height: 3px !important;
     border-width: 1px !important;
   }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  .article-card {
-    flex: 0 0 calc(33.333% - 20px);
+  .article-content {
+    padding: 1rem;
+  }
+  .article-title {
+    font-size: 1rem;
+    min-height: 2.4rem;
   }
 }

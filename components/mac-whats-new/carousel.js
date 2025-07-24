@@ -157,20 +157,20 @@ document.addEventListener('DOMContentLoaded', function() {
         carouselContainer.setAttribute('tabindex', '0');
         
         function getArticlesPerView() {
-            return window.innerWidth <= 768 ? 1 : 3;
+            const width = window.innerWidth;
+            if (width >= 1400) return 4;        // Large screens - 4 cards
+            if (width >= 1025) return 3;        // Desktop - 3 cards
+            if (width >= 601) return 2;         // Tablet - 2 cards
+            return 1;                           // Mobile - 1 card
         }
         
         function updateCarousel() {
             const translateX = -(currentSlide * (100 / articlesPerView));
             track.style.transform = `translateX(${translateX}%)`;
             
-            // Update article card widths based on current view
+            // Remove any inline flex styles to let CSS media queries work
             articles.forEach(article => {
-                if (articlesPerView === 1) {
-                    article.style.flex = '0 0 100%';
-                } else {
-                    article.style.flex = '0 0 calc(33.333% - 20px)';
-                }
+                article.style.removeProperty('flex');
             });
         }
         
