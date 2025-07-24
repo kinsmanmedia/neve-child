@@ -1,0 +1,305 @@
+/**
+ * What's New at MAC - Carousel Styles
+ * @package Neve Child
+ * @since 1.0.0
+ */
+
+/* Base */
+.mac-whats-new {
+  padding: 60px 0;
+  background-color: var(--mac-background-light);
+}
+.mac-whats-new .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+.mac-whats-new-header,
+.mac-whats-new .section-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 50px;
+}
+.mac-whats-new .section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--mac-primary);
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+.mac-whats-new .section-subtitle {
+  font-size: 1.1rem;
+  color: var(--mac-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Carousel */
+.articles-carousel-container {
+  position: relative;
+  margin-bottom: 40px;
+}
+.articles-carousel {
+  overflow: hidden;
+  border-radius: 12px;
+}
+.articles-track {
+  display: flex;
+  gap: 30px;
+  align-items: stretch;
+  transition: transform 0.5s ease;
+}
+
+/* Cards */
+.article-card {
+  flex: 0 0 calc(33.333% - 20px);
+  display: flex;
+  flex-direction: column;
+  min-height: 450px;
+  background: var(--mac-bg-cream);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+.article-card:hover {
+  transform: translateY(-5px);
+}
+.article-image {
+  aspect-ratio: 16/9;
+  overflow: hidden;
+}
+.article-image a {
+  display: block;
+  height: 100%;
+}
+.article-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+.article-card:hover .article-thumbnail {
+  transform: scale(1.05);
+}
+
+/* Content */
+.article-content {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.article-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+  color: var(--mac-text-secondary);
+}
+.article-date {
+  font-weight: 500;
+}
+.article-author {
+  font-style: italic;
+}
+.article-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  line-height: 1.3;
+  min-height: 3.3rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.article-title a {
+  color: var(--mac-text-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.article-title a:hover {
+  color: var(--mac-primary);
+}
+.article-excerpt {
+  color: var(--mac-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  max-height: 4.8rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.article-actions {
+  margin-top: auto;
+}
+
+/* Carousel Controls */
+.carousel-controls {
+  margin-top: 30px;
+}
+.carousel-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.carousel-btn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: var(--mac-primary);
+  color: var(--mac-primary);
+  border: 2px solid var(--mac-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.carousel-btn:hover {
+  background: var(--mac-primary);
+  color: black;
+  transform: translateY(-2px);
+}
+.carousel-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.carousel-btn:disabled:hover {
+  transform: none;
+  color: var(--mac-primary);
+}
+
+/* Dots */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  margin: 0 15px;
+}
+.mac-carousel-dot {
+  width: 6px !important;
+  height: 6px !important;
+  min-width: 6px !important;
+  min-height: 6px !important;
+  max-width: 6px !important;
+  max-height: 6px !important;
+  border-radius: 50% !important;
+  background: transparent !important;
+  border: 1px solid var(--mac-color-yellow) !important;
+  opacity: 0.7 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+}
+.mac-carousel-dot:hover,
+.mac-carousel-dot.active {
+  background: var(--mac-color-yellow) !important;
+  opacity: 1 !important;
+}
+.mac-carousel-dot.active {
+  transform: scale(1.2) !important;
+  box-shadow: 0 2px 8px rgba(249, 180, 93, 0.3) !important;
+}
+.mac-carousel-dot:hover {
+  transform: scale(1.1) !important;
+}
+
+/* Footer */
+.section-footer {
+  text-align: center;
+  padding-top: 20px;
+}
+
+/* No Posts */
+.no-posts-message {
+  text-align: center;
+  padding: 40px 20px;
+  background: var(--mac-primary);
+  border-radius: 12px;
+}
+.no-posts-message p {
+  font-size: 1.1rem;
+  color: var(--mac-text-secondary);
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .mac-whats-new {
+    padding: 40px 0;
+  }
+  .section-title {
+    font-size: 2rem;
+  }
+  .article-card {
+    flex: 0 0 100%;
+    min-height: 400px;
+  }
+  .articles-track {
+    gap: 0;
+  }
+  .carousel-btn {
+    width: 36px;
+    height: 36px;
+  }
+  .carousel-navigation {
+    gap: 15px;
+  }
+  .carousel-dots {
+    margin: 0 10px;
+    gap: 3px;
+    flex-wrap: wrap;
+  }
+  .article-content {
+    padding: 15px;
+  }
+  .article-title {
+    font-size: 1.1rem;
+    min-height: 2.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
+  .section-subtitle {
+    font-size: 1rem;
+  }
+  .carousel-btn {
+    width: 32px;
+    height: 32px;
+  }
+  .carousel-navigation {
+    gap: 12px;
+  }
+  .carousel-dots {
+    margin: 0 8px;
+    gap: 2px;
+  }
+  .mac-carousel-dot {
+    width: 3px !important;
+    height: 3px !important;
+    min-width: 3px !important;
+    min-height: 3px !important;
+    max-width: 3px !important;
+    max-height: 3px !important;
+    border-width: 1px !important;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .article-card {
+    flex: 0 0 calc(33.333% - 20px);
+  }
+}

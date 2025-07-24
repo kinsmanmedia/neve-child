@@ -56,7 +56,7 @@
             image: ''
           },
           {
-            title: 'Gallery & Exhibitions', 
+            title: 'Gallery & Exhibitions',
             description: 'Experience rotating exhibitions featuring local and regional artists showcasing diverse mediums and contemporary works.',
             link: '/gallery',
             linkText: 'View Gallery',
@@ -65,7 +65,7 @@
           {
             title: 'Community Events',
             description: 'Join us for special events, artist talks, and community gatherings that celebrate art and bring people together.',
-            link: '/events', 
+            link: '/events',
             linkText: 'See Events',
             image: ''
           }
@@ -76,7 +76,7 @@
     edit: function (props) {
       const { attributes, setAttributes } = props;
       const { banner_title, banner_subtitle, banner_button_text, banner_button_link, banner_video_url, cards } = attributes;
-      
+
       console.log('MAC Home Banner edit function called', { attributes });
 
       const updateCard = (index, field, value) => {
@@ -150,7 +150,7 @@
                 onClick: addCard
               }, 'Add Card')
             ),
-            cards.map((card, index) => 
+            cards.map((card, index) =>
               wp.element.createElement(
                 'div',
                 { key: index, style: { marginBottom: '20px', padding: '15px', border: '1px solid #ddd', borderRadius: '4px' } },
@@ -158,32 +158,32 @@
                 wp.element.createElement(TextControl, {
                   label: 'Title',
                   value: card.title,
-                  onChange: function(value) { updateCard(index, 'title', value); }
+                  onChange: function (value) { updateCard(index, 'title', value); }
                 }),
                 wp.element.createElement('textarea', {
                   placeholder: 'Description',
                   value: card.description,
-                  onChange: function(e) { updateCard(index, 'description', e.target.value); },
+                  onChange: function (e) { updateCard(index, 'description', e.target.value); },
                   style: { width: '100%', minHeight: '60px', marginBottom: '10px' }
                 }),
                 wp.element.createElement(TextControl, {
                   label: 'Link URL',
                   value: card.link,
-                  onChange: function(value) { updateCard(index, 'link', value); }
+                  onChange: function (value) { updateCard(index, 'link', value); }
                 }),
                 wp.element.createElement(TextControl, {
                   label: 'Link Text',
                   value: card.linkText,
-                  onChange: function(value) { updateCard(index, 'linkText', value); }
+                  onChange: function (value) { updateCard(index, 'linkText', value); }
                 }),
                 wp.element.createElement(TextControl, {
                   label: 'Image URL',
                   value: card.image,
-                  onChange: function(value) { updateCard(index, 'image', value); }
+                  onChange: function (value) { updateCard(index, 'image', value); }
                 }),
                 cards.length > 1 && wp.element.createElement(Button, {
                   isDestructive: true,
-                  onClick: function() { removeCard(index); },
+                  onClick: function () { removeCard(index); },
                   style: { marginTop: '10px' }
                 }, 'Remove Card')
               )
@@ -197,7 +197,7 @@
             style: {
               padding: '20px',
               border: '2px dashed #0073aa',
-              backgroundColor: '#f9f9f9'
+              backgroundColor: '#f9b45d',
             }
           },
           wp.element.createElement('h2', null, banner_title),
@@ -208,7 +208,7 @@
               style: {
                 padding: '10px 20px',
                 backgroundColor: '#d63638',
-                color: 'white',
+                color: '#f9b45d',
                 border: 'none',
                 borderRadius: '4px',
                 marginBottom: '20px'
@@ -218,9 +218,9 @@
           ),
           wp.element.createElement(
             'div',
-            { 
-              style: { 
-                display: 'grid', 
+            {
+              style: {
+                display: 'grid',
                 gridTemplateColumns: cards.length === 1 ? '1fr' : cards.length === 2 ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)',
                 gap: '15px',
                 marginTop: '20px'
@@ -235,7 +235,7 @@
                     border: '1px solid #ddd',
                     borderRadius: '8px',
                     padding: '15px',
-                    backgroundColor: 'white'
+                    backgroundColor: '#f9b45d'
                   }
                 },
                 wp.element.createElement('h4', { style: { margin: '0 0 10px 0', fontSize: '16px' } }, card.title),

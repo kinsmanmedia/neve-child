@@ -60,3 +60,8 @@ blue
 .btn-yellow {
   background-color: #f9b45d !important;
 }
+
+.w-full {
+  display: block;
+  width: 100% !important;
+}
