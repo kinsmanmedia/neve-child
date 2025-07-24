@@ -48,7 +48,7 @@
   margin-bottom: 30px;
 }
 .articles-carousel {
-  overflow: hidden;
+  overflow: visible;
   border-radius: 12px;
 }
 .articles-track {
@@ -68,13 +68,15 @@
   border-radius: 12px;
   overflow: hidden;
   transition: transform 0.3s ease;
+  z-index: 999 !important;
 }
 .article-card:hover {
   transform: translateY(-5px);
+  z-index: 999 !important;
 }
 .article-image {
   aspect-ratio: 16/9;
-  overflow: hidden;
+  overflow: visible;
 }
 .article-image a {
   display: block;
