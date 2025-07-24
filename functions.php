@@ -29,6 +29,13 @@ function neve_child_enqueue_styles() {
         wp_get_theme()->get('Version')
     );
     
+    // Enqueue shared carousel controls CSS
+    wp_enqueue_style('neve-child-carousel-controls',
+        get_stylesheet_directory_uri() . '/assets/css/components/carousel-controls.css',
+        array('neve-child-variables'),
+        wp_get_theme()->get('Version')
+    );
+    
     // Enqueue child theme stylesheet with variables as dependency
     wp_enqueue_style('neve-child-style',
         get_stylesheet_directory_uri() . '/style.css',

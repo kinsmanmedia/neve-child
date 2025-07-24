@@ -1,0 +1,183 @@
+/**
+ * Shared Carousel Controls - Buttons and Dots
+ * Used by mac-whats-new and mac-custom-carousel components
+ * @package Neve Child
+ * @since 1.0.0
+ */
+
+/* Carousel Controls */
+.carousel-controls,
+.custom-carousel-controls {
+  margin-top: 30px;
+}
+
+.carousel-navigation,
+.custom-carousel-navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.carousel-btn,
+.custom-carousel-btn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: white;
+  color: var(--mac-color-yellow);
+  border: 2px solid var(--mac-color-yellow);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.carousel-btn:hover,
+.custom-carousel-btn:hover {
+  color: white;
+  background: var(--mac-color-yellow);
+  border: 2px solid var(--mac-color-yellow);
+}
+
+.carousel-btn:disabled,
+.custom-carousel-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.carousel-btn:disabled:hover,
+.custom-carousel-btn:disabled:hover {
+  transform: none;
+  color: white;
+}
+
+/* Dots */
+.carousel-dots,
+.custom-carousel-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  margin: 0 15px;
+}
+
+.mac-carousel-dot,
+.mac-custom-carousel-dot {
+  width: 6px !important;
+  height: 6px !important;
+  min-width: 6px !important;
+  min-height: 6px !important;
+  max-width: 6px !important;
+  max-height: 6px !important;
+  border-radius: 50% !important;
+  background: transparent !important;
+  border: 1px solid var(--mac-color-yellow) !important;
+  opacity: 0.7 !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-sizing: border-box !important;
+}
+
+.mac-carousel-dot:hover,
+.mac-carousel-dot.active,
+.mac-custom-carousel-dot:hover,
+.mac-custom-carousel-dot.active {
+  background: var(--mac-color-yellow) !important;
+  opacity: 1 !important;
+}
+
+.mac-carousel-dot.active,
+.mac-custom-carousel-dot.active {
+  transform: scale(1.2) !important;
+  box-shadow: 0 2px 8px rgba(249, 180, 93, 0.3) !important;
+}
+
+.mac-carousel-dot:hover,
+.mac-custom-carousel-dot:hover {
+  transform: scale(1.1) !important;
+}
+
+/* Responsive Controls */
+/* Desktop and up - default sizes already set above */
+
+/* Tablet landscape - slightly smaller controls */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .carousel-btn,
+  .custom-carousel-btn {
+    width: 42px;
+    height: 42px;
+  }
+  .carousel-navigation,
+  .custom-carousel-navigation {
+    gap: 19px;
+  }
+}
+
+/* Tablet portrait - smaller controls */
+@media (min-width: 601px) and (max-width: 768px) {
+  .carousel-btn,
+  .custom-carousel-btn {
+    width: 40px;
+    height: 40px;
+  }
+  .carousel-navigation,
+  .custom-carousel-navigation {
+    gap: 18px;
+  }
+  .carousel-dots,
+  .custom-carousel-dots {
+    margin: 0 12px;
+    gap: 5px;
+  }
+}
+
+/* Mobile landscape - smaller controls */
+@media (min-width: 481px) and (max-width: 600px) {
+  .carousel-btn,
+  .custom-carousel-btn {
+    width: 36px;
+    height: 36px;
+  }
+  .carousel-navigation,
+  .custom-carousel-navigation {
+    gap: 15px;
+  }
+  .carousel-dots,
+  .custom-carousel-dots {
+    margin: 0 10px;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+}
+
+/* Mobile portrait - smallest controls */
+@media (max-width: 480px) {
+  .carousel-btn,
+  .custom-carousel-btn {
+    width: 32px;
+    height: 32px;
+  }
+  .carousel-navigation,
+  .custom-carousel-navigation {
+    gap: 12px;
+  }
+  .carousel-dots,
+  .custom-carousel-dots {
+    margin: 0 8px;
+    gap: 2px;
+  }
+  .mac-carousel-dot,
+  .mac-custom-carousel-dot {
+    width: 3px !important;
+    height: 3px !important;
+    min-width: 3px !important;
+    min-height: 3px !important;
+    max-width: 3px !important;
+    max-height: 3px !important;
+    border-width: 1px !important;
+  }
+}

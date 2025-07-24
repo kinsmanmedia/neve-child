@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     articlesPerView = newArticlesPerView;
                     totalSlides = Math.ceil(articles.length / articlesPerView);
                     currentSlide = Math.min(currentSlide, totalSlides - 1);
+                    updateDotsForResponsive(); // Update dots first with new totalSlides
                     updateCarousel();
                     updateDots();
                     updateButtons();
@@ -230,13 +231,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
         
-        // Update dots on resize as well
-        window.addEventListener('resize', function() {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(function() {
-                updateDotsForResponsive();
-            }, 250);
-        });
+        // Removed duplicate resize event listener - now handled above
         
         // Initialize dots properly
         updateDotsForResponsive();
