@@ -12,9 +12,6 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-/**
- * Render function for mac-home-banner component
- */
 function neve_child_render_mac_home_banner_block($attributes, $content) {
     // Get attributes with defaults
     $banner_title = $attributes['banner_title'] ?? 'Welcome to Mississauga Arts Council';

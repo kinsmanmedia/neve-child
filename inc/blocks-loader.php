@@ -72,7 +72,7 @@ class Neve_Child_Components_Loader {
             wp_register_script(
                 'neve-child-' . $component_name . '-component-editor',
                 $this->components_url . $component_name . '/' . $component_name . '.js',
-                array('wp-blocks', 'wp-element', 'wp-editor', 'wp-components', 'wp-i18n'),
+                array('wp-blocks', 'wp-element', 'wp-block-editor', 'wp-components', 'wp-i18n'),
                 filemtime($js_file)
             );
         }
