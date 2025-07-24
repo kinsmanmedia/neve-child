@@ -42,7 +42,7 @@
   border-radius: 12px;
   overflow: hidden;
   transition: transform 0.3s ease;
-  overflow: hidden;
+  overflow: hidden !important;
 }
 .custom-card:hover {
   transform: translateY(-5px);
@@ -51,6 +51,7 @@
   aspect-ratio: 16/9;
   overflow: hidden;
   border-bottom: 1px solid var(--mac-color-yellow);
+  position: relative;
 }
 .custom-card-image a {
   display: block;
@@ -60,10 +61,12 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: opacity 0.3s ease;
+  display: block;
 }
 .custom-card:hover .custom-card-thumbnail {
-  transform: scale(1.05);
+  overflow: hidden !important;
+  opacity: 0.9;
 }
 
 /* Content */
