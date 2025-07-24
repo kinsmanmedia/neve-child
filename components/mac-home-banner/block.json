@@ -33,6 +33,32 @@
     "banner_video_url": {
       "type": "string",
       "default": ""
+    },
+    "cards": {
+      "type": "array",
+      "default": [
+        {
+          "title": "Programs & Workshops",
+          "description": "Discover our diverse range of artistic programs designed to inspire creativity and foster artistic growth in our community.",
+          "link": "/programs",
+          "linkText": "Learn More",
+          "image": ""
+        },
+        {
+          "title": "Gallery & Exhibitions", 
+          "description": "Experience rotating exhibitions featuring local and regional artists showcasing diverse mediums and contemporary works.",
+          "link": "/gallery",
+          "linkText": "View Gallery",
+          "image": ""
+        },
+        {
+          "title": "Community Events",
+          "description": "Join us for special events, artist talks, and community gatherings that celebrate art and bring people together.",
+          "link": "/events", 
+          "linkText": "See Events",
+          "image": ""
+        }
+      ]
     }
   },
   "render": "file:./render.php"

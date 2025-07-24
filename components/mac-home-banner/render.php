@@ -20,6 +20,29 @@ function neve_child_render_mac_home_banner_block($attributes, $content) {
     $banner_button_link = $attributes['banner_button_link'] ?? '/mac-membership';
     $banner_background_image = $attributes['banner_background_image'] ?? null;
     $banner_video_url = $attributes['banner_video_url'] ?? '';
+    $cards = $attributes['cards'] ?? [
+        [
+            'title' => 'Programs & Workshops',
+            'description' => 'Discover our diverse range of artistic programs designed to inspire creativity and foster artistic growth in our community.',
+            'link' => '/programs',
+            'linkText' => 'Learn More',
+            'image' => ''
+        ],
+        [
+            'title' => 'Gallery & Exhibitions',
+            'description' => 'Experience rotating exhibitions featuring local and regional artists showcasing diverse mediums and contemporary works.',
+            'link' => '/gallery',
+            'linkText' => 'View Gallery',
+            'image' => ''
+        ],
+        [
+            'title' => 'Community Events',
+            'description' => 'Join us for special events, artist talks, and community gatherings that celebrate art and bring people together.',
+            'link' => '/events',
+            'linkText' => 'See Events',
+            'image' => ''
+        ]
+    ];
 
     ob_start();
 ?>
@@ -50,7 +73,19 @@ function neve_child_render_mac_home_banner_block($attributes, $content) {
     <div class="mac-home-banner-bottom">
         <div class="banner-content">
             <div class="banner-container">
-                card 1
+                <div class="cards-container" data-cards-count="<?php echo count($cards); ?>">
+                    <?php foreach ($cards as $index => $card): ?>
+                        <div class="card" data-aos="fade-up" data-aos-delay="<?php echo ($index + 1) * 100; ?>">
+                            <div class="card-content">
+                                <h3><?php echo esc_html($card['title']); ?></h3>
+                                <p><?php echo esc_html($card['description']); ?></p>
+                                <button href="<?php echo esc_url($card['link']); ?>" class="btn btn-yellow">
+                                    <?php echo esc_html($card['linkText']); ?>
+                                </button>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
             </div>
         </div>
     </div>

@@ -1,0 +1,54 @@
+.mac-home-banner-bottom {
+  position: relative;
+  min-height: 80vh;
+}
+.mac-home-banner-bottom .banner-container {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.cards-container {
+  width: 100vw;
+  height: 80vh;
+  display: flex;
+}
+
+.card {
+  display: flex;
+  flex: 1;
+  padding: 8rem 2rem;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.5s ease, transform 0.3s ease;
+}
+
+/* Staggered animation delays */
+.card:nth-child(1) {
+  background-color: var(--mac-color-primary);
+  transition-delay: 0.1s;
+}
+.card:nth-child(2) {
+  background-color: var(--mac-color-secondary);
+  transition-delay: 0.2s;
+}
+.card:nth-child(3) {
+  background-color: var(--mac-color-tertiary);
+  transition-delay: 0.3s;
+}
+
+.card.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}

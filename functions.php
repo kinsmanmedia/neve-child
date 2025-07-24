@@ -52,6 +52,21 @@ function neve_child_enqueue_styles() {
         true
     );
     
+    // Enqueue MAC home banner cards CSS
+    wp_enqueue_style('neve-child-mac-home-banner-cards',
+        get_stylesheet_directory_uri() . '/components/mac-home-banner/cards/cards.css',
+        array('neve-child-variables'),
+        wp_get_theme()->get('Version')
+    );
+    
+    // Enqueue MAC home banner cards JavaScript
+    wp_enqueue_script('neve-child-mac-home-banner-cards',
+        get_stylesheet_directory_uri() . '/components/mac-home-banner/cards/cards.js',
+        array(),
+        wp_get_theme()->get('Version'),
+        true
+    );
+    
     // Enqueue MAC header styles (with variables as dependency)
     wp_enqueue_style('neve-child-mac-header-style',
         get_stylesheet_directory_uri() . '/components/mac-header/style.css',

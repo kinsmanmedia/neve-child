@@ -55,5 +55,8 @@ blue
 }
 
 .btn-red {
-  background-color: #cc6349 !important;
+  background-color: var(--mac-color-primary) !important;
+}
+.btn-yellow {
+  background-color: #f9b45d !important;
 }

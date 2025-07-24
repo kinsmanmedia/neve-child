@@ -1,12 +1,19 @@
 (function () {
   // Wait for WordPress dependencies to be loaded
   if (typeof wp === 'undefined' || !wp.blocks) {
+    console.log('WordPress dependencies not loaded');
     return;
   }
 
   const { registerBlockType } = wp.blocks;
-  const { InspectorControls } = wp.blockEditor;
-  const { PanelBody, TextControl } = wp.components;
+  const { InspectorControls } = wp.blockEditor || {};
+  const { PanelBody, TextControl, Button, TextareaControl } = wp.components || {};
+
+  // Check if all required components are available
+  if (!InspectorControls || !PanelBody || !TextControl) {
+    console.log('Missing WordPress components:', { InspectorControls, PanelBody, TextControl });
+    return;
+  }
 
   registerBlockType('neve-child/mac-home-banner', {
     title: 'MAC Home Banner',
@@ -37,12 +44,66 @@
       banner_video_url: {
         type: 'string',
         default: ''
+      },
+      cards: {
+        type: 'array',
+        default: [
+          {
+            title: 'Programs & Workshops',
+            description: 'Discover our diverse range of artistic programs designed to inspire creativity and foster artistic growth in our community.',
+            link: '/programs',
+            linkText: 'Learn More',
+            image: ''
+          },
+          {
+            title: 'Gallery & Exhibitions', 
+            description: 'Experience rotating exhibitions featuring local and regional artists showcasing diverse mediums and contemporary works.',
+            link: '/gallery',
+            linkText: 'View Gallery',
+            image: ''
+          },
+          {
+            title: 'Community Events',
+            description: 'Join us for special events, artist talks, and community gatherings that celebrate art and bring people together.',
+            link: '/events', 
+            linkText: 'See Events',
+            image: ''
+          }
+        ]
       }
     },
 
     edit: function (props) {
       const { attributes, setAttributes } = props;
-      const { banner_title, banner_subtitle, banner_button_text, banner_button_link, banner_video_url } = attributes;
+      const { banner_title, banner_subtitle, banner_button_text, banner_button_link, banner_video_url, cards } = attributes;
+      
+      console.log('MAC Home Banner edit function called', { attributes });
+
+      const updateCard = (index, field, value) => {
+        const newCards = [...cards];
+        newCards[index] = { ...newCards[index], [field]: value };
+        setAttributes({ cards: newCards });
+      };
+
+      const addCard = () => {
+        if (cards.length < 3) {
+          const newCards = [...cards, {
+            title: 'New Card',
+            description: 'Enter card description here.',
+            link: '#',
+            linkText: 'Learn More',
+            image: ''
+          }];
+          setAttributes({ cards: newCards });
+        }
+      };
+
+      const removeCard = (index) => {
+        if (cards.length > 1) {
+          const newCards = cards.filter((_, i) => i !== index);
+          setAttributes({ cards: newCards });
+        }
+      };
 
       return wp.element.createElement(
         'div',
@@ -52,7 +113,8 @@
           null,
           wp.element.createElement(
             PanelBody,
-            { title: 'Banner Settings' },
+            { title: 'Banner Settings', initialOpen: true },
+            wp.element.createElement('p', null, 'Banner Controls:'),
             wp.element.createElement(TextControl, {
               label: 'Banner Title',
               value: banner_title,
@@ -72,12 +134,60 @@
               label: 'Button Link',
               value: banner_button_link,
               onChange: function (value) { setAttributes({ banner_button_link: value }); }
-            }),
-            wp.element.createElement(TextControl, {
-              label: 'Video URL',
-              value: banner_video_url,
-              onChange: function (value) { setAttributes({ banner_video_url: value }); }
             })
+          ),
+          wp.element.createElement(
+            PanelBody,
+            { title: 'Cards Settings', initialOpen: true },
+            wp.element.createElement('p', null, 'Cards Panel Loaded Successfully'),
+            wp.element.createElement(
+              'div',
+              { style: { marginBottom: '15px' } },
+              wp.element.createElement('p', null, `Cards: ${cards.length}/3`),
+              wp.element.createElement(Button, {
+                isPrimary: true,
+                disabled: cards.length >= 3,
+                onClick: addCard
+              }, 'Add Card')
+            ),
+            cards.map((card, index) => 
+              wp.element.createElement(
+                'div',
+                { key: index, style: { marginBottom: '20px', padding: '15px', border: '1px solid #ddd', borderRadius: '4px' } },
+                wp.element.createElement('h4', null, `Card ${index + 1}`),
+                wp.element.createElement(TextControl, {
+                  label: 'Title',
+                  value: card.title,
+                  onChange: function(value) { updateCard(index, 'title', value); }
+                }),
+                wp.element.createElement('textarea', {
+                  placeholder: 'Description',
+                  value: card.description,
+                  onChange: function(e) { updateCard(index, 'description', e.target.value); },
+                  style: { width: '100%', minHeight: '60px', marginBottom: '10px' }
+                }),
+                wp.element.createElement(TextControl, {
+                  label: 'Link URL',
+                  value: card.link,
+                  onChange: function(value) { updateCard(index, 'link', value); }
+                }),
+                wp.element.createElement(TextControl, {
+                  label: 'Link Text',
+                  value: card.linkText,
+                  onChange: function(value) { updateCard(index, 'linkText', value); }
+                }),
+                wp.element.createElement(TextControl, {
+                  label: 'Image URL',
+                  value: card.image,
+                  onChange: function(value) { updateCard(index, 'image', value); }
+                }),
+                cards.length > 1 && wp.element.createElement(Button, {
+                  isDestructive: true,
+                  onClick: function() { removeCard(index); },
+                  style: { marginTop: '10px' }
+                }, 'Remove Card')
+              )
+            )
           )
         ),
         wp.element.createElement(
@@ -100,10 +210,39 @@
                 backgroundColor: '#d63638',
                 color: 'white',
                 border: 'none',
-                borderRadius: '4px'
+                borderRadius: '4px',
+                marginBottom: '20px'
               }
             },
             banner_button_text
+          ),
+          wp.element.createElement(
+            'div',
+            { 
+              style: { 
+                display: 'grid', 
+                gridTemplateColumns: cards.length === 1 ? '1fr' : cards.length === 2 ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)',
+                gap: '15px',
+                marginTop: '20px'
+              }
+            },
+            cards.map((card, index) =>
+              wp.element.createElement(
+                'div',
+                {
+                  key: index,
+                  style: {
+                    border: '1px solid #ddd',
+                    borderRadius: '8px',
+                    padding: '15px',
+                    backgroundColor: 'white'
+                  }
+                },
+                wp.element.createElement('h4', { style: { margin: '0 0 10px 0', fontSize: '16px' } }, card.title),
+                wp.element.createElement('p', { style: { margin: '0 0 10px 0', fontSize: '14px', color: '#666' } }, card.description),
+                wp.element.createElement('span', { style: { color: '#d63638', fontSize: '14px' } }, card.linkText)
+              )
+            )
           )
         )
       );

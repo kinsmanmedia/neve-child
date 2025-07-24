@@ -7,7 +7,7 @@
   height: calc(100vh - var(--mac-header-height-desktop));
 }
 .mac-home-banner-bottom {
-  height: 100vh;
+  min-height: 100vh;
 }
 @media only screen and (max-width: 760px) {
   .mac-home-banner {
