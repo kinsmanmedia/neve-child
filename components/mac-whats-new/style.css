@@ -231,7 +231,7 @@
     min-height: 400px;
   }
   .articles-track {
-    gap: 0;
+    gap: 20px;
   }
   /* Carousel controls now handled by shared carousel-controls.css */
   .article-content {
@@ -259,7 +259,7 @@
     min-height: 380px;
   }
   .articles-track {
-    gap: 0;
+    gap: 20px;
   }
   /* Carousel controls now handled by shared carousel-controls.css */
   .article-content {
@@ -269,4 +269,20 @@
     font-size: 1rem;
     min-height: 2.4rem;
   }
+}
+
+/* news alignment  */
+.article-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.article-content * {
+  margin: 0 !important;
+}
+.article-actions {
+  display: flex;
+}
+.article-actions a {
+  width: 100%;
 }

@@ -179,7 +179,7 @@
     min-height: 400px;
   }
   .custom-track {
-    gap: 0;
+    gap: 20px;
   }
   /* Carousel controls now handled by shared carousel-controls.css */
   .custom-card-content {
@@ -201,7 +201,7 @@
     min-height: 380px;
   }
   .custom-track {
-    gap: 0;
+    gap: 20px;
   }
   /* Carousel controls now handled by shared carousel-controls.css */
   .custom-card-content {

@@ -166,8 +166,21 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         function updateCarousel() {
-            const translateX = -(currentSlide * (100 / articlesPerView));
-            track.style.transform = `translateX(${translateX}%)`;
+            let translateX;
+            
+            if (articlesPerView === 1) {
+                // For mobile (1 card), account for gap between cards
+                // Each card is 100% width, plus we need to account for the 20px gap
+                const cardWidth = track.offsetWidth;
+                const gapSize = 20; // 20px gap from CSS
+                const moveDistance = cardWidth + gapSize;
+                translateX = -(currentSlide * moveDistance);
+                track.style.transform = `translateX(${translateX}px)`;
+            } else {
+                // For multiple cards, use percentage calculation
+                translateX = -(currentSlide * (100 / articlesPerView));
+                track.style.transform = `translateX(${translateX}%)`;
+            }
             
             // Remove any inline flex styles to let CSS media queries work
             articles.forEach(article => {
