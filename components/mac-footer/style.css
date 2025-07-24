@@ -1,0 +1,44 @@
+/**
+ * MAC Footer Component Styles - Simple Version
+ * @package Neve Child
+ * @since 1.0.0
+ */
+
+.mac-footer {
+  background-color: var(--mac-bg-cream);
+  border-top: 2px solid var(--mac-color-primary);
+}
+.mac-footer-container {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+}
+.mac-footer-top {
+  padding: 15px;
+  text-align: center;
+}
+.mac-footer-top p {
+  margin: 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.mac-footer-main {
+  width: 100%;
+  flex-grow: 1;
+  border-top: 2px solid var(--mac-color-primary);
+  border-bottom: 2px solid var(--mac-color-primary);
+  padding: 15px;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  justify-items: center;
+}
+.mac-footer-main p {
+  margin-bottom: 0 !important;
+  width: 100%;
+  text-align: center;
+}
+.mac-footer-bottom {
+  padding: 15px;
+  text-align: center;
+}

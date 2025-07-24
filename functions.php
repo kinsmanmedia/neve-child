@@ -80,6 +80,20 @@ function neve_child_enqueue_styles() {
         array('neve-child-variables'),
         wp_get_theme()->get('Version')
     );
+    
+    // Enqueue MAC footer styles and scripts
+    wp_enqueue_style('neve-child-mac-footer-style',
+        get_stylesheet_directory_uri() . '/components/mac-footer/style.css',
+        array('neve-child-variables'),
+        wp_get_theme()->get('Version')
+    );
+    
+    wp_enqueue_script('neve-child-mac-footer',
+        get_stylesheet_directory_uri() . '/components/mac-footer/mac-footer.js',
+        array(),
+        wp_get_theme()->get('Version'),
+        true
+    );
 }
 add_action('wp_enqueue_scripts', 'neve_child_enqueue_styles');
 
@@ -140,3 +154,60 @@ add_action('after_setup_theme', 'neve_child_custom_image_sizes');
 
 // Load the automatic component loader
 require_once get_stylesheet_directory() . '/inc/blocks-loader.php';
+
+/**
+ * ========================================
+ * CUSTOMIZER SETTINGS FOR MAC FOOTER
+ * ========================================
+ * Adds customizer options for footer content
+ */
+
+function neve_child_customize_register($wp_customize) {
+    // Add MAC Footer Section
+    $wp_customize->add_section('mac_footer_settings', array(
+        'title'    => __('MAC Footer Settings', 'neve-child'),
+        'priority' => 120,
+    ));
+
+    // Social Media Settings
+    $social_platforms = array(
+        'facebook' => 'Facebook URL',
+        'twitter' => 'Twitter URL',
+        'instagram' => 'Instagram URL',
+        'youtube' => 'YouTube URL',
+    );
+
+    foreach ($social_platforms as $platform => $label) {
+        $wp_customize->add_setting('mac_social_' . $platform, array(
+            'default'           => '',
+            'sanitize_callback' => 'esc_url_raw',
+        ));
+
+        $wp_customize->add_control('mac_social_' . $platform, array(
+            'label'    => __($label, 'neve-child'),
+            'section'  => 'mac_footer_settings',
+            'type'     => 'url',
+        ));
+    }
+
+    // Contact Information
+    $contact_fields = array(
+        'address' => array('Contact Address', 'textarea'),
+        'phone' => array('Phone Number', 'text'),
+        'email' => array('Email Address', 'email'),
+    );
+
+    foreach ($contact_fields as $field => $config) {
+        $wp_customize->add_setting('mac_contact_' . $field, array(
+            'default'           => '',
+            'sanitize_callback' => $config[1] === 'email' ? 'sanitize_email' : 'sanitize_text_field',
+        ));
+
+        $wp_customize->add_control('mac_contact_' . $field, array(
+            'label'    => __($config[0], 'neve-child'),
+            'section'  => 'mac_footer_settings',
+            'type'     => $config[1],
+        ));
+    }
+}
+add_action('customize_register', 'neve_child_customize_register');
