@@ -1,12 +1,12 @@
 .mac-home-banner-bottom {
   position: relative;
   min-height: 80vh;
-}
-.mac-home-banner-bottom .banner-container {
-  display: flex;
   position: absolute;
   bottom: 0;
   left: 0;
+}
+.mac-home-banner-bottom .banner-container {
+  display: flex;
 }
 
 .cards-container {
@@ -51,4 +51,10 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+.card-content-txt-cont {
+  min-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

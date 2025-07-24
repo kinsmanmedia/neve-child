@@ -78,7 +78,9 @@ function neve_child_render_mac_home_banner_block($attributes, $content) {
                         <div class="card" data-aos="fade-up" data-aos-delay="<?php echo ($index + 1) * 100; ?>">
                             <div class="card-content">
                                 <h3><?php echo esc_html($card['title']); ?></h3>
-                                <p><?php echo esc_html($card['description']); ?></p>
+                                <div class="card-content-txt-cont">
+                                    <p class="card-text"><?php echo esc_html($card['description']); ?></p>
+                                </div>
                                 <button href="<?php echo esc_url($card['link']); ?>" class="btn btn-yellow">
                                     <?php echo esc_html($card['linkText']); ?>
                                 </button>

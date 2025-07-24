@@ -2,12 +2,10 @@
 .mac-home-banner {
   background-color: var(--mac-bg-cream);
   height: calc(200vh - var(--mac-header-height-desktop));
+  position: relative;
 }
 .mac-home-banner-top {
   height: calc(100vh - var(--mac-header-height-desktop));
-}
-.mac-home-banner-bottom {
-  min-height: 100vh;
 }
 @media only screen and (max-width: 760px) {
   .mac-home-banner {
