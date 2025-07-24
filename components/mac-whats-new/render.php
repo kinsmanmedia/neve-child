@@ -134,7 +134,7 @@ if (!function_exists('neve_child_render_mac_whats_new_block')) {
                                 <div class="carousel-navigation">
                                     <button class="carousel-btn carousel-prev" aria-label="Previous articles">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M14 18L8 12L14 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
                                     </button>
                                     
@@ -153,7 +153,7 @@ if (!function_exists('neve_child_render_mac_whats_new_block')) {
                                     
                                     <button class="carousel-btn carousel-next" aria-label="Next articles">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M10 18L16 12L10 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
                                     </button>
                                 </div>
