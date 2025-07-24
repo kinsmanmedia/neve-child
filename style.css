@@ -32,13 +32,10 @@ body {
 /* 
 red
 #CC6349 
-
 yellow
 #F7AC59 
-
 green
 #58BE5C 
-
 blue
 #328CC2 
 */
@@ -58,7 +55,7 @@ blue
   background-color: var(--mac-color-primary) !important;
 }
 .btn-yellow {
-  background-color: #f9b45d !important;
+  background-color: #d4882b !important;
 }
 
 .w-full {
