@@ -217,6 +217,13 @@
   .custom-track {
     gap: 20px;
   }
+  .custom-carousel-btn {
+    width: 42px;
+    height: 42px;
+  }
+  .custom-carousel-navigation {
+    gap: 19px;
+  }
 }
 
 /* Tablet portrait - 2 cards */
