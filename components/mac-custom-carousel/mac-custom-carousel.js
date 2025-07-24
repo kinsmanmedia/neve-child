@@ -256,39 +256,33 @@
                     },
                     `Card ${cardIndex + 1}`
                   ),
-                  card.image && wp.element.createElement('img', {
-                    src: card.image,
-                    style: {
-                      width: '100%',
-                      height: '120px',
-                      objectFit: 'cover',
-                      borderRadius: '4px',
-                      marginBottom: '10px'
-                    }
-                  }),
-                  !card.image && wp.element.createElement(
+                  wp.element.createElement(
                     'div',
                     {
                       style: {
                         width: '100%',
                         height: '120px',
-                        backgroundColor: '#f0f0f0',
+                        backgroundColor: card.image ? 'transparent' : '#f0f0f0',
                         borderRadius: '4px',
                         marginBottom: '10px',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         fontSize: '12px',
-                        color: '#999'
+                        color: '#999',
+                        backgroundImage: card.image ? `url(${card.image})` : 'none',
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        border: card.image ? 'none' : '2px dashed #ddd'
                       }
                     },
-                    'No Image'
+                    !card.image && 'Click "Select Image" in sidebar →'
                   ),
                   wp.element.createElement(RichText, {
                     tagName: 'h4',
                     value: card.title,
                     onChange: (value) => updateCard(cardIndex, 'title', value),
-                    placeholder: 'Enter card title...',
+                    placeholder: 'Enter card title (optional)...',
                     style: { 
                       margin: '0 0 8px 0', 
                       fontSize: '16px',
@@ -309,19 +303,45 @@
                     },
                     allowedFormats: ['core/bold', 'core/italic']
                   }),
-                  card.link && wp.element.createElement(
+                  wp.element.createElement(
                     'div',
                     {
                       style: {
-                        padding: '6px 12px',
-                        backgroundColor: 'var(--mac-color-yellow)',
-                        color: 'white',
-                        borderRadius: '4px',
-                        fontSize: '12px',
-                        display: 'inline-block'
+                        marginTop: 'auto',
+                        paddingTop: '10px'
                       }
                     },
-                    card.linkText || 'Learn More'
+                    card.link ? wp.element.createElement(
+                      'div',
+                      {
+                        style: {
+                          padding: '8px 16px',
+                          backgroundColor: 'var(--mac-color-yellow)',
+                          color: 'white',
+                          borderRadius: '4px',
+                          fontSize: '12px',
+                          display: 'inline-block',
+                          textAlign: 'center',
+                          minWidth: '100px'
+                        }
+                      },
+                      card.linkText || 'Learn More'
+                    ) : wp.element.createElement(
+                      'div',
+                      {
+                        style: {
+                          padding: '8px 16px',
+                          backgroundColor: '#f0f0f0',
+                          color: '#999',
+                          borderRadius: '4px',
+                          fontSize: '12px',
+                          display: 'inline-block',
+                          textAlign: 'center',
+                          minWidth: '100px'
+                        }
+                      },
+                      'No button (add link in sidebar)'
+                    )
                   )
                 )
               )

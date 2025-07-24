@@ -57,20 +57,14 @@ function neve_child_render_mac_custom_carousel_block($attributes) {
                             <div class="custom-card-content">
                                 <?php if (!empty($card['title'])): ?>
                                     <h3 class="custom-card-title">
-                                        <?php if (!empty($card['link'])): ?>
-                                            <a href="<?php echo esc_url($card['link']); ?>">
-                                                <?php echo esc_html($card['title']); ?>
-                                            </a>
-                                        <?php else: ?>
-                                            <?php echo esc_html($card['title']); ?>
-                                        <?php endif; ?>
+                                        <?php echo esc_html($card['title']); ?>
                                     </h3>
                                 <?php endif; ?>
                                 
                                 <?php if (!empty($card['content'])): ?>
-                                    <p class="custom-card-description">
-                                        <?php echo esc_html($card['content']); ?>
-                                    </p>
+                                    <div class="custom-card-description">
+                                        <?php echo wp_kses_post($card['content']); ?>
+                                    </div>
                                 <?php endif; ?>
                                 
                                 <?php if (!empty($card['link']) && !empty($card['linkText'])): ?>

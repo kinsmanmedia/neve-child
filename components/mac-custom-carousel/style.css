@@ -10,7 +10,7 @@
   background-color: var(--mac-background-light);
 }
 .mac-custom-carousel .container {
-  max-width: 1200px;
+  max-width: 2400px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -37,10 +37,12 @@
   display: flex;
   flex-direction: column;
   min-height: 450px;
-  background: var(--mac-bg-cream);
+  background: white;
+  border: 1px solid var(--mac-color-yellow);
   border-radius: 12px;
   overflow: hidden;
   transition: transform 0.3s ease;
+  overflow: hidden;
 }
 .custom-card:hover {
   transform: translateY(-5px);
@@ -48,6 +50,7 @@
 .custom-card-image {
   aspect-ratio: 16/9;
   overflow: hidden;
+  border-bottom: 1px solid var(--mac-color-yellow);
 }
 .custom-card-image a {
   display: block;
@@ -94,14 +97,11 @@
   color: var(--mac-text-secondary);
   line-height: 1.6;
   margin-bottom: 20px;
-  max-height: 4.8rem;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+  flex: 1;
 }
 .custom-card-actions {
   margin-top: auto;
+  padding-top: 15px;
 }
 .custom-card-button {
   display: inline-block;
@@ -113,6 +113,9 @@
   font-weight: 600;
   transition: all 0.3s ease;
   border: 2px solid var(--mac-color-yellow);
+  width: 100%;
+  text-align: center;
+  box-sizing: border-box;
 }
 .custom-card-button:hover {
   background: transparent;
