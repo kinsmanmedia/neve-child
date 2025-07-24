@@ -53,12 +53,12 @@ blue
 
 .btn-red {
   background-color: var(--mac-color-primary) !important;
+  color: black !important;
 }
 .btn-yellow {
-  background-color: #d4882b !important;
+  background-color: var(--mac-color-yellow) !important;
 }
 
 .w-full {
-  display: block;
   width: 100% !important;
 }
