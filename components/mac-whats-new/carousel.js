@@ -170,22 +170,33 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (articlesPerView === 1) {
                 // For mobile (1 card), account for gap between cards
-                // Each card is 100% width, plus we need to account for the 20px gap
                 const cardWidth = track.offsetWidth;
                 const gapSize = 20; // 20px gap from CSS
                 const moveDistance = cardWidth + gapSize;
                 translateX = -(currentSlide * moveDistance);
                 track.style.transform = `translateX(${translateX}px)`;
             } else {
-                // For multiple cards, use percentage calculation
-                translateX = -(currentSlide * (100 / articlesPerView));
-                track.style.transform = `translateX(${translateX}%)`;
+                // For multiple cards, use pixel-based calculation for better alignment
+                const trackWidth = track.offsetWidth;
+                const gapSize = getGapSize();
+                const totalGapWidth = (articlesPerView - 1) * gapSize;
+                const cardWidth = (trackWidth - totalGapWidth) / articlesPerView;
+                const slideWidth = cardWidth + gapSize;
+                translateX = -(currentSlide * slideWidth);
+                track.style.transform = `translateX(${translateX}px)`;
             }
             
             // Remove any inline flex styles to let CSS media queries work
             articles.forEach(article => {
                 article.style.removeProperty('flex');
             });
+        }
+        
+        function getGapSize() {
+            const width = window.innerWidth;
+            if (width >= 1025) return 30; // Desktop gap
+            if (width >= 601) return 20;  // Tablet gap
+            return 20; // Mobile gap
         }
         
         function updateDots() {
