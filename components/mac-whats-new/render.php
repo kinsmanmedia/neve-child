@@ -118,7 +118,7 @@ if (!function_exists('neve_child_render_mac_whats_new_block')) {
                                                 <?php endif; ?>
 
                                                 <div class="article-actions">
-                                                    <a href="<?php the_permalink(); ?>" class="btn btn-red w-full">
+                                                    <a href="<?php the_permalink(); ?>" class="btn btn-red">
                                                         <?php echo esc_html($read_more_text); ?>
                                                     </a>
                                                 </div>
@@ -133,7 +133,7 @@ if (!function_exists('neve_child_render_mac_whats_new_block')) {
                                 <!-- Navigation Arrows -->
                                 <div class="carousel-navigation">
                                     <button class="carousel-btn carousel-prev" aria-label="Previous articles">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                                             <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
                                     </button>
@@ -152,7 +152,7 @@ if (!function_exists('neve_child_render_mac_whats_new_block')) {
                                     </div>
                                     
                                     <button class="carousel-btn carousel-next" aria-label="Next articles">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                                             <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
                                     </button>

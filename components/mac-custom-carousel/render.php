@@ -85,7 +85,7 @@ function neve_child_render_mac_custom_carousel_block($attributes) {
                 <div class="custom-carousel-navigation">
                     <button class="custom-carousel-btn custom-carousel-prev" 
                             aria-label="Previous cards">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </button>
@@ -94,7 +94,7 @@ function neve_child_render_mac_custom_carousel_block($attributes) {
                     
                     <button class="custom-carousel-btn custom-carousel-next" 
                             aria-label="Next cards">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </button>
