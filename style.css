@@ -50,7 +50,6 @@ blue
 .btn:hover {
   opacity: 0.9;
 }
-
 .btn-red {
   background-color: var(--mac-color-primary) !important;
   color: black !important;
@@ -58,7 +57,6 @@ blue
 .btn-yellow {
   background-color: var(--mac-color-yellow) !important;
 }
-
 .w-full {
   width: 100% !important;
 }
