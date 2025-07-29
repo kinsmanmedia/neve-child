@@ -2,14 +2,8 @@
 @use "variables" as *;
 @use "../components/header/style";
 
-html {
-  margin-top: 0px !important;
-}
-#wpadminbar {
-  display: none !important;
-}
-
-// Base styles
+// "mac" class has been added to body in this child theme.
+// All other classes are within .mac
 body {
   font-family: $font-family;
   line-height: $line-height-base;
@@ -18,6 +12,14 @@ body {
   max-width: 2400px;
   color: $text-color;
   background-color: $background-color;
+  border: 3px solid red !important;
+}
+//Hide WP editor top bar
+html {
+  margin-top: 0px !important;
+}
+#wpadminbar {
+  display: none !important;
 }
 
 .mac {

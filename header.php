@@ -8,7 +8,7 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
-<div id="page" class="site">
+<div id="page" class="site mac">
     <?php
     // Include the custom header component
     require_once get_stylesheet_directory() . '/src/components/header/main.php';
