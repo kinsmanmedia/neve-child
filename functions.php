@@ -38,7 +38,8 @@ function discover_and_include_components() {
     
     foreach ($component_dirs as $dir) {
         $component_name = basename($dir);
-        $component_file = $dir . '/component.php';
+        // Look for main.php instead of component.php
+        $component_file = $dir . '/main.php';
         
         if (file_exists($component_file)) {
             require_once $component_file;
