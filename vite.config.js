@@ -59,7 +59,9 @@ export default defineConfig({
         preprocessorOptions: {
             scss: {
                 // Update to use modern @use syntax
-                additionalData: `@use "@/scss/variables" as *;`
+                additionalData: `@use "@/scss/variables" as *;`,
+                // Use modern Sass API
+                api: 'modern-compiler'
             }
         }
     },

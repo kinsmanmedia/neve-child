@@ -1,19 +1,16 @@
 {
   "src/js/main.js": {
-    "file": "main-DohESfBX.js",
+    "file": "main-DIvUqgPY.js",
     "name": "main",
     "src": "src/js/main.js",
     "isEntry": true,
     "css": [
-      "style-B4swZcK1.css"
+      "style-CUBvMNDF.css"
     ]
   },
   "src/scss/main.scss": {
-    "file": "style-B4swZcK1.css",
+    "file": "style-CUBvMNDF.css",
     "src": "src/scss/main.scss",
-    "isEntry": true,
-    "names": [
-      "style.css"
-    ]
+    "isEntry": true
   }
 }
