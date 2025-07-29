@@ -57,6 +57,11 @@ add_action('wp_enqueue_scripts', 'load_component_assets');
 function load_component_assets() {
     $is_dev = defined('WP_DEBUG') && WP_DEBUG;
     $components_dir = get_stylesheet_directory() . '/src/components';
+
+    // // Suppress Jetpack DNS warnings specifically
+    // add_filter( 'jetpack_can_make_outbound_requests', '__return_false' );
+    // Suppress DNS warnings entirely in local dev
+    error_reporting( E_ALL & ~E_WARNING );
     
     if (!is_dir($components_dir)) {
         return;
