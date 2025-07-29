@@ -1,62 +1,17 @@
 /*
 Theme Name: Neve Child
+Description: Child theme of Neve with Vite build process
+Author: Chris Kinsman
 Template: neve
-Description: Child theme of Neve for custom Mississauga Arts Council CSS 
-Version: 1.0
-Screenshot: ./assets/images/cover.png
+Version: 1.0.0
+Text Domain: neve-child
 */
-
-@import url("../neve/style.css");
-
-#wpadminbar {
-  display: none !important;
-}
-html {
-  margin-top: 0px !important;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Sophia Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, sans-serif !important;
-}
-
-body {
-  max-width: 1800px;
-}
 
 /* 
-red
-#CC6349 
-yellow
-#F7AC59 
-green
-#58BE5C 
-blue
-#328CC2 
+This file is required by WordPress but styles are loaded via Vite.
+The actual styles are in src/scss/main.scss 
 */
 
-.btn {
-  border-radius: 300px !important;
-  padding: 15px 45px !important;
-  color: black;
-  transition: all 0.5s ease;
-  opacity: 1;
-}
-.btn:hover {
-  opacity: 0.9;
-}
-.btn-red {
-  background-color: var(--mac-color-primary) !important;
-  color: black !important;
-}
-.btn-yellow {
-  background-color: var(--mac-color-yellow) !important;
-}
-.w-full {
-  width: 100% !important;
+body {
+  border: solid red !important;
 }

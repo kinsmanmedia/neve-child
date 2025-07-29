@@ -1,0 +1,43 @@
+// Use modern @use instead of @import
+@use "variables" as *;
+
+// Base styles
+body {
+  font-family: $font-family;
+  line-height: $line-height-base;
+  margin: 0;
+  padding: 0;
+  color: $text-color;
+  background-color: $background-color;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+}
+
+// Utility classes
+.text-center {
+  text-align: center;
+}
+
+.mb-1 {
+  margin-bottom: $spacing-xs;
+}
+.mb-2 {
+  margin-bottom: $spacing-sm;
+}
+.mb-3 {
+  margin-bottom: $spacing-md;
+}
+.mb-4 {
+  margin-bottom: $spacing-lg;
+}
+
+// Responsive utilities
+@media (max-width: $breakpoint-md) {
+  .container {
+    padding: 0 $spacing-sm;
+  }
+}

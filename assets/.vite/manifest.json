@@ -1,0 +1,19 @@
+{
+  "src/js/main.js": {
+    "file": "main-Cm_JHdcb.js",
+    "name": "main",
+    "src": "src/js/main.js",
+    "isEntry": true,
+    "css": [
+      "style-BOoHsFis.css"
+    ]
+  },
+  "src/scss/main.scss": {
+    "file": "style-BOoHsFis.css",
+    "src": "src/scss/main.scss",
+    "isEntry": true,
+    "names": [
+      "style.css"
+    ]
+  }
+}
