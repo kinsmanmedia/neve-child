@@ -11,7 +11,3 @@ Text Domain: neve-child
 This file is required by WordPress but styles are loaded via Vite.
 The actual styles are in src/scss/main.scss 
 */
-
-body {
-  border: solid red !important;
-}

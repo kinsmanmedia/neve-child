@@ -1,15 +1,15 @@
 {
   "src/js/main.js": {
-    "file": "main-Cm_JHdcb.js",
+    "file": "main-DohESfBX.js",
     "name": "main",
     "src": "src/js/main.js",
     "isEntry": true,
     "css": [
-      "style-BOoHsFis.css"
+      "style-B4swZcK1.css"
     ]
   },
   "src/scss/main.scss": {
-    "file": "style-BOoHsFis.css",
+    "file": "style-B4swZcK1.css",
     "src": "src/scss/main.scss",
     "isEntry": true,
     "names": [
