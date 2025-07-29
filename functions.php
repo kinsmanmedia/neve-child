@@ -105,7 +105,7 @@ function load_component_assets() {
 // Main Vite asset loading
 add_action('wp_enqueue_scripts', 'load_vite_assets');
 function load_vite_assets() {
-    $is_dev = defined('WP_DEBUG') && WP_DEBUG;
+    $is_dev = true; // Force dev mode for hot reloading
     
     if ($is_dev) {
         wp_enqueue_script('vite-client', 'http://localhost:3000/@vite/client', [], null);
