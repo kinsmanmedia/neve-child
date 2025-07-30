@@ -147,12 +147,6 @@
     border-radius: 4px;
     transition: background-color 0.3s ease;
 
-    &:hover,
-    &:focus {
-      background-color: rgba($mac-color-primary, 0.1);
-      outline: none;
-    }
-
     .hamburger-icon {
       width: 24px;
       height: 18px;
@@ -223,6 +217,11 @@
           &:focus {
             color: $mac-color-primary;
             background-color: rgba($mac-color-primary, 0.05);
+          }
+        }
+        @media only screen and (max-width: $mac-header-break) {
+          > a {
+            padding: $spacing-sm 0 !important;
           }
         }
 
@@ -356,16 +355,12 @@
               padding: 0;
             }
           }
-
-          // Third level hover states
-          .menu-item:hover > .sub-menu {
-            transform: translateY(0);
-          }
         }
 
         @media only screen and (max-width: $mac-header-break) {
           .sub-menu {
             top: $mac-header-height-mobile !important;
+            gap: 0;
           }
         }
 
@@ -515,45 +510,20 @@
             box-shadow: none;
             background: rgba($mac-color-primary, 0.05);
             padding: 0;
-            max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease;
             width: 100%;
 
             .menu-item {
               width: 100%;
-              border-bottom: 1px solid rgba($mac-color-primary, 0.05);
-
-              &:last-child {
-                border-bottom: none;
-              }
-
+              padding: 0;
               a {
-                padding: $spacing-sm $spacing-xl;
                 font-size: 1rem;
                 font-weight: 400;
                 width: 100%;
-                box-sizing: border-box;
-                display: flex;
-                align-items: center;
-
-                &:hover,
-                &:focus {
-                  background-color: rgba($mac-color-primary, 0.1);
-                  transform: none;
-                }
+                padding: 0;
               }
             }
-
-            // Third level menus
-            .sub-menu .menu-item a {
-              padding-left: calc(#{$spacing-xl} + #{$spacing-md});
-              font-size: 0.9rem;
-            }
-          }
-
-          &.dropdown-open > .sub-menu {
-            max-height: 500px; // Adjust based on your needs
           }
         }
       }
@@ -584,10 +554,6 @@
     border-radius: 4px;
     z-index: 100000;
     transition: top 0.3s ease;
-
-    &:focus {
-      top: 6px;
-    }
   }
 
   // Mobile menu backdrop
@@ -622,12 +588,6 @@
         box-shadow: none;
       }
     }
-  }
-
-  // Focus styles for accessibility
-  *:focus {
-    outline: 2px solid $mac-color-primary;
-    outline-offset: 2px;
   }
 
   // High contrast mode support
