@@ -1,0 +1,316 @@
+@use "../../scss/variables" as *;
+
+// ==========================================
+// DESKTOP STYLES ONLY
+// ==========================================
+
+@media only screen and (min-width: #{$mac-header-break + 1px}) {
+  .mac {
+    .mac-header {
+      z-index: 999 !important;
+      height: $mac-header-height-desktop;
+      overflow: visible;
+      position: fixed !important;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 2400px;
+      display: flex;
+      box-sizing: border-box;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+
+      &.sticky-header {
+        position: fixed;
+      }
+    }
+
+    .mac-header-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    // Header Top Section
+    .header-top {
+      display: flex;
+      height: calc(#{$mac-header-height-desktop} / 2);
+      align-items: center;
+      padding: 0 $spacing-md;
+      gap: $spacing-md;
+      box-sizing: border-box;
+      border-bottom: 1px solid $mac-color-primary;
+    }
+
+    .site-branding {
+      flex-grow: 1;
+
+      .custom-logo-link {
+        display: flex;
+        img {
+          height: 100%;
+          max-height: 40px;
+          width: auto;
+        }
+      }
+
+      .site-title {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: $mac-color-primary;
+        text-decoration: none;
+        letter-spacing: -0.5px;
+        text-transform: uppercase;
+
+        &:hover {
+          color: $mac-color-primary-dark;
+        }
+      }
+
+      .site-description {
+        margin: 0;
+        font-size: 0.875rem;
+        color: $mac-color-gray-medium;
+      }
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: $spacing-sm;
+    }
+
+    // Desktop CTA Buttons
+    .header-cta-button {
+      .btn {
+        padding: $spacing-xs $spacing-lg;
+        border-radius: 100px;
+        text-decoration: none;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.875rem;
+        transition: all 0.3s ease;
+        display: inline-block;
+
+        &.btn-red {
+          background-color: $mac-color-primary;
+          color: $mac-bg-cream;
+          border: 2px solid $mac-color-primary;
+
+          &:hover,
+          &:focus {
+            background-color: $mac-color-primary-dark;
+            border: 2px solid $mac-color-primary-dark;
+          }
+        }
+      }
+    }
+
+    // Header Navigation (top menu)
+    .header-navigation {
+      .header-menu {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        gap: $spacing-sm;
+        li {
+          margin: 0;
+          a {
+            padding: $spacing-xs $spacing-sm;
+            text-decoration: none;
+            color: $mac-color-gray-dark;
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+
+            &:hover,
+            &:focus {
+              color: $mac-color-primary;
+            }
+          }
+        }
+      }
+    }
+
+    // Main Navigation (Desktop)
+    .main-navigation {
+      display: flex;
+      height: calc(#{$mac-header-height-desktop} / 2);
+      overflow: visible;
+      box-sizing: border-box;
+      align-items: center;
+      padding: 0 $spacing-md;
+
+      .primary-menu {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        gap: $spacing-lg;
+        align-items: center;
+        flex-grow: 1;
+
+        .menu-item {
+          position: relative;
+          margin: 0;
+
+          > a {
+            padding: $spacing-sm $spacing-md;
+            text-decoration: none;
+            color: $mac-color-gray-dark;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            border-radius: 4px;
+
+            &:hover,
+            &:focus {
+              color: $mac-color-primary;
+              background-color: rgba($mac-color-primary, 0.05);
+            }
+          }
+
+          // Dropdown functionality
+          &.menu-item-has-children {
+            > a::after {
+              content: "";
+              width: 0;
+              height: 0;
+              border-left: 4px solid transparent;
+              border-right: 4px solid transparent;
+              border-top: 4px solid currentColor;
+              margin-left: $spacing-sm;
+              transition: transform 0.3s ease;
+            }
+
+            &:hover > a::after,
+            &.dropdown-open > a::after {
+              transform: rotate(180deg);
+            }
+
+            .dropdown-toggle {
+              display: none; // Hidden on desktop
+            }
+          }
+
+          // Desktop Submenu styles - Full width dropdowns
+          .sub-menu {
+            position: fixed;
+            top: $mac-header-height-desktop;
+            left: 0px !important;
+            transform: translateX(0px) !important;
+            background: var(--mac-bg-cream-alpha);
+            border: 1px solid $primary-color;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 0;
+            padding: $spacing-md 0;
+            width: 100vw;
+            max-width: 2400px;
+            min-height: 200px;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            list-style: none;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: $spacing-lg;
+            align-content: start;
+
+            .menu-item {
+              margin: 0;
+              padding: 0 $spacing-lg;
+
+              a {
+                padding: $spacing-sm $spacing-md;
+                color: $mac-color-gray-dark;
+                text-decoration: none;
+                display: flex;
+                align-items: center;
+                transition: all 0.3s ease;
+                border-radius: 4px;
+                font-weight: 500;
+
+                &:hover,
+                &:focus {
+                  background-color: rgba($mac-color-primary, 0.1);
+                  color: $mac-color-primary;
+                  transform: translateX(4px);
+                }
+              }
+
+              // Sub-menu dropdown arrows
+              &.menu-item-has-children {
+                > a::after {
+                  content: "";
+                  width: 0;
+                  height: 0;
+                  border-left: 4px solid transparent;
+                  border-right: 4px solid transparent;
+                  border-top: 4px solid currentColor;
+                  margin-left: auto;
+                  margin-right: 0;
+                  transition: transform 0.3s ease;
+                  flex-shrink: 0;
+                }
+
+                &:hover > a::after {
+                  transform: rotate(90deg);
+                }
+              }
+            }
+
+            // Third level menus - keep them as regular dropdowns
+            .sub-menu {
+              position: absolute !important;
+              top: 0 !important;
+              left: 50px !important;
+              transform: translateY(50%) !important;
+              width: 250px;
+              border-radius: 5px;
+              max-width: none;
+              min-height: auto;
+              display: block;
+              grid-template-columns: none;
+              gap: 0;
+
+              .menu-item {
+                padding: 0;
+              }
+            }
+          }
+
+          // Show submenu on hover (desktop)
+          &:hover > .sub-menu,
+          &.dropdown-open > .sub-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+          }
+        }
+      }
+    }
+
+    // Hide mobile elements on desktop
+    .menu-toggle {
+      display: none;
+    }
+
+    .mobile-cta-button {
+      display: none;
+    }
+
+    .mobile-only {
+      display: none !important;
+    }
+
+    .desktop-only {
+      display: block !important;
+    }
+  }
+}
