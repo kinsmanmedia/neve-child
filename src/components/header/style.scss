@@ -37,33 +37,32 @@
     gap: $spacing-md;
     box-sizing: border-box;
     background: $mac-bg-cream;
-    border-bottom: 1px solid $mac-color-gray-light;
+    border-bottom: 1px solid $mac-color-primary;
   }
 
   .site-branding {
     flex-grow: 1;
 
     .custom-logo-link {
-      display: inline-block;
-      text-decoration: none;
-
+      display: flex;
       img {
-        height: auto;
+        height: 100%;
         max-height: 40px;
         width: auto;
-        transition: transform 0.2s ease;
-
-        &:hover {
-          transform: scale(1.05);
-        }
       }
     }
 
     .site-title {
-      font-size: 1.5rem;
-      font-weight: bold;
+      font-size: 1.75rem;
+      font-weight: 700;
       color: $mac-color-primary;
       text-decoration: none;
+      letter-spacing: -0.5px;
+      text-transform: uppercase;
+
+      &:hover {
+        color: $mac-color-primary-dark;
+      }
     }
 
     .site-description {
@@ -115,10 +114,8 @@
       margin: 0;
       padding: 0;
       gap: $spacing-sm;
-
       li {
         margin: 0;
-
         a {
           padding: $spacing-xs $spacing-sm;
           text-decoration: none;
@@ -392,7 +389,7 @@
   }
 
   // Responsive Design
-  @media only screen and (max-width: 760px) {
+  @media only screen and (max-width: $mac-header-break) {
     .mac-header {
       height: $mac-header-height-mobile;
     }
@@ -424,26 +421,26 @@
       display: none; // Hide header menu on mobile
     }
 
-    // Mobile Main Navigation
+    // Mobile Main Navigation - Slide from left
     .main-navigation {
-      position: absolute;
-      top: 0;
+      position: fixed;
+      top: $mac-header-height-mobile;
       left: 0;
       width: 100vw;
-      height: auto;
+      max-width: 100vw;
+      height: 100vh;
       background: $mac-bg-cream;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-      transform: translateY(-100%);
+      box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
       opacity: 0;
       visibility: hidden;
       transition: all 0.3s ease;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      padding: 0;
+      z-index: 1001;
 
       &.active {
-        transform: translateY(0);
+        transform: translateX(0);
         opacity: 1;
         visibility: visible;
       }
@@ -451,23 +448,36 @@
       .primary-menu {
         flex-direction: column;
         gap: 0;
-        padding: $spacing-sm 0;
+        width: 100%;
+        padding: 0;
 
         .menu-item {
           width: 100%;
-          border-bottom: 1px solid $mac-color-gray-light;
+          border-bottom: 1px solid rgba($mac-color-primary, 0.1);
 
           &:last-child {
             border-bottom: none;
           }
 
           > a {
-            padding: $spacing-md $spacing-md;
+            padding: $spacing-md $spacing-lg;
             border-radius: 0;
+            display: flex;
             justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 1.1rem;
+            font-weight: 500;
 
             &::after {
               display: none; // Hide CSS arrows, use JS toggle buttons
+            }
+
+            &:hover,
+            &:focus {
+              background-color: rgba($mac-color-primary, 0.1);
+              transform: none;
             }
           }
 
@@ -503,19 +513,42 @@
             visibility: visible;
             transform: none;
             box-shadow: none;
-            background: rgba($mac-color-primary, 0.02);
+            background: rgba($mac-color-primary, 0.05);
             padding: 0;
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease;
+            width: 100%;
 
-            .menu-item a {
-              padding-left: $spacing-xl;
-              font-size: 0.9rem;
+            .menu-item {
+              width: 100%;
+              border-bottom: 1px solid rgba($mac-color-primary, 0.05);
+
+              &:last-child {
+                border-bottom: none;
+              }
+
+              a {
+                padding: $spacing-sm $spacing-xl;
+                font-size: 1rem;
+                font-weight: 400;
+                width: 100%;
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+
+                &:hover,
+                &:focus {
+                  background-color: rgba($mac-color-primary, 0.1);
+                  transform: none;
+                }
+              }
             }
 
+            // Third level menus
             .sub-menu .menu-item a {
               padding-left: calc(#{$spacing-xl} + #{$spacing-md});
+              font-size: 0.9rem;
             }
           }
 
@@ -557,13 +590,36 @@
     }
   }
 
+  // Mobile menu backdrop
+  .mobile-menu-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
   // Body adjustments when menu is open
   body.menu-open {
     overflow: hidden;
 
-    @media only screen and (max-width: 760px) {
-      .mac-header .main-navigation {
-        max-height: calc(100vh - #{$mac-header-height-mobile});
+    @media only screen and (max-width: $mac-header-break) {
+      .mobile-menu-backdrop {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .mac-header {
+        box-shadow: none;
       }
     }
   }

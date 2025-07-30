@@ -8,14 +8,16 @@ class MACHeader {
     this.header = document.querySelector(".mac-header");
     this.menuToggle = document.querySelector(".menu-toggle");
     this.mainNavigation = document.querySelector(".main-navigation");
+    this.backdrop = document.querySelector(".mobile-menu-backdrop");
 
     // Debug logging
     console.log("Header found:", !!this.header);
     console.log("Menu toggle found:", !!this.menuToggle);
     console.log("Main navigation found:", !!this.mainNavigation);
+    console.log("Backdrop found:", !!this.backdrop);
     this.body = document.body;
     this.isMenuOpen = false;
-    this.breakpoint = 760;
+    this.breakpoint = 912;
 
     this.init();
   }
@@ -54,9 +56,22 @@ class MACHeader {
       }
     });
 
-    // Close menu when clicking outside
+    // Close menu when clicking backdrop
+    if (this.backdrop) {
+      this.backdrop.addEventListener("click", () => {
+        if (this.isMenuOpen) {
+          this.closeMobileMenu();
+        }
+      });
+    }
+
+    // Close menu when clicking outside (fallback)
     document.addEventListener("click", (e) => {
-      if (this.isMenuOpen && !this.header.contains(e.target)) {
+      if (
+        this.isMenuOpen &&
+        !this.mainNavigation.contains(e.target) &&
+        !this.menuToggle.contains(e.target)
+      ) {
         this.closeMobileMenu();
       }
     });
@@ -167,6 +182,7 @@ class MACHeader {
 
   openMobileMenu() {
     this.mainNavigation.classList.add("active");
+    this.backdrop?.classList.add("active");
     this.menuToggle.querySelector(".hamburger-icon")?.classList.add("active");
     this.menuToggle.setAttribute("aria-expanded", "true");
     this.body.classList.add("menu-open");
@@ -183,6 +199,7 @@ class MACHeader {
 
   closeMobileMenu() {
     this.mainNavigation.classList.remove("active");
+    this.backdrop?.classList.remove("active");
     this.menuToggle
       .querySelector(".hamburger-icon")
       ?.classList.remove("active");

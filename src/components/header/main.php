@@ -63,11 +63,7 @@ function render_header_component($args = []) {
                    rel="home" 
                    class="custom-logo-link"
                    aria-label="<?php echo esc_attr(get_bloginfo('name') . ' - ' . __('Home', 'neve')); ?>">
-                    <?php if (has_custom_logo()) : ?>
-                        <?php the_custom_logo(); ?>
-                    <?php else : ?>
-                        <span class="site-title"><?php echo esc_html($args['logo_text']); ?></span>
-                    <?php endif; ?>
+                    <img src="./wp-content/uploads/2021/06/cropped-MAC-Colour-Black-1.png" class="custom-logo" />
                 </a>
                 
                 <?php 
@@ -119,6 +115,9 @@ function render_header_component($args = []) {
             </div>
         </div>
 
+        <!-- Mobile menu backdrop -->
+        <div class="mobile-menu-backdrop"></div>
+        
         <?php if (has_nav_menu('primary')) : ?>
             <nav class="main-navigation" 
                  role="navigation" 
