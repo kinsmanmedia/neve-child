@@ -13,7 +13,7 @@
     max-width: 2400px;
     display: flex;
     box-sizing: border-box;
-    background: $mac-color-white;
+    background: $mac-bg-cream;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 
@@ -36,7 +36,7 @@
     padding: 0 $spacing-md;
     gap: $spacing-md;
     box-sizing: border-box;
-    background: $mac-color-white;
+    background: $mac-bg-cream;
     border-bottom: 1px solid $mac-color-gray-light;
   }
 
@@ -94,7 +94,7 @@
 
       &.btn-red {
         background-color: $mac-color-primary;
-        color: $mac-color-white;
+        color: $mac-bg-cream;
         border: 2px solid $mac-color-primary;
 
         &:hover,
@@ -194,7 +194,7 @@
     height: calc(#{$mac-header-height-desktop} / 2);
     overflow: visible;
     box-sizing: border-box;
-    background: $mac-color-white;
+    background: $mac-bg-cream;
     align-items: center;
     padding: 0 $spacing-md;
 
@@ -238,7 +238,7 @@
             border-left: 4px solid transparent;
             border-right: 4px solid transparent;
             border-top: 4px solid currentColor;
-            margin-left: $spacing-xs;
+            margin-left: $spacing-sm;
             transition: transform 0.3s ease;
           }
 
@@ -273,26 +273,34 @@
           }
         }
 
-        // Submenu styles
+        // Submenu styles - Full width dropdowns
         .sub-menu {
-          position: absolute;
-          top: 100%;
-          left: 0;
-          background: $mac-color-white;
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-          border-radius: 4px;
-          padding: $spacing-xs 0;
-          min-width: 200px;
+          position: fixed;
+          top: $mac-header-height-desktop;
+          left: 0px !important;
+          transform: translateX(0px) !important;
+          background: var(--mac-bg-cream-alpha);
+          backdrop-filter: blur(8px);
+          -webkit-backdrop-filter: blur(8px); // for Safari support
+          border-radius: 0;
+          padding: $spacing-md 0;
+          width: 100vw;
+          max-width: 2400px;
+          min-height: 200px;
           z-index: 1000;
           opacity: 0;
           visibility: hidden;
-          transform: translateY(-10px);
           transition: all 0.3s ease;
           list-style: none;
           margin: 0;
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: $spacing-lg;
+          align-content: start;
 
           .menu-item {
             margin: 0;
+            padding: 0 $spacing-lg;
 
             a {
               padding: $spacing-sm $spacing-md;
@@ -300,20 +308,46 @@
               text-decoration: none;
               display: block;
               transition: all 0.3s ease;
-              border-radius: 0;
+              border-radius: 4px;
+              font-weight: 500;
 
               &:hover,
               &:focus {
                 background-color: rgba($mac-color-primary, 0.1);
                 color: $mac-color-primary;
+                transform: translateX(4px);
               }
             }
           }
 
-          // Third level menus
+          // Third level menus - keep them as regular dropdowns
           .sub-menu {
-            top: 0;
-            left: 100%;
+            position: absolute !important;
+            top: 0 !important;
+            left: 50px !important;
+            transform: translateY(50%) !important;
+            width: 250px;
+            border-radius: 5px;
+            max-width: none;
+            min-height: auto;
+            display: block;
+            grid-template-columns: none;
+            gap: 0;
+
+            .menu-item {
+              padding: 0;
+            }
+          }
+
+          // Third level hover states
+          .menu-item:hover > .sub-menu {
+            transform: translateY(0);
+          }
+        }
+
+        @media only screen and (max-width: $mac-header-break) {
+          .sub-menu {
+            top: $mac-header-height-mobile !important;
           }
         }
 
@@ -322,7 +356,7 @@
         &.dropdown-open > .sub-menu {
           opacity: 1;
           visibility: visible;
-          transform: translateY(0);
+          transform: translateX(-50%) translateY(0);
         }
       }
     }
@@ -372,12 +406,11 @@
     // Mobile Main Navigation
     .main-navigation {
       position: absolute;
-      top: 100%;
+      top: 0;
       left: 0;
-      width: 100%;
+      width: 100vw;
       height: auto;
-      max-height: calc(100vh - #{$mac-header-height-mobile});
-      background: $mac-color-white;
+      background: $mac-bg-cream;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
       transform: translateY(-100%);
       opacity: 0;
@@ -491,7 +524,7 @@
     top: -40px;
     left: 6px;
     background: $mac-color-primary;
-    color: $mac-color-white;
+    color: $mac-bg-cream;
     padding: $spacing-xs $spacing-sm;
     text-decoration: none;
     border-radius: 4px;
