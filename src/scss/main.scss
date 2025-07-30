@@ -1,5 +1,4 @@
-// Use modern @use instead of @import - must be at the top
-@use "variables" as *;
+// Variables are auto-imported via Vite config
 @use "../components/header/style";
 
 // "mac" class has been added to body in this child theme.
@@ -12,13 +11,26 @@ body {
   max-width: 2400px;
   color: $text-color;
   background-color: $background-color;
-  border: 3px solid red !important;
+
+  margin-top: $mac-header-height-desktop !important;
 }
+
+@media only screen and (max-width: 760px) {
+  body {
+    margin-top: $mac-header-height-mobile !important;
+  }
+}
+
 //Hide WP editor top bar
 html {
   margin-top: 0px !important;
 }
 #wpadminbar {
+  display: none !important;
+}
+
+// Hide skip link (accessibility link)
+.neve-skip-link {
   display: none !important;
 }
 

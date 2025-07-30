@@ -56,11 +56,21 @@ $GLOBALS['theme_components'] = discover_and_include_components();
 // Dynamic component asset loading
 add_action('wp_enqueue_scripts', 'load_component_assets');
 function load_component_assets() {
-    $is_dev = defined('WP_DEBUG') && WP_DEBUG;
+    // Check if Vite dev server is running
+    $vite_dev_server = 'http://localhost:3000';
+    $context = stream_context_create([
+        'http' => [
+            'timeout' => 1,
+            'ignore_errors' => true
+        ]
+    ]);
+    
+    $response = @file_get_contents($vite_dev_server . '/@vite/client', false, $context);
+    $is_dev = $response !== false;
     $components_dir = get_stylesheet_directory() . '/src/components';
 
-    // // Suppress Jetpack DNS warnings specifically
-    // add_filter( 'jetpack_can_make_outbound_requests', '__return_false' );
+    // Suppress Jetpack DNS warnings specifically
+    add_filter( 'jetpack_can_make_outbound_requests', '__return_false' );
     // Suppress DNS warnings entirely in local dev
     error_reporting( E_ALL & ~E_WARNING );
     
@@ -111,12 +121,24 @@ function load_component_assets() {
 // Main Vite asset loading
 add_action('wp_enqueue_scripts', 'load_vite_assets');
 function load_vite_assets() {
-    $is_dev = true; // Force dev mode for hot reloading
+    // Check if Vite dev server is running
+    $vite_dev_server = 'http://localhost:3000';
+    $is_dev = false;
+    
+    // Try to detect if dev server is running
+    $context = stream_context_create([
+        'http' => [
+            'timeout' => 1,
+            'ignore_errors' => true
+        ]
+    ]);
+    
+    $response = @file_get_contents($vite_dev_server . '/@vite/client', false, $context);
+    $is_dev = $response !== false;
     
     if ($is_dev) {
         wp_enqueue_script('vite-client', 'http://localhost:3000/@vite/client', [], null);
         wp_enqueue_script('vite-main', 'http://localhost:3000/src/js/main.js', [], null, true);
-        wp_enqueue_style('vite-main-css', 'http://localhost:3000/src/scss/main.scss', [], null);
     } else {
         $manifest_path = get_stylesheet_directory() . '/assets/.vite/manifest.json';
         

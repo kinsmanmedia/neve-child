@@ -1,16 +1,72 @@
-// Colors
-$primary-color: #007cba;
-$secondary-color: #666;
-$text-color: #333;
-$background-color: #fff;
+/* ============================================================================
+    BRAND COLORS (CSS Custom Properties)
+  ============================================================================ */
+:root {
+  /* Primary colors */
+  --mac-color-primary: #cc6349;
+  --mac-color-primary-dark: #a04e3a;
+  --mac-color-primary-light: #d4806a;
 
-// MAC specific colors
-$mac-color-primary: #007cba;
-$mac-color-secondary: #e74c3c;
-$mac-color-gray-dark: #333;
+  /* Secondary colors */
+  --mac-color-secondary: #007cba;
+  --mac-color-secondary-dark: #005a85;
+  --mac-color-secondary-light: #339dd1;
+
+  /* Tertiary colors */
+  --mac-color-tertiary: #60c664;
+
+  /* Neutral colors */
+  --mac-color-white: #ffffff;
+  --mac-color-black: #000000;
+  --mac-color-gray-dark: #333333;
+  --mac-color-gray-medium: #666666;
+  --mac-color-gray-light: #cccccc;
+  --mac-color-gray-lighter: #f5f5f5;
+
+  /* Background colors */
+  --mac-bg-cream: #fffaeb;
+  --mac-bg-cream-alpha: rgba(255, 250, 235, 0.8);
+
+  /* Accent colors */
+  --mac-color-yellow: #f9b45d;
+}
+
+/* ============================================================================
+    SCSS VARIABLES
+  ============================================================================ */
+
+// Colors
+$primary-color: var(--mac-color-primary);
+$secondary-color: var(--mac-color-secondary);
+$text-color: var(--mac-color-gray-dark);
+$background-color: var(--mac-color-white);
+
+// MAC specific colors (updated to use CSS custom properties)
+$mac-color-primary: var(--mac-color-primary);
+$mac-color-secondary: var(--mac-color-secondary);
+$mac-color-gray-dark: var(--mac-color-gray-dark);
+
+// Additional MAC colors as SCSS variables
+$mac-color-primary-dark: var(--mac-color-primary-dark);
+$mac-color-primary-light: var(--mac-color-primary-light);
+$mac-color-secondary-dark: var(--mac-color-secondary-dark);
+$mac-color-secondary-light: var(--mac-color-secondary-light);
+$mac-color-tertiary: var(--mac-color-tertiary);
+$mac-color-yellow: var(--mac-color-yellow);
+
+// Neutral colors
+$mac-color-white: var(--mac-color-white);
+$mac-color-black: var(--mac-color-black);
+$mac-color-gray-medium: var(--mac-color-gray-medium);
+$mac-color-gray-light: var(--mac-color-gray-light);
+$mac-color-gray-lighter: var(--mac-color-gray-lighter);
+
+// Background colors
+$mac-bg-cream: var(--mac-bg-cream);
+$mac-bg-cream-alpha: var(--mac-bg-cream-alpha);
 
 // Header dimensions
-$mac-header-height-desktop: 150px;
+$mac-header-height-desktop: 120px;
 $mac-header-height-mobile: 90px;
 
 // Shadows
