@@ -243,6 +243,13 @@
                 display: flex;
                 align-items: center;
                 transition: all 0.3s ease;
+
+                &:hover,
+                &:focus {
+                  background-color: rgba($mac-color-primary, 0.1);
+                  color: $mac-color-primary;
+                  transform: translateX(4px);
+                }
               }
             }
 
