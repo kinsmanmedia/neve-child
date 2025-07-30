@@ -80,31 +80,9 @@
       gap: $spacing-xs;
     }
 
-    // Mobile CTA Buttons
+    // Mobile CTA Buttons - styles imported from buttons.scss
     .header-cta-button {
-      .btn {
-        padding: $spacing-xs $spacing-sm;
-        border-radius: 4px;
-        text-decoration: none;
-        font-weight: 600;
-        text-transform: uppercase;
-        font-size: 0.875rem;
-        transition: all 0.3s ease;
-        display: inline-block;
-
-        &.btn-red {
-          background-color: $mac-color-primary;
-          color: $mac-bg-cream;
-          border: 2px solid $mac-color-primary;
-
-          &:hover,
-          &:focus {
-            background-color: $mac-color-primary-dark;
-            border-color: $mac-color-primary-dark;
-            transform: translateY(-1px);
-          }
-        }
-      }
+      // Button styles are handled by the imported buttons.scss file
     }
 
     // Mobile Menu Toggle
@@ -288,24 +266,8 @@
         margin: 0;
         border-top: 1px solid $primary-color;
 
-        .btn {
-          width: 100%;
-          text-align: center;
-          padding: $spacing-md;
-          font-size: 1.1rem;
-          border-radius: 100px;
-          text-decoration: none;
-          font-weight: 600;
-          text-transform: uppercase;
-          transition: all 0.3s ease;
-          display: inline-block;
-
-          &.btn-red {
-            background-color: $mac-color-primary;
-            color: $mac-bg-cream;
-            border: 2px solid $mac-color-primary;
-          }
-        }
+        // Button styles are handled by the imported buttons.scss file
+        // Mobile-specific button styling is applied via .btn-mobile class
       }
     }
 
