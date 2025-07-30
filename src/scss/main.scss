@@ -38,7 +38,7 @@ html {
   // ==========================================
   // BUTTON STYLES
   // ==========================================
-  
+
   .btn {
     padding: $spacing-xs $spacing-lg;
     border-radius: 100px;
@@ -88,6 +88,10 @@ html {
         font-size: 0.875rem;
       }
     }
+  }
+
+  .w-full {
+    width: 100%;
   }
 
   // Margin utilities

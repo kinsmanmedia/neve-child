@@ -256,13 +256,13 @@
 
       .mobile-cta-button {
         display: flex !important;
-        width: auto;
         padding: $spacing-md;
         margin: 0;
         border-top: 1px solid $primary-color;
-
-        // Button styles are handled by the imported buttons.scss file
-        // Mobile-specific button styling is applied via .btn-mobile class
+        width: auto;
+      }
+      .mobile-cta-button a {
+        width: 100%;
       }
     }
 
