@@ -1,6 +1,9 @@
 // Import main styles
 import '../scss/main.scss'
 
+// Import component scripts
+import '../components/header/script.js'
+
 // Global JavaScript functionality
 console.log('Neve child theme loaded with Vite!')
 
