@@ -306,7 +306,8 @@
               padding: $spacing-sm $spacing-md;
               color: $mac-color-gray-dark;
               text-decoration: none;
-              display: block;
+              display: flex;
+              align-items: center;
               transition: all 0.3s ease;
               border-radius: 4px;
               font-weight: 500;
@@ -316,6 +317,26 @@
                 background-color: rgba($mac-color-primary, 0.1);
                 color: $mac-color-primary;
                 transform: translateX(4px);
+              }
+            }
+
+            // Sub-menu dropdown arrows
+            &.menu-item-has-children {
+              > a::after {
+                content: "";
+                width: 0;
+                height: 0;
+                border-left: 4px solid transparent;
+                border-right: 4px solid transparent;
+                border-top: 4px solid currentColor;
+                margin-left: auto;
+                margin-right: 0;
+                transition: transform 0.3s ease;
+                flex-shrink: 0;
+              }
+
+              &:hover > a::after {
+                transform: rotate(90deg);
               }
             }
           }
