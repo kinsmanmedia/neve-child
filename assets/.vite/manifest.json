@@ -1,4 +1,18 @@
 {
+  "src/blocks/mac-temp/index.js": {
+    "file": "blocks/mac-temp/index.js",
+    "name": "blocks/mac-temp/index",
+    "src": "src/blocks/mac-temp/index.js",
+    "isEntry": true
+  },
+  "src/blocks/mac-temp/style.scss": {
+    "file": "blocks/mac-temp/style.css",
+    "src": "src/blocks/mac-temp/style.scss",
+    "isEntry": true,
+    "names": [
+      "blocks/mac-temp/style.css"
+    ]
+  },
   "src/js/main.js": {
     "file": "main-U-8fpREx.js",
     "name": "main",

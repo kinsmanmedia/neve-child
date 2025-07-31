@@ -3,10 +3,17 @@
  * Neve Child Theme functions
  */
 
+add_action( 'after_setup_theme', function () {
+	// Disable loading ThemeIsle SDK if it's about to be called
+	remove_action( 'after_setup_theme', 'neve_sdk_init' );
+}, 0 );
+
 // Prevent direct access
 if (!defined('ABSPATH')) {
     exit;
 }
+
+add_filter( 'themeisle_sdk_show_promotions', '__return_false' );
 
 // Enqueue parent theme styles
 add_action('wp_enqueue_scripts', 'neve_child_enqueue_styles');
@@ -52,6 +59,13 @@ function discover_and_include_components() {
 
 // Store available components globally
 $GLOBALS['theme_components'] = discover_and_include_components();
+
+// Register custom blocks
+add_action('init', 'register_custom_blocks');
+function register_custom_blocks() {
+    // Register MAC temp button block
+    register_block_type(__DIR__ . '/src/blocks/mac-temp');
+}
 
 // Dynamic component asset loading
 add_action('wp_enqueue_scripts', 'load_component_assets');
@@ -201,9 +215,9 @@ function component_exists($component_name) {
 }
 
 // Add module type for Vite scripts
-add_filter('script_loader_tag', 'add_module_to_vite_script', 10, 3);
-function add_module_to_vite_script($tag, $handle, $src) {
-    if (strpos($src, 'localhost:3000') !== false) {
+add_filter('script_loader_tag', 'add_module_to_custom_block_scripts', 10, 3);
+function add_module_to_custom_block_scripts($tag, $handle, $src) {
+    if (strpos($src, 'assets/blocks/mac-temp/index.js') !== false) {
         return str_replace('<script ', '<script type="module" ', $tag);
     }
     return $tag;
