@@ -1,20 +1,82 @@
+/* ============================================================================
+    BRAND COLORS (CSS Custom Properties)
+  ============================================================================ */
+:root {
+  /* Primary colors */
+  --mac-color-primary: #cc6349;
+  --mac-color-primary-dark: #a04e3a;
+  --mac-color-primary-light: #d4806a;
+
+  /* Secondary colors */
+  --mac-color-secondary: #007cba;
+  --mac-color-secondary-dark: #005a85;
+  --mac-color-secondary-light: #339dd1;
+
+  /* Tertiary colors */
+  --mac-color-tertiary: #60c664;
+
+  /* Neutral colors */
+  --mac-color-white: #ffffff;
+  --mac-color-black: #000000;
+  --mac-color-gray-dark: #333333;
+  --mac-color-gray-medium: #666666;
+  --mac-color-gray-light: #cccccc;
+  --mac-color-gray-lighter: #f5f5f5;
+
+  /* Background colors */
+  --mac-bg-cream: #fffaeb;
+  --mac-bg-cream-alpha: rgba(255, 250, 235, 0.8);
+
+  /* Accent colors */
+  --mac-color-yellow: #f9b45d;
+}
+
+/* ============================================================================
+    SCSS VARIABLES
+  ============================================================================ */
+
 // Colors
-$primary-color: #007cba;
-$secondary-color: #666666;
-$accent-color: #ff6b35;
-$text-color: #333333;
-$text-light: #666666;
-$text-muted: #999999;
-$background-color: #ffffff;
-$border-color: #e1e1e1;
-$success-color: #28a745;
-$warning-color: #ffc107;
-$error-color: #dc3545;
+$primary-color: var(--mac-color-primary);
+$secondary-color: var(--mac-color-secondary);
+$text-color: var(--mac-color-gray-dark);
+$background-color: var(--mac-color-white);
+
+// MAC specific colors (using CSS custom properties)
+$mac-color-primary: var(--mac-color-primary);
+$mac-color-primary-dark: var(--mac-color-primary-dark);
+$mac-color-primary-light: var(--mac-color-primary-light);
+$mac-color-secondary: var(--mac-color-secondary);
+$mac-color-secondary-dark: var(--mac-color-secondary-dark);
+$mac-color-secondary-light: var(--mac-color-secondary-light);
+$mac-color-tertiary: var(--mac-color-tertiary);
+$mac-color-yellow: var(--mac-color-yellow);
+
+// Neutral colors
+$mac-color-white: var(--mac-color-white);
+$mac-color-black: var(--mac-color-black);
+$mac-color-gray-dark: var(--mac-color-gray-dark);
+$mac-color-gray-medium: var(--mac-color-gray-medium);
+$mac-color-gray-light: var(--mac-color-gray-light);
+$mac-color-gray-lighter: var(--mac-color-gray-lighter);
+
+// Background colors
+$mac-bg-cream: var(--mac-bg-cream);
+$mac-bg-cream-alpha: var(--mac-bg-cream-alpha);
+
+// MAC Header dimensions
+$mac-header-height-desktop: 120px;
+$mac-header-height-mobile: 90px;
+$mac-header-break: 912px;
+
+// MAC Shadows
+$mac-shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
 
 // Typography
-$font-family-primary: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+$font-family-primary: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 $font-family-secondary: Georgia, "Times New Roman", serif;
-$font-family-mono: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+$font-family-mono: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono",
+  monospace;
 
 $font-size-base: 16px;
 $font-size-small: 14px;
