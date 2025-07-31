@@ -5,7 +5,7 @@
     padding: 0px !important;
   }
   header {
-    border: solid red;
+    padding: $spacing-sm !important;
     height: $mac-header-height-desktop;
     overflow: visible;
     position: fixed;
@@ -23,7 +23,7 @@
   }
 
   .mac-header-container {
-    border: solid green;
+    // border: solid red;
     width: 100%;
     height: 100%;
     display: flex;
@@ -33,14 +33,14 @@
   }
 
   .header-top {
-    border: solid blue;
+    // border: solid blue;
     width: 100%;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0;
-    height: 50%;
+    height: 60%;
   }
 
   .site-branding {
@@ -58,8 +58,174 @@
       }
     }
   }
-
   .main-navigation {
+    // border: solid green;
+    height: 40%;
+    width: 100%;
+    display: flex;
+  }
+  .primary-menu {
+    width: 100%;
+    display: flex;
+    // gap: $spacing-md;
+  }
+  .menu-item {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-right: $spacing-md;
+
+    // Create an invisible bridge to prevent hover break
+    &:hover::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      height: 20px; // Bridge gap between menu and submenu
+      background: transparent;
+      z-index: 998;
+    }
+
+    &:hover > .sub-menu {
+      display: flex;
+    }
+  }
+
+  .sub-menu {
     display: none;
+    position: fixed;
+    top: $mac-header-height-desktop;
+    left: 0;
+    width: 100vw;
+    height: 300px;
+    background: $mac-bg-cream-alpha;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 999;
+    padding: $spacing-md;
+    box-sizing: border-box;
+    flex-direction: column;
+
+    &.show {
+      display: flex;
+    }
+
+    &:hover {
+      display: flex;
+    }
+
+    .menu-content {
+      flex: 1;
+      overflow-y: auto;
+      padding-bottom: $spacing-sm;
+      display: grid !important;
+      grid-template-columns: repeat(4, 1fr) !important;
+      grid-template-rows: repeat(4, 1fr) !important;
+      gap: $spacing-md !important;
+      list-style: none !important;
+
+      .menu-item {
+        display: block !important;
+        margin: 0 !important;
+        float: none !important;
+
+        a {
+          display: block;
+          padding: $spacing-sm $spacing-md;
+          color: inherit;
+          text-decoration: none;
+          transition: all 0.2s ease;
+          border-radius: 4px;
+          white-space: nowrap;
+
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.08);
+            transform: translateY(-1px);
+          }
+        }
+
+        // Handle nested sub-menus (third level) - keep them inline for full-width layout
+        &:hover > .sub-menu {
+          display: block;
+        }
+
+        .sub-menu {
+          position: relative;
+          top: auto;
+          left: auto;
+          width: auto;
+          height: auto;
+          background: $mac-bg-cream-alpha;
+          backdrop-filter: none;
+          box-shadow: none;
+          margin-top: $spacing-xs;
+          padding: $spacing-xs;
+          border-radius: 4px;
+          display: none;
+
+          &.show {
+            display: block;
+          }
+
+          .menu-item {
+            display: block;
+            margin: 0;
+            margin-bottom: $spacing-xs;
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+
+            a {
+              padding: $spacing-xs $spacing-sm;
+              font-size: 0.9em;
+            }
+          }
+        }
+      }
+    }
+
+    .menu-cta-section {
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      padding-top: $spacing-sm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: $spacing-md;
+
+      .cta-button {
+        padding: $spacing-sm $spacing-lg;
+        background: var(--mac-color-primary, #cc6349);
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background: var(--mac-color-primary-dark, #a04e3a);
+          transform: translateY(-1px);
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+      }
+
+      .cta-secondary {
+        padding: $spacing-sm $spacing-lg;
+        background: transparent;
+        color: var(--mac-color-primary, #cc6349);
+        text-decoration: none;
+        border: 1px solid var(--mac-color-primary, #cc6349);
+        border-radius: 4px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background: var(--mac-color-primary, #cc6349);
+          color: white;
+          transform: translateY(-1px);
+        }
+      }
+    }
   }
 }

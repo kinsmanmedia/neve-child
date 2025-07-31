@@ -43,21 +43,169 @@ body {
   padding: 0 $spacing-md;
 }
 
-// Example usage of variables
-.custom-button {
-  background-color: $primary-color;
-  color: white;
-  padding: $spacing-sm $spacing-md;
-  border: none;
-  border-radius: $border-radius-md;
+// MAC Button Styles
+.btn {
+  display: inline-block;
+  padding: $spacing-xs $spacing-xl !important;
+  border: 2px solid transparent;
+  border-radius: 100px !important;
   font-weight: $font-weight-medium;
+  font-size: $font-size-base;
+  line-height: 1.5;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
   transition: all $transition-base;
   box-shadow: $shadow-sm;
 
-  &:hover {
-    background-color: color.adjust($primary-color, $lightness: -10%);
-    box-shadow: $shadow-md;
-    transform: translateY(-1px);
+  // Primary button (prm)
+  &.btn-prm {
+    background-color: $mac-color-primary;
+    color: $mac-color-white;
+    border-color: $mac-color-primary;
+
+    &:hover,
+    &:focus {
+      background-color: color.adjust($mac-color-primary, $lightness: -10%);
+      border-color: color.adjust($mac-color-primary, $lightness: -10%);
+      color: $mac-color-white;
+      box-shadow: $shadow-md;
+    }
+
+    &:active {
+      background-color: color.adjust($mac-color-primary, $lightness: -15%);
+      border-color: color.adjust($mac-color-primary, $lightness: -15%);
+      color: $mac-color-white;
+      box-shadow: $shadow-sm;
+    }
+
+    &:disabled {
+      background-color: $mac-color-gray-light;
+      border-color: $mac-color-gray-light;
+      color: $mac-color-gray-medium;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+  }
+
+  // Secondary button (scd)
+  &.btn-scd {
+    background-color: $mac-color-secondary;
+    color: $mac-color-white;
+    border-color: $mac-color-secondary;
+
+    &:hover,
+    &:focus {
+      background-color: color.adjust($mac-color-secondary, $lightness: -10%);
+      border-color: color.adjust($mac-color-secondary, $lightness: -10%);
+      color: $mac-color-white;
+      box-shadow: $shadow-md;
+    }
+
+    &:active {
+      background-color: color.adjust($mac-color-secondary, $lightness: -15%);
+      border-color: color.adjust($mac-color-secondary, $lightness: -15%);
+      color: $mac-color-white;
+      box-shadow: $shadow-sm;
+    }
+
+    &:disabled {
+      background-color: $mac-color-gray-light;
+      border-color: $mac-color-gray-light;
+      color: $mac-color-gray-medium;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+  }
+
+  // Tertiary button (trt)
+  &.btn-trt {
+    background-color: $mac-color-tertiary;
+    color: $mac-color-white;
+    border-color: $mac-color-tertiary;
+
+    &:hover,
+    &:focus {
+      background-color: color.adjust($mac-color-tertiary, $lightness: -10%);
+      border-color: color.adjust($mac-color-tertiary, $lightness: -10%);
+      color: $mac-color-white;
+      box-shadow: $shadow-md;
+    }
+
+    &:active {
+      background-color: color.adjust($mac-color-tertiary, $lightness: -15%);
+      border-color: color.adjust($mac-color-tertiary, $lightness: -15%);
+      color: $mac-color-white;
+      box-shadow: $shadow-sm;
+    }
+
+    &:disabled {
+      background-color: $mac-color-gray-light;
+      border-color: $mac-color-gray-light;
+      color: $mac-color-gray-medium;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+  }
+
+  // Outline variants
+  &.btn-outline-prm {
+    background-color: transparent;
+    color: $mac-color-primary;
+    border-color: $mac-color-primary;
+
+    &:hover,
+    &:focus {
+      background-color: $mac-color-primary;
+      color: $mac-color-white;
+      box-shadow: $shadow-md;
+    }
+  }
+
+  &.btn-outline-scd {
+    background-color: transparent;
+    color: $mac-color-secondary;
+    border-color: $mac-color-secondary;
+
+    &:hover,
+    &:focus {
+      background-color: $mac-color-secondary;
+      color: $mac-color-white;
+      box-shadow: $shadow-md;
+    }
+  }
+
+  &.btn-outline-trt {
+    background-color: transparent;
+    color: $mac-color-tertiary;
+    border-color: $mac-color-tertiary;
+
+    &:hover,
+    &:focus {
+      background-color: $mac-color-tertiary;
+      color: $mac-color-white;
+      box-shadow: $shadow-md;
+    }
+  }
+
+  // Size variants
+  &.btn-sm {
+    padding: $spacing-xs $spacing-sm;
+    font-size: $font-size-small;
+  }
+
+  &.btn-lg {
+    padding: $spacing-md $spacing-lg;
+    font-size: $font-size-large;
+  }
+
+  // Full width
+  &.btn-block {
+    display: block;
+    width: 100%;
   }
 }
 
@@ -75,6 +223,21 @@ body {
 @media (min-width: $breakpoint-lg) {
   .container {
     padding: 0 $spacing-lg;
+  }
+}
+
+.mobile-only {
+  display: none;
+}
+.desktop-only {
+  display: block;
+}
+@media only screen and (max-width: $mac-header-break) {
+  .mobile-only {
+    display: block;
+  }
+  .desktop-only {
+    display: none;
   }
 }
 

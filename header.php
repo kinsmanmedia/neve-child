@@ -91,7 +91,7 @@ if ($defaults['sticky']) {
                     <!-- Desktop CTA Button -->
                     <div class="header-cta-button desktop-only">
                         <a href="<?php echo esc_url($defaults['cta_url']); ?>" 
-                           class="btn btn-red"
+                           class="btn btn-prm"
                            aria-label="<?php echo esc_attr($defaults['cta_text'] . ' - ' . __('Opens membership page', 'neve')); ?>">
                             <?php echo esc_html($defaults['cta_text']); ?>
                         </a>
@@ -114,7 +114,7 @@ if ($defaults['sticky']) {
                     <?php endif; ?>
                     
                     <!-- Mobile hamburger menu button -->
-                    <button class="menu-toggle" 
+                    <button class="menu-toggle mobile-only" 
                             type="button"
                             aria-controls="primary-menu" 
                             aria-label="<?php esc_attr_e('Toggle mobile menu', 'neve'); ?>" 
