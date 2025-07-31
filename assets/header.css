@@ -29,16 +29,59 @@
 /* ============================================================================
     SCSS VARIABLES
   ============================================================================ */
+.mac .neve-skip-link {
+  padding: 0px !important;
+}
 .mac header {
   border: solid red;
   height: 120px;
-  overflow: hidden;
+  overflow: visible;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 999;
+  width: 100%;
+  display: flex;
+  box-sizing: border-box;
 }
 .mac .site-main {
   margin-top: 120px !important;
   padding-top: 0 !important;
+}
+.mac .mac-header-container {
+  border: solid green;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.mac .header-top {
+  border: solid blue;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+  height: 50%;
+}
+.mac .site-branding {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.mac .site-branding .custom-logo-link {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.mac .site-branding .custom-logo-link img {
+  height: 80%;
+  width: auto;
+  display: block;
+}
+.mac .main-navigation {
+  display: none;
 }
