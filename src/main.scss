@@ -1,0 +1,78 @@
+// Import variables first so they're available in all other files
+@import 'variables';
+
+// Import mixins and utilities
+// @import 'mixins';
+// @import 'utilities';
+
+// Import base styles
+// @import 'base/reset';
+// @import 'base/typography';
+// @import 'base/forms';
+
+// Import layout components
+// @import 'layout/header';
+// @import 'layout/footer';
+// @import 'layout/sidebar';
+// @import 'layout/grid';
+
+// Import UI components
+// @import 'components/buttons';
+// @import 'components/cards';
+// @import 'components/navigation';
+// @import 'components/modals';
+
+// Import page-specific styles
+// @import 'pages/home';
+// @import 'pages/blog';
+// @import 'pages/single';
+
+// Custom styles for Neve child theme
+body {
+  font-family: $font-family-primary;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  color: $text-color;
+  background-color: $background-color;
+}
+
+.container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+}
+
+// Example usage of variables
+.custom-button {
+  background-color: $primary-color;
+  color: white;
+  padding: $spacing-sm $spacing-md;
+  border: none;
+  border-radius: $border-radius-md;
+  font-weight: $font-weight-medium;
+  transition: all $transition-base;
+  box-shadow: $shadow-sm;
+  
+  &:hover {
+    background-color: darken($primary-color, 10%);
+    box-shadow: $shadow-md;
+    transform: translateY(-1px);
+  }
+}
+
+// Responsive utilities
+@media (max-width: $breakpoint-sm) {
+  .container {
+    padding: 0 $spacing-sm;
+  }
+  
+  body {
+    font-size: $font-size-small;
+  }
+}
+
+@media (min-width: $breakpoint-lg) {
+  .container {
+    padding: 0 $spacing-lg;
+  }
+}
