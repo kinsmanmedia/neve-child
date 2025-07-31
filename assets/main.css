@@ -1,0 +1,95 @@
+/* ============================================================================
+    BRAND COLORS (CSS Custom Properties)
+  ============================================================================ */
+:root {
+  /* Primary colors */
+  --mac-color-primary: #cc6349;
+  --mac-color-primary-dark: #a04e3a;
+  --mac-color-primary-light: #d4806a;
+  /* Secondary colors */
+  --mac-color-secondary: #007cba;
+  --mac-color-secondary-dark: #005a85;
+  --mac-color-secondary-light: #339dd1;
+  /* Tertiary colors */
+  --mac-color-tertiary: #60c664;
+  /* Neutral colors */
+  --mac-color-white: #ffffff;
+  --mac-color-black: #000000;
+  --mac-color-gray-dark: #333333;
+  --mac-color-gray-medium: #666666;
+  --mac-color-gray-light: #cccccc;
+  --mac-color-gray-lighter: #f5f5f5;
+  /* Background colors */
+  --mac-bg-cream: #fffaeb;
+  --mac-bg-cream-alpha: rgba(255, 250, 235, 0.8);
+  /* Accent colors */
+  --mac-color-yellow: #f9b45d;
+}
+
+/* ============================================================================
+    SCSS VARIABLES
+  ============================================================================ */
+.mac header {
+  border: solid red;
+  height: 120px;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+.mac .site-main {
+  margin-top: 120px !important;
+  padding-top: 0 !important;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333333;
+  background-color: #ffffff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.custom-button {
+  background-color: #cc6349;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.custom-button:hover {
+  background-color: rgb(176.5321888412, 74.686695279, 49.4678111588);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 0.5rem;
+  }
+  body {
+    font-size: 14px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+html {
+  margin-top: 0px !important;
+}
+
+#wpadminbar {
+  display: none;
+}

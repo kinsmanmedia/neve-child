@@ -1,17 +1,18 @@
 // Import variables first so they're available in all other files
-@import 'variables';
+@use "variables" as *;
+@use "sass:color";
 
 // Import mixins and utilities
-// @import 'mixins';
-// @import 'utilities';
+// @use 'mixins';
+// @use 'utilities';
 
 // Import base styles
-// @import 'base/reset';
-// @import 'base/typography';
-// @import 'base/forms';
+// @use 'base/reset';
+// @use 'base/typography';
+// @use 'base/forms';
 
 // Import layout components
-// @import 'layout/header';
+@use "header/header";
 // @import 'layout/footer';
 // @import 'layout/sidebar';
 // @import 'layout/grid';
@@ -52,9 +53,9 @@ body {
   font-weight: $font-weight-medium;
   transition: all $transition-base;
   box-shadow: $shadow-sm;
-  
+
   &:hover {
-    background-color: darken($primary-color, 10%);
+    background-color: color.adjust($primary-color, $lightness: -10%);
     box-shadow: $shadow-md;
     transform: translateY(-1px);
   }
@@ -65,7 +66,7 @@ body {
   .container {
     padding: 0 $spacing-sm;
   }
-  
+
   body {
     font-size: $font-size-small;
   }
@@ -75,4 +76,11 @@ body {
   .container {
     padding: 0 $spacing-lg;
   }
+}
+
+html {
+  margin-top: 0px !important;
+}
+#wpadminbar {
+  display: none;
 }

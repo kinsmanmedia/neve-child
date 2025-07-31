@@ -1,0 +1,17 @@
+@use "../variables" as *;
+
+.mac {
+  header {
+    border: solid red;
+    height: $mac-header-height-desktop;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+  }
+  .site-main {
+    margin-top: $mac-header-height-desktop !important;
+    padding-top: 0 !important;
+  }
+}

@@ -1,6 +1,29 @@
 <?php
 function enqueue_child_theme_styles() {
     wp_enqueue_style('neve-child', get_stylesheet_uri());
+    
+    // Enqueue compiled main CSS
+    $main_css = get_stylesheet_directory() . '/assets/main.css';
+    if (file_exists($main_css)) {
+        wp_enqueue_style(
+            'main-styles',
+            get_stylesheet_directory_uri() . '/assets/main.css',
+            array('neve-child'),
+            filemtime($main_css)
+        );
+    }
+    
+    // Enqueue MAC header JavaScript
+    $header_js = get_stylesheet_directory() . '/src/header/header.js';
+    if (file_exists($header_js)) {
+        wp_enqueue_script(
+            'mac-header-js',
+            get_stylesheet_directory_uri() . '/src/header/header.js',
+            array(),
+            filemtime($header_js),
+            true
+        );
+    }
 }
 add_action('wp_enqueue_scripts', 'enqueue_child_theme_styles');
 

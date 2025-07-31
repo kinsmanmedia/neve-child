@@ -1,0 +1,44 @@
+/* ============================================================================
+    BRAND COLORS (CSS Custom Properties)
+  ============================================================================ */
+:root {
+  /* Primary colors */
+  --mac-color-primary: #cc6349;
+  --mac-color-primary-dark: #a04e3a;
+  --mac-color-primary-light: #d4806a;
+  /* Secondary colors */
+  --mac-color-secondary: #007cba;
+  --mac-color-secondary-dark: #005a85;
+  --mac-color-secondary-light: #339dd1;
+  /* Tertiary colors */
+  --mac-color-tertiary: #60c664;
+  /* Neutral colors */
+  --mac-color-white: #ffffff;
+  --mac-color-black: #000000;
+  --mac-color-gray-dark: #333333;
+  --mac-color-gray-medium: #666666;
+  --mac-color-gray-light: #cccccc;
+  --mac-color-gray-lighter: #f5f5f5;
+  /* Background colors */
+  --mac-bg-cream: #fffaeb;
+  --mac-bg-cream-alpha: rgba(255, 250, 235, 0.8);
+  /* Accent colors */
+  --mac-color-yellow: #f9b45d;
+}
+
+/* ============================================================================
+    SCSS VARIABLES
+  ============================================================================ */
+.mac header {
+  border: solid red;
+  height: 120px;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+.mac .site-main {
+  margin-top: 120px !important;
+  padding-top: 0 !important;
+}

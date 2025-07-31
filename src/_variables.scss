@@ -35,33 +35,33 @@
     SCSS VARIABLES
   ============================================================================ */
 
-// Colors
-$primary-color: var(--mac-color-primary);
-$secondary-color: var(--mac-color-secondary);
-$text-color: var(--mac-color-gray-dark);
-$background-color: var(--mac-color-white);
+// Colors - use actual color values for Sass functions
+$primary-color: #cc6349;
+$secondary-color: #007cba;
+$text-color: #333333;
+$background-color: #ffffff;
 
-// MAC specific colors (using CSS custom properties)
-$mac-color-primary: var(--mac-color-primary);
-$mac-color-primary-dark: var(--mac-color-primary-dark);
-$mac-color-primary-light: var(--mac-color-primary-light);
-$mac-color-secondary: var(--mac-color-secondary);
-$mac-color-secondary-dark: var(--mac-color-secondary-dark);
-$mac-color-secondary-light: var(--mac-color-secondary-light);
-$mac-color-tertiary: var(--mac-color-tertiary);
-$mac-color-yellow: var(--mac-color-yellow);
+// MAC specific colors (using actual color values for Sass functions)
+$mac-color-primary: #cc6349;
+$mac-color-primary-dark: #a04e3a;
+$mac-color-primary-light: #d4806a;
+$mac-color-secondary: #007cba;
+$mac-color-secondary-dark: #005a85;
+$mac-color-secondary-light: #339dd1;
+$mac-color-tertiary: #60c664;
+$mac-color-yellow: #f9b45d;
 
 // Neutral colors
-$mac-color-white: var(--mac-color-white);
-$mac-color-black: var(--mac-color-black);
-$mac-color-gray-dark: var(--mac-color-gray-dark);
-$mac-color-gray-medium: var(--mac-color-gray-medium);
-$mac-color-gray-light: var(--mac-color-gray-light);
-$mac-color-gray-lighter: var(--mac-color-gray-lighter);
+$mac-color-white: #ffffff;
+$mac-color-black: #000000;
+$mac-color-gray-dark: #333333;
+$mac-color-gray-medium: #666666;
+$mac-color-gray-light: #cccccc;
+$mac-color-gray-lighter: #f5f5f5;
 
 // Background colors
-$mac-bg-cream: var(--mac-bg-cream);
-$mac-bg-cream-alpha: var(--mac-bg-cream-alpha);
+$mac-bg-cream: #fffaeb;
+$mac-bg-cream-alpha: rgba(255, 250, 235, 0.8);
 
 // MAC Header dimensions
 $mac-header-height-desktop: 120px;
