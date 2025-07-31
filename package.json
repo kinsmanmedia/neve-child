@@ -1,23 +1,16 @@
 {
   "name": "neve-child",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "gulp",
+    "watch": "gulp watch"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
-    "@vitejs/plugin-legacy": "^7.1.0",
-    "glob": "^10.4.5",
-    "sass": "^1.89.2",
-    "vite": "^7.0.6",
-    "vite-plugin-live-reload": "^3.0.5"
+    "browser-sync": "^3.0.4",
+    "del": "^6.1.1",
+    "gulp": "^5.0.1",
+    "gulp-flatten": "^0.4.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-uglify": "^3.0.2",
+    "sass": "^1.62.0"
   }
 }

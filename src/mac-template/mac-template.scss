@@ -1,0 +1,42 @@
+// Mac Template Variables
+$mac-primary-color: red;
+$mac-background-color: #f8f9fa;
+$mac-border-color: #e0e0e0;
+$mac-text-color: #202124;
+$mac-border-radius: 12px;
+$mac-padding: 24px;
+
+.mac-template-block {
+  background: $mac-background-color;
+  border: 2px solid $mac-border-color;
+  padding: $mac-padding;
+  margin: 24px 0;
+  border-radius: $mac-border-radius;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    border-color: $mac-primary-color;
+    box-shadow: 0 4px 12px rgba($mac-primary-color, 0.15);
+    transform: translateY(-1px);
+  }
+
+  .mac-template-content {
+    font-size: 16px;
+    color: $mac-text-color;
+    margin: 0;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+}
+
+// Editor-specific styles
+.wp-block[data-type="my-theme/mac-template"] {
+  .mac-template-block {
+    border-style: dashed;
+
+    &:hover {
+      border-style: solid;
+    }
+  }
+}

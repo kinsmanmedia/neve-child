@@ -1,235 +1,48 @@
 <?php
-/**
- * Neve Child Theme functions
- */
-
-add_action( 'after_setup_theme', function () {
-	// Disable loading ThemeIsle SDK if it's about to be called
-	remove_action( 'after_setup_theme', 'neve_sdk_init' );
-}, 0 );
-
-// Prevent direct access
-if (!defined('ABSPATH')) {
-    exit;
+function enqueue_child_theme_styles() {
+    wp_enqueue_style('neve-child', get_stylesheet_uri());
 }
+add_action('wp_enqueue_scripts', 'enqueue_child_theme_styles');
 
-add_filter( 'themeisle_sdk_show_promotions', '__return_false' );
-
-// Enqueue parent theme styles
-add_action('wp_enqueue_scripts', 'neve_child_enqueue_styles');
-function neve_child_enqueue_styles() {
-    // Get parent theme
-    $parent_style = 'neve-style';
-    
-    // Enqueue parent theme stylesheet
-    wp_enqueue_style($parent_style, get_template_directory_uri() . '/style.css');
-    
-    // Enqueue child theme stylesheet
-    wp_enqueue_style('neve-child-style',
-        get_stylesheet_directory_uri() . '/style.css',
-        array($parent_style),
-        wp_get_theme()->get('Version')
-    );
-}
-
-// Dynamic component discovery and inclusion
-function discover_and_include_components() {
-    $components_dir = get_stylesheet_directory() . '/src/components';
-    
-    if (!is_dir($components_dir)) {
-        return [];
-    }
-    
-    $components = [];
-    $component_dirs = glob($components_dir . '/*', GLOB_ONLYDIR);
-    
-    foreach ($component_dirs as $dir) {
-        $component_name = basename($dir);
-        // Look for main.php instead of component.php
-        $component_file = $dir . '/main.php';
-        
-        if (file_exists($component_file)) {
-            require_once $component_file;
-            $components[] = $component_name;
-        }
-    }
-    
-    return $components;
-}
-
-// Store available components globally
-$GLOBALS['theme_components'] = discover_and_include_components();
-
-// Register custom blocks
-add_action('init', 'register_custom_blocks');
 function register_custom_blocks() {
-    // Register MAC temp button block
-    register_block_type(__DIR__ . '/src/blocks/mac-temp');
-}
+    // My Simple Block
+    wp_register_script(
+        'my-block',
+        get_stylesheet_directory_uri() . '/assets/my-block.js',
+        array('wp-blocks', 'wp-element', 'wp-block-editor'),
+        filemtime(get_stylesheet_directory() . '/assets/my-block.js')
+    );
 
-// Dynamic component asset loading
-add_action('wp_enqueue_scripts', 'load_component_assets');
-function load_component_assets() {
-    // Check if Vite dev server is running
-    $vite_dev_server = 'http://localhost:3000';
-    $context = stream_context_create([
-        'http' => [
-            'timeout' => 1,
-            'ignore_errors' => true
-        ]
-    ]);
-    
-    $response = @file_get_contents($vite_dev_server . '/@vite/client', false, $context);
-    $is_dev = $response !== false;
-    $components_dir = get_stylesheet_directory() . '/src/components';
+    wp_register_style(
+        'my-block-style',
+        get_stylesheet_directory_uri() . '/assets/my-block.css',
+        array(),
+        filemtime(get_stylesheet_directory() . '/assets/my-block.css')
+    );
 
-    // Suppress Jetpack DNS warnings specifically
-    add_filter( 'jetpack_can_make_outbound_requests', '__return_false' );
-    // Suppress DNS warnings entirely in local dev
-    error_reporting( E_ALL & ~E_WARNING );
-    
-    if (!is_dir($components_dir)) {
-        return;
-    }
-    
-    $component_dirs = glob($components_dir . '/*', GLOB_ONLYDIR);
-    
-    foreach ($component_dirs as $dir) {
-        $component_name = basename($dir);
-        $script_file = $dir . '/script.js';
-        
-        // Only load if script.js exists
-        if (file_exists($script_file)) {
-            if ($is_dev) {
-                // Development mode - load from Vite dev server
-                wp_enqueue_script(
-                    "component-{$component_name}",
-                    "http://localhost:3000/src/components/{$component_name}/script.js",
-                    [],
-                    null,
-                    true
-                );
-            } else {
-                // Production mode - load from manifest
-                $manifest_path = get_stylesheet_directory() . '/assets/.vite/manifest.json';
-                
-                if (file_exists($manifest_path)) {
-                    $manifest = json_decode(file_get_contents($manifest_path), true);
-                    $manifest_key = "src/components/{$component_name}/script.js";
-                    
-                    if (isset($manifest[$manifest_key])) {
-                        wp_enqueue_script(
-                            "component-{$component_name}",
-                            get_stylesheet_directory_uri() . '/assets/' . $manifest[$manifest_key]['file'],
-                            [],
-                            '1.0.0',
-                            true
-                        );
-                    }
-                }
-            }
-        }
-    }
-}
+    register_block_type('my-theme/simple-block', array(
+        'editor_script' => 'my-block',
+        'style' => 'my-block-style',
+    ));
 
-// Main Vite asset loading
-add_action('wp_enqueue_scripts', 'load_vite_assets');
-function load_vite_assets() {
-    // Check if Vite dev server is running
-    $vite_dev_server = 'http://localhost:3000';
-    $is_dev = false;
-    
-    // Try to detect if dev server is running
-    $context = stream_context_create([
-        'http' => [
-            'timeout' => 1,
-            'ignore_errors' => true
-        ]
-    ]);
-    
-    $response = @file_get_contents($vite_dev_server . '/@vite/client', false, $context);
-    $is_dev = $response !== false;
-    
-    if ($is_dev) {
-        wp_enqueue_script('vite-client', 'http://localhost:3000/@vite/client', [], null);
-        wp_enqueue_script('vite-main', 'http://localhost:3000/src/js/main.js', [], null, true);
-    } else {
-        $manifest_path = get_stylesheet_directory() . '/assets/.vite/manifest.json';
-        
-        if (file_exists($manifest_path)) {
-            $manifest = json_decode(file_get_contents($manifest_path), true);
-            
-            if (isset($manifest['src/js/main.js'])) {
-                wp_enqueue_script(
-                    'neve-child-js',
-                    get_stylesheet_directory_uri() . '/assets/' . $manifest['src/js/main.js']['file'],
-                    [],
-                    '1.0.0',
-                    true
-                );
-            }
-            
-            if (isset($manifest['src/scss/main.scss'])) {
-                wp_enqueue_style(
-                    'neve-child-css',
-                    get_stylesheet_directory_uri() . '/assets/' . $manifest['src/scss/main.scss']['file'],
-                    [],
-                    '1.0.0'
-                );
-            }
-        }
-    }
-}
+    // Mac Template Block
+    wp_register_script(
+        'mac-template',
+        get_stylesheet_directory_uri() . '/assets/mac-template.js',
+        array('wp-blocks', 'wp-element', 'wp-block-editor'),
+        filemtime(get_stylesheet_directory() . '/assets/mac-template.js')
+    );
 
-// Generic component renderer
-function render_component($component_name, $args = []) {
-    // Check if component exists
-    if (!in_array($component_name, $GLOBALS['theme_components'])) {
-        if (WP_DEBUG) {
-            echo "<!-- Component '{$component_name}' not found -->";
-        }
-        return false;
-    }
-    
-    // Try to call the component's render function
-    $function_name = "render_{$component_name}_component";
-    if (function_exists($function_name)) {
-        call_user_func($function_name, $args);
-        return true;
-    }
-    
-    if (WP_DEBUG) {
-        echo "<!-- Component '{$component_name}' found but render function missing -->";
-    }
-    return false;
-}
+    wp_register_style(
+        'mac-template-style',
+        get_stylesheet_directory_uri() . '/assets/mac-template.css',
+        array(),
+        filemtime(get_stylesheet_directory() . '/assets/mac-template.css')
+    );
 
-// Helper function to get all available components
-function get_available_components() {
-    return $GLOBALS['theme_components'] ?? [];
+    register_block_type('my-theme/mac-template', array(
+        'editor_script' => 'mac-template',
+        'style' => 'mac-template-style',
+    ));
 }
-
-// Helper function to check if a component exists
-function component_exists($component_name) {
-    return in_array($component_name, $GLOBALS['theme_components'] ?? []);
-}
-
-// Add module type for Vite scripts
-add_filter('script_loader_tag', 'add_module_to_custom_block_scripts', 10, 3);
-function add_module_to_custom_block_scripts($tag, $handle, $src) {
-    if (strpos($src, 'assets/blocks/mac-temp/index.js') !== false) {
-        return str_replace('<script ', '<script type="module" ', $tag);
-    }
-    return $tag;
-}
-
-// Debug function to list all components (only in debug mode)
-if (WP_DEBUG) {
-    add_action('wp_footer', 'debug_list_components');
-    function debug_list_components() {
-        $components = get_available_components();
-        if (!empty($components)) {
-            echo "<!-- Available Components: " . implode(', ', $components) . " -->";
-        }
-    }
-}
+add_action('init', 'register_custom_blocks');

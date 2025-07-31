@@ -1,0 +1,28 @@
+.mac-template-block {
+  background: #f8f9fa;
+  border: 2px solid #e0e0e0;
+  padding: 24px;
+  margin: 24px 0;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+.mac-template-block:hover {
+  border-color: red;
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+.mac-template-block .mac-template-content {
+  font-size: 16px;
+  color: #202124;
+  margin: 0;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.wp-block[data-type="my-theme/mac-template"] .mac-template-block {
+  border-style: dashed;
+}
+.wp-block[data-type="my-theme/mac-template"] .mac-template-block:hover {
+  border-style: solid;
+}
